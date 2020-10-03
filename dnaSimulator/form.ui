@@ -39,6 +39,12 @@
     <property name="text">
      <string>Browse</string>
     </property>
+    <property name="iconSize">
+     <size>
+      <width>16</width>
+      <height>16</height>
+     </size>
+    </property>
    </widget>
    <widget class="QPlainTextEdit" name="filenamePlainEt">
     <property name="geometry">
@@ -46,7 +52,7 @@
       <x>130</x>
       <y>20</y>
       <width>531</width>
-      <height>31</height>
+      <height>28</height>
      </rect>
     </property>
    </widget>
@@ -175,7 +181,7 @@
       <x>150</x>
       <y>270</y>
       <width>41</width>
-      <height>31</height>
+      <height>28</height>
      </rect>
     </property>
    </widget>
@@ -185,7 +191,7 @@
       <x>220</x>
       <y>270</y>
       <width>41</width>
-      <height>31</height>
+      <height>28</height>
      </rect>
     </property>
    </widget>
@@ -195,7 +201,7 @@
       <x>290</x>
       <y>270</y>
       <width>41</width>
-      <height>31</height>
+      <height>28</height>
      </rect>
     </property>
    </widget>
@@ -245,7 +251,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

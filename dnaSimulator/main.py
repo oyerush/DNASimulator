@@ -1,28 +1,115 @@
-# This Python file uses the following encoding: utf-8
-import sys
-import os
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'form.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
 
 
-from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2.QtCore import QFile
-from PySide2.QtUiTools import QUiLoader
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class dna_simulator(QMainWindow):
-    def __init__(self):
-        super(dna_simulator, self).__init__()
-        self.load_ui()
+class Ui_dna_simulator(object):
+    def setupUi(self, dna_simulator):
+        dna_simulator.setObjectName("dna_simulator")
+        dna_simulator.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(dna_simulator)
+        self.centralwidget.setObjectName("centralwidget")
+        self.loadInputLabel = QtWidgets.QLabel(self.centralwidget)
+        self.loadInputLabel.setGeometry(QtCore.QRect(20, 20, 101, 31))
+        self.loadInputLabel.setObjectName("loadInputLabel")
+        self.browsePushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.browsePushButton.setGeometry(QtCore.QRect(680, 20, 93, 28))
+        self.browsePushButton.setIconSize(QtCore.QSize(16, 16))
+        self.browsePushButton.setObjectName("browsePushButton")
+        self.filenamePlainEt = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.filenamePlainEt.setGeometry(QtCore.QRect(130, 20, 531, 28))
+        self.filenamePlainEt.setObjectName("filenamePlainEt")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 80, 81, 21))
+        self.label.setObjectName("label")
+        self.radioButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton.setGeometry(QtCore.QRect(20, 110, 95, 20))
+        self.radioButton.setObjectName("radioButton")
+        self.buttonGroup = QtWidgets.QButtonGroup(dna_simulator)
+        self.buttonGroup.setObjectName("buttonGroup")
+        self.buttonGroup.addButton(self.radioButton)
+        self.radioButton_2 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_2.setGeometry(QtCore.QRect(190, 110, 95, 20))
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.buttonGroup.addButton(self.radioButton_2)
+        self.radioButton_3 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_3.setGeometry(QtCore.QRect(380, 110, 95, 20))
+        self.radioButton_3.setObjectName("radioButton_3")
+        self.buttonGroup.addButton(self.radioButton_3)
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(20, 170, 91, 21))
+        self.label_2.setObjectName("label_2")
+        self.radioButton_4 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_4.setGeometry(QtCore.QRect(20, 200, 95, 20))
+        self.radioButton_4.setObjectName("radioButton_4")
+        self.buttonGroup.addButton(self.radioButton_4)
+        self.radioButton_5 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_5.setGeometry(QtCore.QRect(190, 200, 95, 20))
+        self.radioButton_5.setObjectName("radioButton_5")
+        self.buttonGroup.addButton(self.radioButton_5)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(20, 270, 71, 21))
+        self.label_3.setObjectName("label_3")
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(QtCore.QRect(150, 270, 41, 28))
+        self.textEdit.setObjectName("textEdit")
+        self.textEdit_2 = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit_2.setGeometry(QtCore.QRect(220, 270, 41, 28))
+        self.textEdit_2.setObjectName("textEdit_2")
+        self.textEdit_3 = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit_3.setGeometry(QtCore.QRect(290, 270, 41, 28))
+        self.textEdit_3.setObjectName("textEdit_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(150, 300, 55, 16))
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(220, 300, 55, 16))
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(290, 300, 71, 16))
+        self.label_6.setObjectName("label_6")
+        dna_simulator.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(dna_simulator)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        dna_simulator.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(dna_simulator)
+        self.statusbar.setObjectName("statusbar")
+        dna_simulator.setStatusBar(self.statusbar)
 
-    def load_ui(self):
-        loader = QUiLoader()
-        path = os.path.join(os.path.dirname(__file__), "form.ui")
-        ui_file = QFile(path)
-        ui_file.open(QFile.ReadOnly)
-        loader.load(ui_file, self)
-        ui_file.close()
+        self.retranslateUi(dna_simulator)
+        QtCore.QMetaObject.connectSlotsByName(dna_simulator)
+
+    def retranslateUi(self, dna_simulator):
+        _translate = QtCore.QCoreApplication.translate
+        dna_simulator.setWindowTitle(_translate("dna_simulator", "dna_simulator"))
+        self.loadInputLabel.setText(_translate("dna_simulator", "Load input file:"))
+        self.browsePushButton.setText(_translate("dna_simulator", "Browse"))
+        self.label.setText(_translate("dna_simulator", "Synthesis:"))
+        self.radioButton.setText(_translate("dna_simulator", "RadioButton"))
+        self.radioButton_2.setText(_translate("dna_simulator", "RadioButton"))
+        self.radioButton_3.setText(_translate("dna_simulator", "RadioButton"))
+        self.label_2.setText(_translate("dna_simulator", "Sequencing:"))
+        self.radioButton_4.setText(_translate("dna_simulator", "RadioButton"))
+        self.radioButton_5.setText(_translate("dna_simulator", "RadioButton"))
+        self.label_3.setText(_translate("dna_simulator", "Priorities:"))
+        self.label_4.setText(_translate("dna_simulator", "Deletion"))
+        self.label_5.setText(_translate("dna_simulator", "Insertion"))
+        self.label_6.setText(_translate("dna_simulator", "Substitution"))
+
 
 if __name__ == "__main__":
-    app = QApplication([])
-    widget = dna_simulator()
-    widget.show()
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    dna_simulator = QtWidgets.QMainWindow()
+    ui = Ui_dna_simulator()
+    ui.setupUi(dna_simulator)
+    dna_simulator.show()
     sys.exit(app.exec_())
