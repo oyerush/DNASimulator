@@ -75,12 +75,12 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>20</y>
        <width>385</width>
        <height>19</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="synthesis_horizontalLayout">
       <item>
        <widget class="QRadioButton" name="twist_bioscience_radioButton">
         <property name="text">
@@ -122,33 +122,29 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>263</width>
+       <width>261</width>
        <height>21</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
-          <property name="text">
-           <string>Ilumina miSeq</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
-          <property name="text">
-           <string>Ilumina NextSeq</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
+     <layout class="QHBoxLayout" name="sequencing_horizontalLayout">
       <item>
        <widget class="QRadioButton" name="MinION_radioButton">
         <property name="text">
          <string>MinION</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
+        <property name="text">
+         <string>Ilumina NextSeq</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
+        <property name="text">
+         <string>Ilumina miSeq</string>
         </property>
        </widget>
       </item>
@@ -220,6 +216,45 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="clustering_correction_code_groupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>320</y>
+      <width>450</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Use clustering correction code:</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>83</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="clustering_correction_horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="clustering_correction_yes_radioButton">
+        <property name="text">
+         <string>yes</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="clustering_correction_no_radioButton">
+        <property name="text">
+         <string>no</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -239,8 +274,6 @@
   <tabstop>twist_bioscience_radioButton</tabstop>
   <tabstop>customArray_radioButton</tabstop>
   <tabstop>IDT_radioButton</tabstop>
-  <tabstop>Ilumina_miSeq_radioButton</tabstop>
-  <tabstop>Ilumina_NextSeq_radioButton</tabstop>
   <tabstop>one_base_deletion_textEdit</tabstop>
   <tabstop>insertion_textEdit</tabstop>
   <tabstop>substitution_textEdit</tabstop>

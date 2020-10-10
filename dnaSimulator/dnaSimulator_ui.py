@@ -35,53 +35,48 @@ class Ui_dnaSimulator(object):
         self.synthesis_groupBox.setGeometry(QRect(20, 80, 450, 60))
         self.widget = QWidget(self.synthesis_groupBox)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 30, 385, 19))
-        self.horizontalLayout = QHBoxLayout(self.widget)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.widget.setGeometry(QRect(10, 20, 385, 19))
+        self.synthesis_horizontalLayout = QHBoxLayout(self.widget)
+        self.synthesis_horizontalLayout.setObjectName(u"synthesis_horizontalLayout")
+        self.synthesis_horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.twist_bioscience_radioButton = QRadioButton(self.widget)
         self.twist_bioscience_radioButton.setObjectName(u"twist_bioscience_radioButton")
 
-        self.horizontalLayout.addWidget(self.twist_bioscience_radioButton)
+        self.synthesis_horizontalLayout.addWidget(self.twist_bioscience_radioButton)
 
         self.customArray_radioButton = QRadioButton(self.widget)
         self.customArray_radioButton.setObjectName(u"customArray_radioButton")
 
-        self.horizontalLayout.addWidget(self.customArray_radioButton)
+        self.synthesis_horizontalLayout.addWidget(self.customArray_radioButton)
 
         self.IDT_radioButton = QRadioButton(self.widget)
         self.IDT_radioButton.setObjectName(u"IDT_radioButton")
 
-        self.horizontalLayout.addWidget(self.IDT_radioButton)
+        self.synthesis_horizontalLayout.addWidget(self.IDT_radioButton)
 
         self.sequencing_groupBox = QGroupBox(self.centralwidget)
         self.sequencing_groupBox.setObjectName(u"sequencing_groupBox")
         self.sequencing_groupBox.setGeometry(QRect(20, 160, 450, 60))
         self.widget1 = QWidget(self.sequencing_groupBox)
         self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(10, 20, 263, 21))
-        self.horizontalLayout_3 = QHBoxLayout(self.widget1)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.Ilumina_miSeq_radioButton = QRadioButton(self.widget1)
-        self.Ilumina_miSeq_radioButton.setObjectName(u"Ilumina_miSeq_radioButton")
+        self.widget1.setGeometry(QRect(10, 20, 261, 21))
+        self.sequencing_horizontalLayout = QHBoxLayout(self.widget1)
+        self.sequencing_horizontalLayout.setObjectName(u"sequencing_horizontalLayout")
+        self.sequencing_horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.MinION_radioButton = QRadioButton(self.widget1)
+        self.MinION_radioButton.setObjectName(u"MinION_radioButton")
 
-        self.horizontalLayout_2.addWidget(self.Ilumina_miSeq_radioButton)
+        self.sequencing_horizontalLayout.addWidget(self.MinION_radioButton)
 
         self.Ilumina_NextSeq_radioButton = QRadioButton(self.widget1)
         self.Ilumina_NextSeq_radioButton.setObjectName(u"Ilumina_NextSeq_radioButton")
 
-        self.horizontalLayout_2.addWidget(self.Ilumina_NextSeq_radioButton)
+        self.sequencing_horizontalLayout.addWidget(self.Ilumina_NextSeq_radioButton)
 
+        self.Ilumina_miSeq_radioButton = QRadioButton(self.widget1)
+        self.Ilumina_miSeq_radioButton.setObjectName(u"Ilumina_miSeq_radioButton")
 
-        self.horizontalLayout_3.addLayout(self.horizontalLayout_2)
-
-        self.MinION_radioButton = QRadioButton(self.widget1)
-        self.MinION_radioButton.setObjectName(u"MinION_radioButton")
-
-        self.horizontalLayout_3.addWidget(self.MinION_radioButton)
+        self.sequencing_horizontalLayout.addWidget(self.Ilumina_miSeq_radioButton)
 
         self.error_statistics_groupBox = QGroupBox(self.centralwidget)
         self.error_statistics_groupBox.setObjectName(u"error_statistics_groupBox")
@@ -98,6 +93,25 @@ class Ui_dnaSimulator(object):
         self.long_deletion_textEdit = QTextEdit(self.error_statistics_groupBox)
         self.long_deletion_textEdit.setObjectName(u"long_deletion_textEdit")
         self.long_deletion_textEdit.setGeometry(QRect(340, 20, 90, 25))
+        self.clustering_correction_code_groupBox = QGroupBox(self.centralwidget)
+        self.clustering_correction_code_groupBox.setObjectName(u"clustering_correction_code_groupBox")
+        self.clustering_correction_code_groupBox.setGeometry(QRect(20, 320, 450, 60))
+        self.widget2 = QWidget(self.clustering_correction_code_groupBox)
+        self.widget2.setObjectName(u"widget2")
+        self.widget2.setGeometry(QRect(10, 20, 83, 19))
+        self.clustering_correction_horizontalLayout = QHBoxLayout(self.widget2)
+        self.clustering_correction_horizontalLayout.setObjectName(u"clustering_correction_horizontalLayout")
+        self.clustering_correction_horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.clustering_correction_yes_radioButton = QRadioButton(self.widget2)
+        self.clustering_correction_yes_radioButton.setObjectName(u"clustering_correction_yes_radioButton")
+
+        self.clustering_correction_horizontalLayout.addWidget(self.clustering_correction_yes_radioButton)
+
+        self.clustering_correction_no_radioButton = QRadioButton(self.widget2)
+        self.clustering_correction_no_radioButton.setObjectName(u"clustering_correction_no_radioButton")
+
+        self.clustering_correction_horizontalLayout.addWidget(self.clustering_correction_no_radioButton)
+
         dnaSimulator.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(dnaSimulator)
         self.menubar.setObjectName(u"menubar")
@@ -110,9 +124,7 @@ class Ui_dnaSimulator(object):
         QWidget.setTabOrder(self.browse_PushButton, self.twist_bioscience_radioButton)
         QWidget.setTabOrder(self.twist_bioscience_radioButton, self.customArray_radioButton)
         QWidget.setTabOrder(self.customArray_radioButton, self.IDT_radioButton)
-        QWidget.setTabOrder(self.IDT_radioButton, self.Ilumina_miSeq_radioButton)
-        QWidget.setTabOrder(self.Ilumina_miSeq_radioButton, self.Ilumina_NextSeq_radioButton)
-        QWidget.setTabOrder(self.Ilumina_NextSeq_radioButton, self.one_base_deletion_textEdit)
+        QWidget.setTabOrder(self.IDT_radioButton, self.one_base_deletion_textEdit)
         QWidget.setTabOrder(self.one_base_deletion_textEdit, self.insertion_textEdit)
         QWidget.setTabOrder(self.insertion_textEdit, self.substitution_textEdit)
 
@@ -131,13 +143,16 @@ class Ui_dnaSimulator(object):
         self.customArray_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"CustomArray", None))
         self.IDT_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"Integrated DNA Technology (IDT)", None))
         self.sequencing_groupBox.setTitle(QCoreApplication.translate("dnaSimulator", u"Sequencing Technology:", None))
-        self.Ilumina_miSeq_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"Ilumina miSeq", None))
-        self.Ilumina_NextSeq_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"Ilumina NextSeq", None))
         self.MinION_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"MinION", None))
+        self.Ilumina_NextSeq_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"Ilumina NextSeq", None))
+        self.Ilumina_miSeq_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"Ilumina miSeq", None))
         self.error_statistics_groupBox.setTitle(QCoreApplication.translate("dnaSimulator", u"Error Statistics:", None))
         self.substitution_textEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Substitution", None))
         self.one_base_deletion_textEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"1-base Deletion", None))
         self.insertion_textEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Insertion", None))
         self.long_deletion_textEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
+        self.clustering_correction_code_groupBox.setTitle(QCoreApplication.translate("dnaSimulator", u"Use clustering correction code:", None))
+        self.clustering_correction_yes_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"yes", None))
+        self.clustering_correction_no_radioButton.setText(QCoreApplication.translate("dnaSimulator", u"no", None))
     # retranslateUi
 
