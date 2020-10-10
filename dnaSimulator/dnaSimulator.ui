@@ -17,8 +17,8 @@
    <widget class="QLabel" name="loadInputLabel">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
+      <x>30</x>
+      <y>16</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -27,13 +27,13 @@
      <string>Load input file:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="browsePushButton">
+   <widget class="QPushButton" name="browse_PushButton">
     <property name="geometry">
      <rect>
       <x>680</x>
       <y>20</y>
       <width>93</width>
-      <height>28</height>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
@@ -52,7 +52,7 @@
       <x>130</x>
       <y>20</y>
       <width>531</width>
-      <height>28</height>
+      <height>25</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -62,43 +62,43 @@
    <widget class="QGroupBox" name="synthesis_groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>80</y>
-      <width>391</width>
+      <width>450</width>
       <height>60</height>
      </rect>
     </property>
     <property name="title">
-     <string>Synthesis:</string>
+     <string>Synthesis Technology:</string>
     </property>
     <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>260</width>
+       <width>385</width>
        <height>19</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="twist_bioscience_radioButton">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Twist Bioscience</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QRadioButton" name="customArray_radioButton">
         <property name="text">
-         <string>RadioButton</string>
+         <string>CustomArray</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_3">
+       <widget class="QRadioButton" name="IDT_radioButton">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Integrated DNA Technology (IDT)</string>
         </property>
        </widget>
       </item>
@@ -108,78 +108,89 @@
    <widget class="QGroupBox" name="sequencing_groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>391</width>
+      <x>20</x>
+      <y>160</y>
+      <width>450</width>
       <height>60</height>
      </rect>
     </property>
     <property name="title">
-     <string>Sequencing:</string>
+     <string>Sequencing Technology:</string>
     </property>
     <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>172</width>
-       <height>19</height>
+       <width>263</width>
+       <height>21</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QRadioButton" name="radioButton_4">
-        <property name="text">
-         <string>RadioButton</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
+          <property name="text">
+           <string>Ilumina miSeq</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
+          <property name="text">
+           <string>Ilumina NextSeq</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_5">
+       <widget class="QRadioButton" name="MinION_radioButton">
         <property name="text">
-         <string>RadioButton</string>
+         <string>MinION</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="priorities_groupBox">
+   <widget class="QGroupBox" name="error_statistics_groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>220</y>
-      <width>391</width>
+      <x>20</x>
+      <y>240</y>
+      <width>450</width>
       <height>60</height>
      </rect>
     </property>
     <property name="title">
-     <string>Priorities:</string>
+     <string>Error Statistics:</string>
     </property>
     <widget class="QTextEdit" name="substitution_textEdit">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>20</y>
-       <width>90</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>Substitution rate</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="deletion_textEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
        <width>90</width>
-       <height>28</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="placeholderText">
-      <string>Deletion rate</string>
+      <string>Substitution</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="one_base_deletion_textEdit">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>20</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>1-base Deletion</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="insertion_textEdit">
@@ -188,11 +199,24 @@
        <x>120</x>
        <y>20</y>
        <width>90</width>
-       <height>28</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="placeholderText">
-      <string>Insertion rate</string>
+      <string>Insertion</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="long_deletion_textEdit">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>20</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Long Deletion</string>
      </property>
     </widget>
    </widget>
@@ -211,13 +235,13 @@
  </widget>
  <tabstops>
   <tabstop>filePath_textEdit</tabstop>
-  <tabstop>browsePushButton</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
-  <tabstop>radioButton_3</tabstop>
-  <tabstop>radioButton_4</tabstop>
-  <tabstop>radioButton_5</tabstop>
-  <tabstop>deletion_textEdit</tabstop>
+  <tabstop>browse_PushButton</tabstop>
+  <tabstop>twist_bioscience_radioButton</tabstop>
+  <tabstop>customArray_radioButton</tabstop>
+  <tabstop>IDT_radioButton</tabstop>
+  <tabstop>Ilumina_miSeq_radioButton</tabstop>
+  <tabstop>Ilumina_NextSeq_radioButton</tabstop>
+  <tabstop>one_base_deletion_textEdit</tabstop>
   <tabstop>insertion_textEdit</tabstop>
   <tabstop>substitution_textEdit</tabstop>
  </tabstops>
