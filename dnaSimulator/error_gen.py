@@ -42,25 +42,24 @@ def generate_error_type(err_rates: dict) -> str:
 def select_error_location(strand: str):
     strand_len = len(strand)
     # get a random value m that represents the beginning of the strand that gets higher weight:
-
-    m = random.randint(1, math.floor(strand_len/3))
-    # randomize an index in the range of [0, len-1]:
+    m = random.randint(0, math.floor(strand_len/3))
+    # randomize an index in the range of [0, len-1] giving a higher ratio to the part before m:
     options = ['m', 'rest']
-    rates = [0.67, 0.33]
+    rates = [0.67, 0.33]  # 2:1 ratio!
     draw = random.choices(options, weights=rates, k=1)
-    loc = 0
+    index = 0
     if draw[0] == 'm':
-        loc = random.randint(0, m)
+        index = random.randint(0, m)
     else:
-        loc = random.randint(m+1, strand_len-1)
-    return loc
+        index = random.randint(m+1, strand_len-1)
+    return index
 
 
 """
 Testing:
 """
 
-'''
+
 if __name__ == '__main__':
     
     # error types test:
@@ -132,7 +131,7 @@ if __name__ == '__main__':
     err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
 
     err_loc_ana_f.close()
-'''
+
 
 
 
