@@ -46,6 +46,8 @@ class ErrorSimulation:
         self.error_rates = error_rates
         self.err_type = None
         self.err_rate = 0
+        self.synthesis_method = None
+        self.sequencing_method = None
 
     # Generate an error from the error rates dictionary passed as arguments:
     # Saves the generated type in the class variable err_type.
@@ -127,12 +129,32 @@ class ErrorSimulation:
     # Inject insertion to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
     def inject_insertion(self, strand: str, index: int):
-        return
+        # TODO: check rates according to pre-insertion base?
+        options = ['A', 'T', 'G', 'C']
+        rates = [1, 1, 1, 1]
+        draw = random.choices(options, weights=rates, k=1)
+        modified_strand = strand[:index] + draw[0] + strand[index:]
+        return modified_strand
 
     # Inject substitution to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
     def inject_substitution(self, strand: str, index: int):
-        return
+        modified_strand = list(strand)
+        # TODO: check rates according to base:
+        bases = ['A', 'T', 'G', 'C']
+        options = []
+        for b in bases:
+            if b != modified_strand[index]:
+                options.append(b)
+        # Note: 'options' is defined by 'bases' so the order is always the same as in 'bases'.
+        # Set rates according to the base:
+        rates = [1, 1, 1]
+        # if modified_strand[index] == 'G':
+        #     rates = []
+        draw = random.choices(options, weights=rates, k=1)
+        modified_strand[index] = draw[0]
+        ''.join(modified_strand)
+        return modified_strand
 
     # Inject the error type to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
