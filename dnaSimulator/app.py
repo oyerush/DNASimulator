@@ -13,12 +13,28 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.inputDNAPath = ""
+        self.sub_value = 0
+        self.insertion_value = 0
+        self.one_base_del = 0
+        self.log_del = 0
         # self.filePath_textEdit.setPlainText("check check")
         self.browse_PushButton.clicked.connect(self.openFileDialog)
+        self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
+        self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
 
     def openFileDialog(self):
-        self.inputDNAPath = QFileDialog.getOpenFileName()
-        self.filePath_textEdit.setPlainText(self.inputDNAPath[0])
+        self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
+        self.filePath_textEdit.setPlainText(self.inputDNAPath)
+
+    def setErrorValues(self):
+        self.sub_value = self.substitution_textEdit.toPlainText()
+        self.insertion_value = self.insertion_textEdit.toPlainText()
+        self.one_base_del = self.one_base_deletion_textEdit.toPlainText()
+        self.log_del = self.long_deletion_textEdit.toPlainText()
+        # print(self.sub_value + ', ' + self.insertion_value + ', ' + self.one_base_del + ', ' + self.log_del)
+
+    def runErrorSimulator(self):
+        pass
 
 
 if __name__ == '__main__':
