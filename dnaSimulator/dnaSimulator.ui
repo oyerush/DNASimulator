@@ -6,254 +6,233 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>856</width>
-    <height>620</height>
+    <width>870</width>
+    <height>687</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>DNA Simulator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="loadInputLabel">
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>16</y>
-      <width>101</width>
+      <y>20</y>
+      <width>771</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Load input file:</string>
-    </property>
+    <layout class="QHBoxLayout" name="load_input_horizontalLayout">
+     <item>
+      <widget class="QLabel" name="loadInputLabel">
+       <property name="text">
+        <string>Load input file:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="filePath_textEdit">
+       <property name="placeholderText">
+        <string>File path</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="browse_PushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="browse_PushButton">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>20</y>
-      <width>93</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Browse</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="filePath_textEdit">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>20</y>
+      <x>30</x>
+      <y>70</y>
       <width>531</width>
-      <height>25</height>
+      <height>291</height>
      </rect>
     </property>
-    <property name="placeholderText">
-     <string>File path</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="synthesis_groupBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>80</y>
-      <width>450</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Synthesis Technology:</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>385</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="synthesis_horizontalLayout">
-      <item>
-       <widget class="QRadioButton" name="twist_bioscience_radioButton">
-        <property name="text">
-         <string>Twist Bioscience</string>
+    <layout class="QVBoxLayout" name="algorithms_verticalLayout">
+     <item>
+      <widget class="QGroupBox" name="sequencing_groupBox">
+       <property name="title">
+        <string>Sequencing Technology:</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>311</width>
+          <height>22</height>
+         </rect>
         </property>
+        <layout class="QHBoxLayout" name="sequencing_horizontalLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="MinION_radioButton">
+           <property name="text">
+            <string>MinION</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
+           <property name="text">
+            <string>Ilumina NextSeq</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
+           <property name="text">
+            <string>Ilumina miSeq</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="customArray_radioButton">
-        <property name="text">
-         <string>CustomArray</string>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="synthesis_groupBox">
+       <property name="title">
+        <string>Synthesis Technology:</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>453</width>
+          <height>22</height>
+         </rect>
         </property>
+        <layout class="QHBoxLayout" name="synthesis_horizontalLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="twist_bioscience_radioButton">
+           <property name="text">
+            <string>Twist Bioscience</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="customArray_radioButton">
+           <property name="text">
+            <string>CustomArray</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="IDT_radioButton">
+           <property name="text">
+            <string>Integrated DNA Technology (IDT)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="IDT_radioButton">
-        <property name="text">
-         <string>Integrated DNA Technology (IDT)</string>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="error_statistics_groupBox">
+       <property name="title">
+        <string>Error Statistics:</string>
+       </property>
+       <widget class="QWidget" name="horizontalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>507</width>
+          <height>31</height>
+         </rect>
         </property>
+        <layout class="QHBoxLayout" name="error_statistics_horizontalLayout">
+         <item>
+          <widget class="QTextEdit" name="substitution_textEdit">
+           <property name="placeholderText">
+            <string>Substitution</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="insertion_textEdit">
+           <property name="placeholderText">
+            <string>Insertion</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="one_base_deletion_textEdit">
+           <property name="placeholderText">
+            <string>1-base Deletion</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="long_deletion_textEdit">
+           <property name="placeholderText">
+            <string>Long Deletion</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="sequencing_groupBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>160</y>
-      <width>450</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Sequencing Technology:</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>261</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="sequencing_horizontalLayout">
-      <item>
-       <widget class="QRadioButton" name="MinION_radioButton">
-        <property name="text">
-         <string>MinION</string>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="clustering_correction_code_groupBox">
+       <property name="title">
+        <string>Use clustering correction code:</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>93</width>
+          <height>22</height>
+         </rect>
         </property>
+        <layout class="QHBoxLayout" name="clustering_correction_horizontalLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="clustering_correction_yes_radioButton">
+           <property name="text">
+            <string>yes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="clustering_correction_no_radioButton">
+           <property name="text">
+            <string>no</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
-        <property name="text">
-         <string>Ilumina NextSeq</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
-        <property name="text">
-         <string>Ilumina miSeq</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="error_statistics_groupBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>240</y>
-      <width>450</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Error Statistics:</string>
-    </property>
-    <widget class="QTextEdit" name="substitution_textEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>90</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>Substitution</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="one_base_deletion_textEdit">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>20</y>
-       <width>90</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>1-base Deletion</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="insertion_textEdit">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>20</y>
-       <width>90</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>Insertion</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="long_deletion_textEdit">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>20</y>
-       <width>90</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>Long Deletion</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="clustering_correction_code_groupBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>320</y>
-      <width>450</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Use clustering correction code:</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>83</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="clustering_correction_horizontalLayout">
-      <item>
-       <widget class="QRadioButton" name="clustering_correction_yes_radioButton">
-        <property name="text">
-         <string>yes</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="clustering_correction_no_radioButton">
-        <property name="text">
-         <string>no</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -261,7 +240,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>856</width>
+     <width>870</width>
      <height>21</height>
     </rect>
    </property>
@@ -269,8 +248,6 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>filePath_textEdit</tabstop>
-  <tabstop>browse_PushButton</tabstop>
   <tabstop>twist_bioscience_radioButton</tabstop>
   <tabstop>customArray_radioButton</tabstop>
   <tabstop>IDT_radioButton</tabstop>
