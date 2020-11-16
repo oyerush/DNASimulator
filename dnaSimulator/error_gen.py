@@ -8,9 +8,24 @@ from operator import itemgetter
 '''
 How to use:
 
-1. generate_error_type
-2. select_error_location
-3. inject error
+The simulator gets a strand and implements an error.
+
+1. Create an object of the simulator with a dictionaries of errors and the source strand passed as arguments:
+    example of an error dictionary: {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
+    example of s strand: "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC"
+        (can be any length)
+                               _  _
+                             _/0\/ \_
+                    .-.   .-` \_/\0/ '-.
+                   /:::\ / ,_________,  \
+                  /\:::/ \  '. (:::/  `'-;
+                  \ `-'`\ '._ `"'"'\__    \
+                   `'-.  \   `)-=-=(  `,   |
+                jgs    \  `-"`      `"-`   /
+        https://www.asciiart.eu/television/sesame-street
+        
+2. For each strand of your input file, call simulate_error_on_strand.
+3. WALLAH!
 
 
 Strings of types of errors supported (in dictionary):
@@ -19,7 +34,12 @@ Strings of types of errors supported (in dictionary):
 'ld'    - long deletion (multiple base deletion)
 'i'     - insertion
 's'     - substitution
-'n'     - none (no error)
+
+For base error rates: Same as above, adding:
+'pi'     - symbol pre-insertion
+
+Do not use:
+'n'     - none (no error), used in some cases to represent a "dummy" error. (to receive no-error)
 
 '''
 
@@ -32,119 +52,161 @@ def partial_sums(iterable):
         yield total
 
 
-# Error Simulation class.
-# Holds the attributes needed for error simulation:
-# @ error_rates - dictionary of the error rates used in the simulation.
+# Strand Error Simulation class.
+# Holds the attributes needed for error simulation on a single strand:
+# PARAMS:
+# @ error_rates - dictionary of the total error rates used in the simulation.
 #       Example of a dictionary:
-#       {'d': 0.1, 'i': 0.2, 's': 0.1, 'n': 0.6}
-# @ err_type - the error type to use in modifications.
-#       Initialized to None. Use generate_error_type to generate a valid error type.
-# @ err_rate - the error rate to use in modifications.
+#       {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
+# @ base_error_rates - dictionary of dictionaries for each base.
+#       Example:
+#       {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'ld': 0.6},
+#           'T': {...},
+#           'C': {...},
+#           'G': {...}
+#       }
+# @ deletion_length_rates - dictionary of deletion length rates:
+#       Example:
+#       {1: 0.1, 2: 0.2, 3: 0.1, 4: 0.3, 5: 0.05, 6: 0.001}
+#
+# Class variables:
+# * error_rates - dictionary of the total error rates used in the simulation, as provided in error_rates parameter.
+# * x_base_error_rates - error rates corresponding to the base x, each base has its own set.
+# * deletion_length_rates - as passed.
+#       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F15.large.jpg?width=800&height=600&carousel=1
+#       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
+# * strand - the strand to simulate the error on, as passed. This is also the final strand.
+# * index - the index to implement the error on.
 #       Initialized to 0. Use generate_error_type to get a valid error rate.
-class ErrorSimulation:
-    def __init__(self, error_rates):
+class StrandErrorSimulation:
+    def __init__(self, error_rates, base_error_rates, deletion_length_rates, strand):
         self.error_rates = error_rates
+        self.a_base_error_rates = base_error_rates['A']
+        self.t_base_error_rates = base_error_rates['T']
+        self.c_base_error_rates = base_error_rates['C']
+        self.g_base_error_rates = base_error_rates['G']
+        self.deletion_length_rates = deletion_length_rates
+        self.strand = strand
+        self.index = 0
+        # for testing only:
         self.err_type = None
-        self.err_rate = 0
-        self.synthesis_method = None
-        self.sequencing_method = None
+
+    # Simulates errors on the given strand and returns the target strand.
+    def simulate_errors_on_strand(self) -> str:
+        while self.index < len(self.strand):
+            self.simulate_error_on_base()
+            self.index += 1
+        return self.strand
+
+    def simulate_error_on_base(self):
+        base = self.strand[self.index]
+        # 1. summarize all error rates into total rate, and conclude the complementary non-error rate:
+        total_error_rate = 0
+        for value in self.error_rates.values():
+            total_error_rate += value
+        no_error_rate = 1 - total_error_rate
+        assert(no_error_rate >= 0)
+
+        # 2. draw whether there's error or not in the given rates:
+        # TODO: Add consideration of the first third
+        options = ['y', 'n']
+        rates = [total_error_rate, no_error_rate]
+        draw = random.choices(options, weights=rates, k=1)
+
+        # 3. check type of drawn result:
+        # 3.1. If there's error:
+        if draw[0] == 'y':
+            # generate an error type:
+            error_type = self.generate_error_type_for_base(base)
+            self.err_type = error_type  # for testing only
+            self.strand = self.inject_error(error_type)
+        # 3.2. If there's no error - do nothing.
+        else:
+            self.err_type = 'n'  # for testing only
 
     # Generate an error from the error rates dictionary passed as arguments:
-    # Saves the generated type in the class variable err_type.
-    # Saves the generated error's rate in the class variable err_rate.
-    def generate_error_type(self):
-        # create a sorted list of the dictionary:
-        err_rates_list = []
-        for key, value in self.error_rates.items():
-            temp = [key, value]
-            err_rates_list.append(temp)
-        # sort list in ascending order of values (error rates):
-        err_rates_list = sorted(err_rates_list, key=itemgetter(1))
-        # draw a random number in the range between 0 and the difference:
-        draw = random.uniform(0, 1)
-        # f.write('draw: ' + str(draw) + '\n')
-        # generate a list of ranges: (0 - x1, x1 - x1+x2, ... , x1+...+xn - xn+1)
-        ranges_list = [0]
-        ranges_list.extend(list(partial_sums(err_rates_list)))
-        # check to which ranges the error belongs:
-        for i in range(len(ranges_list) - 1):
-            if ranges_list[i] < draw <= ranges_list[i+1]:
-                # f.write('range is: ' + str(ranges_list[i]) + ', ' + str(ranges_list[i+1]) + '\n')
-                self.err_type = err_rates_list[i][0]
-                self.err_rate = err_rates_list[i][1]
-            if draw == ranges_list[0]:
-                self.err_type = err_rates_list[0][0]
-                self.err_rate = err_rates_list[i][1]
+    # Returns the error type generated for the base.
+    def generate_error_type_for_base(self, base):
+        # create two lists of the dictionary - options list and rates list:
+        options = []
+        rates = []
+        base_rates = {}
+        if base == 'A':
+            base_rates = self.a_base_error_rates
+        elif base == 'T':
+            base_rates = self.t_base_error_rates
+        elif base == 'C':
+            base_rates = self.c_base_error_rates
+        elif base == 'G':
+            base_rates = self.g_base_error_rates
 
-    # Generates a location for the error injection in the range of the given strand's length, giving a higher priority
-    # to the beginning 1/3 of the strand.
-    # Params:
-    # @ strand - the strand to generate the error location of.
-    # Return:
-    # $ index - the index of the error location.
-    @staticmethod
-    def select_error_location(strand: str) -> int:
-        strand_len = len(strand)
-        # get a random value m that represents the beginning of the strand that gets higher weight:
-        m = random.randint(0, math.floor(strand_len/3))
-        # randomize an index in the range of [0, len-1] giving a higher ratio to the part before m:
-        options = ['m', 'rest']
-        rates = [0.67, 0.33]  # 2:1 ratio!
+        # remove pre-insertion rates (as they are not needed in this stage)
+        del base_rates['pi']
+
+        for key, value in base_rates.items():
+            options.append(key)
+            rates.append(value)
+
+        #  Note: choices uses weights, and thus is equivalent to conditional probability!
         draw = random.choices(options, weights=rates, k=1)
-        index = 0
-        if draw[0] == 'm':
-            index = random.randint(0, m)
-        else:
-            index = random.randint(m+1, strand_len-1)
-        return index
+        # return error type string:
+        return draw[0]
 
     # Inject deletion to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_deletion(self, strand: str, index: int) -> str:
+    def inject_deletion(self, error_type) -> str:
         modified_strand = ""
-        if self.err_type == 'd':
+
+        if error_type == 'd':
             # single base deletion:
-            if index == len(strand)-1:
-                modified_strand = strand[:index]
+            if self.index == len(self.strand) - 1:
+                modified_strand = self.strand[:self.index]
             else:
-                modified_strand = strand[:index] + strand[index + 1:]
-        elif self.err_type == 'ld':
+                modified_strand = self.strand[:self.index] + self.strand[self.index + 1:]
+
+        elif error_type == 'ld':
             # multiple base deletion:
-            # https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F15.large.jpg?width=800&height=600&carousel=1
-            # https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
-            options = [2, 3, 4, 5, 6]
-            rates = [2.8 * (10 ** (-4)),
-                     7.75 * (10 ** (-5)),
-                     3.25 * (10 ** (-5)),
-                     10 ** (-6),
-                     5.5 * (10 ** (-8))]
+            long_del_dict = self.deletion_length_rates
+
+            # draw length:
+            options = list(long_del_dict.keys())
+            rates = list(long_del_dict.values())
             draw = random.choices(options, weights=rates, k=1)
+
             deletion_length = draw[0]
-            if index + deletion_length > len(strand) - 1:
-                modified_strand = strand[:index]
+            if self.index + deletion_length > len(self.strand) - 1:
+                modified_strand = self.strand[:self.index]
             else:
-                modified_strand = strand[:index] + strand[index + deletion_length:]
+                modified_strand = self.strand[:self.index] + self.strand[self.index + deletion_length:]
+
+            # keep index the same!
+            self.index -= 1
         return modified_strand
 
     # Inject insertion to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_insertion(self, strand: str, index: int):
-        # TODO: check rates according to pre-insertion base?
-        options = ['A', 'T', 'G', 'C']
-        rates = [1, 1, 1, 1]
+    def inject_insertion(self):
+        base_insertion_rates = {'A': self.a_base_error_rates['i'],
+                                'T': self.t_base_error_rates['i'],
+                                'C': self.c_base_error_rates['i'],
+                                'G': self.g_base_error_rates['i']}
+        options = list(base_insertion_rates.keys())
+        rates = list(base_insertion_rates.values())
         draw = random.choices(options, weights=rates, k=1)
-        modified_strand = strand[:index] + draw[0] + strand[index:]
+        modified_strand = self.strand[:self.index] + draw[0] + self.strand[self.index:]
+        # increment index to approach next original base:
+        self.index += 1
         return modified_strand
 
     # Inject substitution to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_substitution(self, strand: str, index: int):
-        modified_strand = list(strand)
-        # TODO: check rates according to base:
+    def inject_substitution(self):
+        base = self.strand[self.index]
+        modified_strand = list(self.strand)
         bases = ['A', 'T', 'G', 'C']
         options = []
         for b in bases:
-            if b != modified_strand[index]:
+            if b != base:
                 options.append(b)
         # Note: 'options' is defined by 'bases' so the order is always the same as in 'bases'.
         # Set rates according to the base:
@@ -152,22 +214,20 @@ class ErrorSimulation:
         # if modified_strand[index] == 'G':
         #     rates = []
         draw = random.choices(options, weights=rates, k=1)
-        modified_strand[index] = draw[0]
-        ''.join(modified_strand)
+        modified_strand[self.index] = draw[0]
+        modified_strand = ''.join(modified_strand)
         return modified_strand
 
     # Inject the error type to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_error(self, strand: str, error_type: str, index: int):
+    def inject_error(self, error_type: str):
         # check error type and act accordingly:
         if error_type == 'd' or error_type == 'ld':
-            return self.inject_deletion(strand, index)
+            return self.inject_deletion(error_type)
         elif error_type == 'i':
-            return self.inject_insertion(strand, index)
+            return self.inject_insertion()
         elif error_type == 's':
-            return self.inject_substitution(strand, index)
-        else:
-            return strand  # do nothing if no error is intended
+            return self.inject_substitution()
 
 
 """
@@ -176,103 +236,149 @@ Testing:
 
 
 if __name__ == '__main__':
-    
-    # error types test:
 
-    simulator = ErrorSimulation({'d': 9.58 * (10 ** (-4)),
-                                 'ld': 2.33 * (10 ** (-4)),
-                                 'i': 5.81 * (10 ** (-4)),
-                                 's': 1.32 * (10 ** (-3)),
-                                 'n': 0.996908})
-    
-    err_type_f = open('error_types', 'w')
-    for j in range(1000):
-        simulator.generate_error_type()
-        result_to_write = str(simulator.err_type) + '\n'
-        err_type_f.write(result_to_write)
-
-    err_type_f.close()
-
-    err_type_f = open('error_types', 'r')
-    hist = [['d', 0], ['ld', 0], ['s', 0], ['i', 0], ['n', 0]]
-    lines = err_type_f.readlines()
-    for line in lines:
-        if line == 'd\n':
-            hist[0][1] += 1
-        if line == 'ld\n':
-            hist[1][1] += 1
-        if line == 's\n':
-            hist[2][1] += 1
-        if line == 'i\n':
-            hist[3][1] += 1
-        if line == 'n\n':
-            hist[4][1] += 1
-    
-    err_type_f.close()
-
-    err_type_ana_f = open('error_types_analysis', 'w')
-    err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / 1000) + '\n')
-    err_type_ana_f.write('s appearance rate: ' + str(hist[1][1] / 1000) + '\n')
-    err_type_ana_f.write('i appearance rate: ' + str(hist[2][1] / 1000) + '\n')
-    err_type_ana_f.write('n appearance rate: ' + str(hist[3][1] / 1000) + '\n')
-    
-    err_type_ana_f.close()
-
-    # error locations test:
-    
-    error_loc_f = open('error_locations', 'w')
-
+    error_rates_example = {'d': 9.58 * (10 ** (-4)),
+                           'ld': 2.33 * (10 ** (-4)),
+                           'i': 5.81 * (10 ** (-4)),
+                           's': 1.32 * (10 ** (-3))}
+    base_error_rates_example = {'A':
+                                {'s': 0.135 * (10**(-2)),
+                                 'i': 0.057 * (10**(-2)),
+                                 'pi': 0.059 * (10**(-2)),
+                                 'd': 0.099 * (10**(-2)),
+                                 'ld': 0.024 * (10**(-2))},
+                                'C':
+                                    {'s': 0.135 * (10 ** (-2)),
+                                     'i': 0.059 * (10 ** (-2)),
+                                     'pi': 0.058 * (10 ** (-2)),
+                                     'd': 0.098 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))},
+                                'T':
+                                    {'s': 0.126 * (10 ** (-2)),
+                                     'i': 0.059 * (10 ** (-2)),
+                                     'pi': 0.057 * (10 ** (-2)),
+                                     'd': 0.094 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))},
+                                'G':
+                                    {'s': 0.132 * (10 ** (-2)),
+                                     'i': 0.058 * (10 ** (-2)),
+                                     'pi': 0.058 * (10 ** (-2)),
+                                     'd': 0.096 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))}}
+    deletion_length_rates_example = {2: 2.8 * (10 ** (-4)),
+                                     3: 7.75 * (10 ** (-5)),
+                                     4: 3.25 * (10 ** (-5)),
+                                     5: 10 ** (-6),
+                                     6: 5.5 * (10 ** (-8))}
     # http://www.faculty.ucr.edu/~mmaduro/random.htm
     example_strand = "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCCTA" \
                      "GTGCAATGGGGCTTTTTTTCCATAGTCCTCGAGAGGAGGAGACGTCAGTCCAGATATCTTTGATGTCGTGATTGGAAGGACCCTTGGCCCTCCA" \
                      "CCCTTAGGCAGT"
-    example_strand_len = len(example_strand)
 
-    for j in range(1000):
-        result = simulator.select_error_location(example_strand)
-        result_to_write = str(result) + '\n'
-        error_loc_f.write(result_to_write)
+    simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
+                                      example_strand)
 
+    print(simulator.a_base_error_rates)
+    print(simulator.t_base_error_rates)
+    print(simulator.c_base_error_rates)
+    print(simulator.g_base_error_rates)
+
+    # error type & location simulation test:
+
+    err_type_f = open('error_types', 'w')
+    error_loc_f = open('error_locations', 'w')
+    output_strand_f = open('output_strand', 'w')
+    while simulator.index < len(simulator.strand):
+        simulator.simulate_error_on_base()
+        type_result_to_write = str(simulator.err_type) + '\n'
+        err_type_f.write(type_result_to_write)
+        if simulator.err_type != 'n':
+            location_result_to_write = str(simulator.index) + '\n'
+            error_loc_f.write(location_result_to_write)
+        output_strand_to_write = str(simulator.strand) + '\n'
+        output_strand_f.write(output_strand_to_write)
+        simulator.index += 1
+
+    err_type_f.close()
     error_loc_f.close()
+    output_strand_f.close()
 
-    error_loc_f = open('error_locations', 'r')
-    hist = [['1/3 len', 0], ['rest', 0]]
-    lines = error_loc_f.readlines()
-    for line in lines:
-        val = line.rstrip()
-        val = int(val)
-        if val <= example_strand_len/3:
-            hist[0][1] += 1
-        else:
-            hist[1][1] += 1
+    # General test:
 
-    error_loc_f.close()
+    # simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
+    #                                   example_strand)
+    #
+    # full_strand_sim_f = open('full_strand_simulation', 'w')
+    # result = simulator.simulate_errors_on_strand()
+    # result_to_write = result + '\n'
+    # full_strand_sim_f.write(result_to_write)
+    # full_strand_sim_f.close()
 
-    err_loc_ana_f = open('error_locations_analysis', 'w')
-    err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
-    err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
-
-    err_loc_ana_f.close()
+    #
+    # err_type_f = open('error_types', 'r')
+    # hist = [['d', 0], ['ld', 0], ['s', 0], ['i', 0], ['n', 0]]
+    # lines = err_type_f.readlines()
+    # for line in lines:
+    #     if line == 'd\n':
+    #         hist[0][1] += 1
+    #     if line == 'ld\n':
+    #         hist[1][1] += 1
+    #     if line == 's\n':
+    #         hist[2][1] += 1
+    #     if line == 'i\n':
+    #         hist[3][1] += 1
+    #     if line == 'n\n':
+    #         hist[4][1] += 1
+    #
+    # err_type_f.close()
+    #
+    # err_type_ana_f = open('error_types_analysis', 'w')
+    # err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / 1000) + '\n')
+    # err_type_ana_f.write('ld appearance rate: ' + str(hist[1][1] / 1000) + '\n')
+    # err_type_ana_f.write('s appearance rate: ' + str(hist[2][1] / 1000) + '\n')
+    # err_type_ana_f.write('i appearance rate: ' + str(hist[3][1] / 1000) + '\n')
+    # err_type_ana_f.write('n appearance rate: ' + str(hist[4][1] / 1000) + '\n')
+    #
+    # err_type_ana_f.close()
+    #
+    # example_strand_len = len(example_strand)
+    #
+    # error_loc_f = open('error_locations', 'r')
+    # hist = [['1/3 len', 0], ['rest', 0]]
+    # lines = error_loc_f.readlines()
+    # for line in lines:
+    #     val = line.rstrip()
+    #     val = int(val)
+    #     if val <= example_strand_len/3:
+    #         hist[0][1] += 1
+    #     else:
+    #         hist[1][1] += 1
+    #
+    # error_loc_f.close()
+    #
+    # err_loc_ana_f = open('error_locations_analysis', 'w')
+    # err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
+    # err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
+    #
+    # err_loc_ana_f.close()
 
     # deletion test:
 
-    del_loc = simulator.select_error_location(example_strand)
-
-    simulator.err_type = 'd'
-    new_strand = simulator.inject_deletion(example_strand, del_loc)
-    deletion_f = open('deletion', 'w')
-    deletion_f.write('single base:\n')
-    deletion_f.write('original:\n' + example_strand + '\n')
-    deletion_f.write('modified:\n' + new_strand + '\n')
-
-    deletion_f.write('\n')
-
-    simulator.err_type = 'ld'
-    new_strand = simulator.inject_deletion(example_strand, del_loc)
-    deletion_f.write('multiple base:\n')
-    deletion_f.write('original:\n' + example_strand + '\n')
-    deletion_f.write('modified:\n' + new_strand + '\n')
-
-    deletion_f.close()
+    # simulator.err_type = 'd'
+    # new_strand = simulator.inject_deletion('d')
+    # deletion_f = open('deletion', 'w')
+    # deletion_f.write('single base:\n')
+    # deletion_f.write('original:\n' + example_strand + '\n')
+    # deletion_f.write('modified:\n' + new_strand + '\n')
+    #
+    # deletion_f.write('\n')
+    #
+    # simulator.err_type = 'ld'
+    # new_strand = simulator.inject_deletion('ld')
+    # deletion_f.write('multiple base:\n')
+    # deletion_f.write('original:\n' + example_strand + '\n')
+    # deletion_f.write('modified:\n' + new_strand + '\n')
+    #
+    # deletion_f.close()
 
 
