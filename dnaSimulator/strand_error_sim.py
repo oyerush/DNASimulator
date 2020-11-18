@@ -1,4 +1,4 @@
-# Module: error_gen.py
+# Module: strand_error_sim.py
 
 import random
 import copy
