@@ -2,9 +2,6 @@
 
 import random
 import copy
-import math
-from operator import itemgetter
-
 
 '''
 How to use:
@@ -43,14 +40,6 @@ Do not use:
 'n'     - none (no error), used in some cases to represent a "dummy" error. (to receive no-error)
 
 '''
-
-
-# special thanks to: https://stackoverflow.com/questions/13221896/python-partial-sum-of-numbers
-def partial_sums(iterable):
-    total = 0
-    for i in iterable:
-        total += i[1]
-        yield total
 
 
 # Strand Error Simulation class.
@@ -112,6 +101,12 @@ class StrandErrorSimulation:
         # TODO: Add consideration of the first third
         options = ['y', 'n']
         rates = [total_error_rate, no_error_rate]
+        if self.index <= (1/3) * len(self.strand):
+            rates[0] = rates[0] * 3/2  # TODO: check rates?
+            rates[1] = 1 - rates[0]  # TODO: check rates?
+        else:
+            rates[0] = rates[0] * 3/4  # TODO: check rates?
+            rates[1] = 1 - rates[0]  # TODO: check rates?
         draw = random.choices(options, weights=rates, k=1)
 
         # 3. check type of drawn result:
@@ -242,6 +237,11 @@ Testing:
 
 if __name__ == '__main__':
 
+    # 'd': 0.0009580000000000001
+    # 'ld': 0.00023300000000000003
+    # 's': 0.00132
+    # 'i': 0.000581
+
     error_rates_example = {'d': 9.58 * (10 ** (-4)),
                            'ld': 2.33 * (10 ** (-4)),
                            'i': 5.81 * (10 ** (-4)),
@@ -364,51 +364,24 @@ if __name__ == '__main__':
     full_copy_err_type_ana_f.write('n appearance rate: ' + str(hist[4][1] / (1000 * len(example_strand))) + '\n')
     full_copy_err_type_ana_f.close()
 
-    # err_type_f = open('error_types', 'r')
-    # hist = [['d', 0], ['ld', 0], ['s', 0], ['i', 0], ['n', 0]]
-    # lines = err_type_f.readlines()
-    # for line in lines:
-    #     if line == 'd\n':
-    #         hist[0][1] += 1
-    #     if line == 'ld\n':
-    #         hist[1][1] += 1
-    #     if line == 's\n':
-    #         hist[2][1] += 1
-    #     if line == 'i\n':
-    #         hist[3][1] += 1
-    #     if line == 'n\n':
-    #         hist[4][1] += 1
-    # err_type_f.close()
-    #
-    # err_type_ana_f = open('error_types_analysis', 'w')
-    # err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / 1000) + '\n')
-    # err_type_ana_f.write('ld appearance rate: ' + str(hist[1][1] / 1000) + '\n')
-    # err_type_ana_f.write('s appearance rate: ' + str(hist[2][1] / 1000) + '\n')
-    # err_type_ana_f.write('i appearance rate: ' + str(hist[3][1] / 1000) + '\n')
-    # err_type_ana_f.write('n appearance rate: ' + str(hist[4][1] / 1000) + '\n')
-    #
-    # err_type_ana_f.close()
-    #
-    # example_strand_len = len(example_strand)
-    #
-    # error_loc_f = open('error_locations', 'r')
-    # hist = [['1/3 len', 0], ['rest', 0]]
-    # lines = error_loc_f.readlines()
-    # for line in lines:
-    #     val = line.rstrip()
-    #     val = int(val)
-    #     if val <= example_strand_len/3:
-    #         hist[0][1] += 1
-    #     else:
-    #         hist[1][1] += 1
-    #
-    # error_loc_f.close()
-    #
-    # err_loc_ana_f = open('error_locations_analysis', 'w')
-    # err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
-    # err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
-    #
-    # err_loc_ana_f.close()
+    error_loc_f = open('error_locations', 'r')
+    hist = [['1/3 len', 0], ['rest', 0]]
+    lines = error_loc_f.readlines()
+    for line in lines:
+        val = line.rstrip()
+        val = int(val)
+        if val <= len(example_strand)/3:
+            hist[0][1] += 1
+        else:
+            hist[1][1] += 1
+
+    error_loc_f.close()
+
+    err_loc_ana_f = open('error_locations_analysis', 'w')
+    err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
+    err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
+
+    err_loc_ana_f.close()
 
     # deletion test:
 
