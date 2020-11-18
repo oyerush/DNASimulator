@@ -98,15 +98,15 @@ class StrandErrorSimulation:
         assert(no_error_rate >= 0)
 
         # 2. draw whether there's error or not in the given rates:
-        # TODO: Add consideration of the first third
+        # Give higher rates to first third
         options = ['y', 'n']
         rates = [total_error_rate, no_error_rate]
         if self.index <= (1/3) * len(self.strand):
-            rates[0] = rates[0] * 3/2  # TODO: check rates?
-            rates[1] = 1 - rates[0]  # TODO: check rates?
+            rates[0] = rates[0] * 3/2
+            rates[1] = 1 - rates[0]
         else:
-            rates[0] = rates[0] * 3/4  # TODO: check rates?
-            rates[1] = 1 - rates[0]  # TODO: check rates?
+            rates[0] = rates[0] * 3/4
+            rates[1] = 1 - rates[0]
         draw = random.choices(options, weights=rates, k=1)
 
         # 3. check type of drawn result:
@@ -235,155 +235,155 @@ Testing:
 """
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
+#
+#     # 'd': 0.0009580000000000001
+#     # 'ld': 0.00023300000000000003
+#     # 's': 0.00132
+#     # 'i': 0.000581
+#
+#     error_rates_example = {'d': 9.58 * (10 ** (-4)),
+#                            'ld': 2.33 * (10 ** (-4)),
+#                            'i': 5.81 * (10 ** (-4)),
+#                            's': 1.32 * (10 ** (-3))}
+#     base_error_rates_example = {'A':
+#                                 {'s': 0.135 * (10**(-2)),
+#                                  'i': 0.057 * (10**(-2)),
+#                                  'pi': 0.059 * (10**(-2)),
+#                                  'd': 0.099 * (10**(-2)),
+#                                  'ld': 0.024 * (10**(-2))},
+#                                 'C':
+#                                     {'s': 0.135 * (10 ** (-2)),
+#                                      'i': 0.059 * (10 ** (-2)),
+#                                      'pi': 0.058 * (10 ** (-2)),
+#                                      'd': 0.098 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))},
+#                                 'T':
+#                                     {'s': 0.126 * (10 ** (-2)),
+#                                      'i': 0.059 * (10 ** (-2)),
+#                                      'pi': 0.057 * (10 ** (-2)),
+#                                      'd': 0.094 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))},
+#                                 'G':
+#                                     {'s': 0.132 * (10 ** (-2)),
+#                                      'i': 0.058 * (10 ** (-2)),
+#                                      'pi': 0.058 * (10 ** (-2)),
+#                                      'd': 0.096 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))}}
+#     deletion_length_rates_example = {2: 2.8 * (10 ** (-4)),
+#                                      3: 7.75 * (10 ** (-5)),
+#                                      4: 3.25 * (10 ** (-5)),
+#                                      5: 10 ** (-6),
+#                                      6: 5.5 * (10 ** (-8))}
+#     # http://www.faculty.ucr.edu/~mmaduro/random.htm
+#     example_strand = "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCCTA" \
+#                      "GTGCAATGGGGCTTTTTTTCCATAGTCCTCGAGAGGAGGAGACGTCAGTCCAGATATCTTTGATGTCGTGATTGGAAGGACCCTTGGCCCTCCA" \
+#                      "CCCTTAGGCAGT"
+#
+#     simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
+#                                       example_strand)
+#
+#     # error type & location simulation test:
+#
+#     err_type_f = open('error_types', 'w')
+#     error_loc_f = open('error_locations', 'w')
+#     output_strand_f = open('output_strand', 'w')
+#     while simulator.index < len(simulator.strand):
+#         simulator.simulate_error_on_base()
+#         type_result_to_write = str(simulator.err_type) + '\n'
+#         err_type_f.write(type_result_to_write)
+#         if simulator.err_type != 'n':
+#             location_result_to_write = str(simulator.index) + '\n'
+#             error_loc_f.write(location_result_to_write)
+#         output_strand_to_write = str(simulator.strand) + '\n'
+#         output_strand_f.write(output_strand_to_write)
+#         simulator.index += 1
+#
+#     err_type_f.close()
+#     error_loc_f.close()
+#     output_strand_f.close()
+#
+#     # General single strand test:
+#
+#     simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
+#                                       example_strand)
+#     full_strand_sim_f = open('full_strand_simulation', 'w')
+#     full_strand_sim_f.write('original:\n' + example_strand + '\n')
+#     result = simulator.simulate_errors_on_strand()
+#     result_to_write = 'modified:\n' + result + '\n'
+#     full_strand_sim_f.write(result_to_write)
+#     full_strand_sim_f.close()
+#
+#     # full copy error types and locations test:
+#
+#     full_strand_copy_sim_f = open('full_strand_copy_simulation', 'w')
+#     full_copy_err_type_f = open('full_copy_error_types', 'w')
+#     full_copy_error_loc_f = open('full_copy_error_locations', 'w')
+#     for j in range(1000):
+#         simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
+#                                           example_strand)
+#         while simulator.index < len(simulator.strand):
+#             simulator.simulate_error_on_base()
+#             type_result_to_write = str(simulator.err_type) + '\n'
+#             full_copy_err_type_f.write(type_result_to_write)
+#             if simulator.err_type != 'n':
+#                 location_result_to_write = str(simulator.index) + '\n'
+#                 full_copy_error_loc_f.write(location_result_to_write)
+#             output_strand_to_write = str(simulator.strand) + '\n'
+#             full_strand_copy_sim_f.write(output_strand_to_write)
+#             simulator.index += 1
+#         full_strand_copy_sim_f.write(simulator.strand + '\n')
+#
+#     full_copy_err_type_f.close()
+#     full_copy_error_loc_f.close()
+#     full_strand_copy_sim_f.close()
+#
+#     # analyze types:
+#
+#     full_copy_err_type_f = open('full_copy_error_types', 'r')
+#     hist = [['d', 0], ['ld', 0], ['s', 0], ['pi', 0], ['n', 0]]
+#     lines = full_copy_err_type_f.readlines()
+#     for line in lines:
+#         if line == 'd\n':
+#             hist[0][1] += 1
+#         if line == 'ld\n':
+#             hist[1][1] += 1
+#         if line == 's\n':
+#             hist[2][1] += 1
+#         if line == 'pi\n':
+#             hist[3][1] += 1
+#         if line == 'n\n':
+#             hist[4][1] += 1
+#     full_copy_err_type_f.close()
+#
+#     full_copy_err_type_ana_f = open('error_types_analysis', 'w')
+#     full_copy_err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / (1000 * len(example_strand))) + '\n')
+#     full_copy_err_type_ana_f.write('ld appearance rate: ' + str(hist[1][1] / (1000 * len(example_strand))) + '\n')
+#     full_copy_err_type_ana_f.write('s appearance rate: ' + str(hist[2][1] / (1000 * len(example_strand))) + '\n')
+#     full_copy_err_type_ana_f.write('pi appearance rate: ' + str(hist[3][1] / (1000 * len(example_strand))) + '\n')
+#     full_copy_err_type_ana_f.write('n appearance rate: ' + str(hist[4][1] / (1000 * len(example_strand))) + '\n')
+#     full_copy_err_type_ana_f.close()
+#
+#     error_loc_f = open('error_locations', 'r')
+#     hist = [['1/3 len', 0], ['rest', 0]]
+#     lines = error_loc_f.readlines()
+#     for line in lines:
+#         val = line.rstrip()
+#         val = int(val)
+#         if val <= len(example_strand)/3:
+#             hist[0][1] += 1
+#         else:
+#             hist[1][1] += 1
+#
+#     error_loc_f.close()
+#
+#     err_loc_ana_f = open('error_locations_analysis', 'w')
+#     err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
+#     err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
+#
+#     err_loc_ana_f.close()
 
-    # 'd': 0.0009580000000000001
-    # 'ld': 0.00023300000000000003
-    # 's': 0.00132
-    # 'i': 0.000581
-
-    error_rates_example = {'d': 9.58 * (10 ** (-4)),
-                           'ld': 2.33 * (10 ** (-4)),
-                           'i': 5.81 * (10 ** (-4)),
-                           's': 1.32 * (10 ** (-3))}
-    base_error_rates_example = {'A':
-                                {'s': 0.135 * (10**(-2)),
-                                 'i': 0.057 * (10**(-2)),
-                                 'pi': 0.059 * (10**(-2)),
-                                 'd': 0.099 * (10**(-2)),
-                                 'ld': 0.024 * (10**(-2))},
-                                'C':
-                                    {'s': 0.135 * (10 ** (-2)),
-                                     'i': 0.059 * (10 ** (-2)),
-                                     'pi': 0.058 * (10 ** (-2)),
-                                     'd': 0.098 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))},
-                                'T':
-                                    {'s': 0.126 * (10 ** (-2)),
-                                     'i': 0.059 * (10 ** (-2)),
-                                     'pi': 0.057 * (10 ** (-2)),
-                                     'd': 0.094 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))},
-                                'G':
-                                    {'s': 0.132 * (10 ** (-2)),
-                                     'i': 0.058 * (10 ** (-2)),
-                                     'pi': 0.058 * (10 ** (-2)),
-                                     'd': 0.096 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))}}
-    deletion_length_rates_example = {2: 2.8 * (10 ** (-4)),
-                                     3: 7.75 * (10 ** (-5)),
-                                     4: 3.25 * (10 ** (-5)),
-                                     5: 10 ** (-6),
-                                     6: 5.5 * (10 ** (-8))}
-    # http://www.faculty.ucr.edu/~mmaduro/random.htm
-    example_strand = "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCCTA" \
-                     "GTGCAATGGGGCTTTTTTTCCATAGTCCTCGAGAGGAGGAGACGTCAGTCCAGATATCTTTGATGTCGTGATTGGAAGGACCCTTGGCCCTCCA" \
-                     "CCCTTAGGCAGT"
-
-    simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
-                                      example_strand)
-
-    # error type & location simulation test:
-
-    err_type_f = open('error_types', 'w')
-    error_loc_f = open('error_locations', 'w')
-    output_strand_f = open('output_strand', 'w')
-    while simulator.index < len(simulator.strand):
-        simulator.simulate_error_on_base()
-        type_result_to_write = str(simulator.err_type) + '\n'
-        err_type_f.write(type_result_to_write)
-        if simulator.err_type != 'n':
-            location_result_to_write = str(simulator.index) + '\n'
-            error_loc_f.write(location_result_to_write)
-        output_strand_to_write = str(simulator.strand) + '\n'
-        output_strand_f.write(output_strand_to_write)
-        simulator.index += 1
-
-    err_type_f.close()
-    error_loc_f.close()
-    output_strand_f.close()
-
-    # General single strand test:
-
-    simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
-                                      example_strand)
-    full_strand_sim_f = open('full_strand_simulation', 'w')
-    full_strand_sim_f.write('original:\n' + example_strand + '\n')
-    result = simulator.simulate_errors_on_strand()
-    result_to_write = 'modified:\n' + result + '\n'
-    full_strand_sim_f.write(result_to_write)
-    full_strand_sim_f.close()
-
-    # full copy error types and locations test:
-
-    full_strand_copy_sim_f = open('full_strand_copy_simulation', 'w')
-    full_copy_err_type_f = open('full_copy_error_types', 'w')
-    full_copy_error_loc_f = open('full_copy_error_locations', 'w')
-    for j in range(1000):
-        simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
-                                          example_strand)
-        while simulator.index < len(simulator.strand):
-            simulator.simulate_error_on_base()
-            type_result_to_write = str(simulator.err_type) + '\n'
-            full_copy_err_type_f.write(type_result_to_write)
-            if simulator.err_type != 'n':
-                location_result_to_write = str(simulator.index) + '\n'
-                full_copy_error_loc_f.write(location_result_to_write)
-            output_strand_to_write = str(simulator.strand) + '\n'
-            full_strand_copy_sim_f.write(output_strand_to_write)
-            simulator.index += 1
-        full_strand_copy_sim_f.write(simulator.strand + '\n')
-
-    full_copy_err_type_f.close()
-    full_copy_error_loc_f.close()
-    full_strand_copy_sim_f.close()
-
-    # analyze types:
-
-    full_copy_err_type_f = open('full_copy_error_types', 'r')
-    hist = [['d', 0], ['ld', 0], ['s', 0], ['pi', 0], ['n', 0]]
-    lines = full_copy_err_type_f.readlines()
-    for line in lines:
-        if line == 'd\n':
-            hist[0][1] += 1
-        if line == 'ld\n':
-            hist[1][1] += 1
-        if line == 's\n':
-            hist[2][1] += 1
-        if line == 'pi\n':
-            hist[3][1] += 1
-        if line == 'n\n':
-            hist[4][1] += 1
-    full_copy_err_type_f.close()
-
-    full_copy_err_type_ana_f = open('error_types_analysis', 'w')
-    full_copy_err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / (1000 * len(example_strand))) + '\n')
-    full_copy_err_type_ana_f.write('ld appearance rate: ' + str(hist[1][1] / (1000 * len(example_strand))) + '\n')
-    full_copy_err_type_ana_f.write('s appearance rate: ' + str(hist[2][1] / (1000 * len(example_strand))) + '\n')
-    full_copy_err_type_ana_f.write('pi appearance rate: ' + str(hist[3][1] / (1000 * len(example_strand))) + '\n')
-    full_copy_err_type_ana_f.write('n appearance rate: ' + str(hist[4][1] / (1000 * len(example_strand))) + '\n')
-    full_copy_err_type_ana_f.close()
-
-    error_loc_f = open('error_locations', 'r')
-    hist = [['1/3 len', 0], ['rest', 0]]
-    lines = error_loc_f.readlines()
-    for line in lines:
-        val = line.rstrip()
-        val = int(val)
-        if val <= len(example_strand)/3:
-            hist[0][1] += 1
-        else:
-            hist[1][1] += 1
-
-    error_loc_f.close()
-
-    err_loc_ana_f = open('error_locations_analysis', 'w')
-    err_loc_ana_f.write('1/3 appearance rate: ' + str(hist[0][1] / 1000) + '\n')
-    err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
-
-    err_loc_ana_f.close()
-
-    # deletion test:
+    # deletion test: - OBSOLETE!
 
     # simulator.err_type = 'd'
     # new_strand = simulator.inject_deletion('d')
