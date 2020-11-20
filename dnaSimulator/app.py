@@ -1,4 +1,6 @@
-from PySide2 import QtGui
+import os
+
+from PySide2 import QtGui, QtWidgets
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -17,14 +19,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.insertion_value = 0
         self.one_base_del = 0
         self.log_del = 0
-        # self.filePath_textEdit.setPlainText("check check")
         self.browse_PushButton.clicked.connect(self.openFileDialog)
         self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
         self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
-        self.file_path_lineEdit.setPlainText(self.inputDNAPath)
+        self.file_path_lineEdit.setText(self.inputDNAPath)
 
     def setErrorValues(self):
         self.sub_value = self.substitution_lineEdit.toPlainText()
@@ -33,8 +34,30 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.log_del = self.long_del_lineEdit.toPlainText()
         # print(self.sub_value + ', ' + self.insertion_value + ', ' + self.one_base_del + ', ' + self.log_del)
 
+    def show_error_dialog(self, error_type):
+        if(error_type == 'no_such_file'):
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("The input file you chosen doesn't exist")
+            # msg.setInformativeText("This is additional information")
+            msg.setWindowTitle("Error!")
+            # msg.setDetailedText("The details are as follows:")
+            msg.setStandardButtons(QMessageBox.Ok)
+            # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            # msg.buttonClicked.connect(msgbtn)
+
+            retval = msg.exec_()
+
     def runErrorSimulator(self):
-        pass
+        self.inputDNAPath = self.file_path_lineEdit.text()
+        while True:
+            if not os.path.isfile(self.inputDNAPath):
+                print('The chosen input file doesn\'t exist')
+                self.show_error_dialog('no_such_file')
+                break
+            else:
+                break
 
 
 if __name__ == '__main__':
