@@ -24,13 +24,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
-        self.filePath_textEdit.setPlainText(self.inputDNAPath)
+        self.file_path_lineEdit.setPlainText(self.inputDNAPath)
 
     def setErrorValues(self):
-        self.sub_value = self.substitution_textEdit.toPlainText()
-        self.insertion_value = self.insertion_textEdit.toPlainText()
-        self.one_base_del = self.one_base_deletion_textEdit.toPlainText()
-        self.log_del = self.long_deletion_textEdit.toPlainText()
+        self.sub_value = self.substitution_lineEdit.toPlainText()
+        self.insertion_value = self.insertion_lineEdit.toPlainText()
+        self.one_base_del = self.one_base_del_lineEdit.toPlainText()
+        self.log_del = self.long_del_lineEdit.toPlainText()
         # print(self.sub_value + ', ' + self.insertion_value + ', ' + self.one_base_del + ', ' + self.log_del)
 
     def runErrorSimulator(self):
