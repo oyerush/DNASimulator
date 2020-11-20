@@ -22,6 +22,44 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.browse_PushButton.clicked.connect(self.openFileDialog)
         self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
         self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
+        self.Ilumina_miSeq_radioButton.clicked.connect(self.ilumina_miSeq_chosen)
+        self.Ilumina_NextSeq_radioButton.clicked.connect(self.ilumina_NextSeq_chosen)
+        self.MinION_radioButton.clicked.connect(self.MinIon_chosen)
+
+    def MinIon_chosen(self):
+        self.twist_bioscience_radioButton.setEnabled(False)
+        self.twist_bioscience_radioButton.setAutoExclusive(False)
+        self.twist_bioscience_radioButton.setChecked(False)
+        self.twist_bioscience_radioButton.setAutoExclusive(True)
+        self.customArray_radioButton.setEnabled(False)
+        self.customArray_radioButton.setAutoExclusive(False)
+        self.customArray_radioButton.setChecked(False)
+        self.customArray_radioButton.setAutoExclusive(True)
+        self.IDT_radioButton.setEnabled(True)
+        self.IDT_radioButton.setChecked(True)
+
+    def ilumina_NextSeq_chosen(self):
+        self.twist_bioscience_radioButton.setEnabled(True)
+        self.twist_bioscience_radioButton.setChecked(True)
+        self.customArray_radioButton.setEnabled(False)
+        self.customArray_radioButton.setAutoExclusive(False)
+        self.customArray_radioButton.setChecked(False)
+        self.customArray_radioButton.setAutoExclusive(True)
+        self.IDT_radioButton.setEnabled(False)
+        self.IDT_radioButton.setAutoExclusive(False)
+        self.IDT_radioButton.setChecked(False)
+        self.IDT_radioButton.setAutoExclusive(True)
+
+    def ilumina_miSeq_chosen(self):
+        self.twist_bioscience_radioButton.setEnabled(True)
+        self.customArray_radioButton.setEnabled(True)
+        self.IDT_radioButton.setEnabled(False)
+        self.IDT_radioButton.setAutoExclusive(False)
+        self.IDT_radioButton.setChecked(False)
+        self.IDT_radioButton.setAutoExclusive(True)
+        self.twist_bioscience_radioButton.setAutoExclusive(False)
+        self.twist_bioscience_radioButton.setChecked(False)
+        self.twist_bioscience_radioButton.setAutoExclusive(True)
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")

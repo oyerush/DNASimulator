@@ -17,7 +17,7 @@ class Ui_dnaSimulator(object):
     def setupUi(self, dnaSimulator):
         if not dnaSimulator.objectName():
             dnaSimulator.setObjectName(u"dnaSimulator")
-        dnaSimulator.resize(620, 562)
+        dnaSimulator.resize(631, 706)
         self.centralwidget = QWidget(dnaSimulator)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
@@ -62,20 +62,26 @@ class Ui_dnaSimulator(object):
 
         self.sequencing_tech_verticalLayout.addWidget(self.sequencing_tech_label)
 
+        self.frame_2 = QFrame(self.centralwidget)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_2)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.tech_radio_buttons_horizontalLayout = QHBoxLayout()
         self.tech_radio_buttons_horizontalLayout.setSpacing(15)
         self.tech_radio_buttons_horizontalLayout.setObjectName(u"tech_radio_buttons_horizontalLayout")
-        self.MinION_radioButton = QRadioButton(self.centralwidget)
+        self.MinION_radioButton = QRadioButton(self.frame_2)
         self.MinION_radioButton.setObjectName(u"MinION_radioButton")
 
         self.tech_radio_buttons_horizontalLayout.addWidget(self.MinION_radioButton)
 
-        self.Ilumina_NextSeq_radioButton = QRadioButton(self.centralwidget)
+        self.Ilumina_NextSeq_radioButton = QRadioButton(self.frame_2)
         self.Ilumina_NextSeq_radioButton.setObjectName(u"Ilumina_NextSeq_radioButton")
 
         self.tech_radio_buttons_horizontalLayout.addWidget(self.Ilumina_NextSeq_radioButton)
 
-        self.Ilumina_miSeq_radioButton = QRadioButton(self.centralwidget)
+        self.Ilumina_miSeq_radioButton = QRadioButton(self.frame_2)
         self.Ilumina_miSeq_radioButton.setObjectName(u"Ilumina_miSeq_radioButton")
 
         self.tech_radio_buttons_horizontalLayout.addWidget(self.Ilumina_miSeq_radioButton)
@@ -85,7 +91,10 @@ class Ui_dnaSimulator(object):
         self.tech_radio_buttons_horizontalLayout.addItem(self.tech_radio_buttons_horizontalSpacer)
 
 
-        self.sequencing_tech_verticalLayout.addLayout(self.tech_radio_buttons_horizontalLayout)
+        self.horizontalLayout.addLayout(self.tech_radio_buttons_horizontalLayout)
+
+
+        self.sequencing_tech_verticalLayout.addWidget(self.frame_2)
 
 
         self.verticalLayout_3.addLayout(self.sequencing_tech_verticalLayout)
@@ -105,21 +114,30 @@ class Ui_dnaSimulator(object):
 
         self.synthesis_tech_verticalLayout.addWidget(self.synthesis_tech_radio_buttons_label)
 
+        self.frame_3 = QFrame(self.centralwidget)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.synthesis_tech_radio_buttons_horizontalLayout = QHBoxLayout()
         self.synthesis_tech_radio_buttons_horizontalLayout.setSpacing(15)
         self.synthesis_tech_radio_buttons_horizontalLayout.setObjectName(u"synthesis_tech_radio_buttons_horizontalLayout")
-        self.twist_bioscience_radioButton = QRadioButton(self.centralwidget)
+        self.twist_bioscience_radioButton = QRadioButton(self.frame_3)
         self.twist_bioscience_radioButton.setObjectName(u"twist_bioscience_radioButton")
+        self.twist_bioscience_radioButton.setEnabled(False)
 
         self.synthesis_tech_radio_buttons_horizontalLayout.addWidget(self.twist_bioscience_radioButton)
 
-        self.customArray_radioButton = QRadioButton(self.centralwidget)
+        self.customArray_radioButton = QRadioButton(self.frame_3)
         self.customArray_radioButton.setObjectName(u"customArray_radioButton")
+        self.customArray_radioButton.setEnabled(False)
 
         self.synthesis_tech_radio_buttons_horizontalLayout.addWidget(self.customArray_radioButton)
 
-        self.IDT_radioButton = QRadioButton(self.centralwidget)
+        self.IDT_radioButton = QRadioButton(self.frame_3)
         self.IDT_radioButton.setObjectName(u"IDT_radioButton")
+        self.IDT_radioButton.setEnabled(False)
 
         self.synthesis_tech_radio_buttons_horizontalLayout.addWidget(self.IDT_radioButton)
 
@@ -128,7 +146,10 @@ class Ui_dnaSimulator(object):
         self.synthesis_tech_radio_buttons_horizontalLayout.addItem(self.synthesis_tech_radio_buttons_horizontalSpacer)
 
 
-        self.synthesis_tech_verticalLayout.addLayout(self.synthesis_tech_radio_buttons_horizontalLayout)
+        self.horizontalLayout_2.addLayout(self.synthesis_tech_radio_buttons_horizontalLayout)
+
+
+        self.synthesis_tech_verticalLayout.addWidget(self.frame_3)
 
 
         self.verticalLayout_3.addLayout(self.synthesis_tech_verticalLayout)
@@ -406,7 +427,7 @@ class Ui_dnaSimulator(object):
         dnaSimulator.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(dnaSimulator)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 620, 21))
+        self.menubar.setGeometry(QRect(0, 0, 631, 21))
         dnaSimulator.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(dnaSimulator)
         self.statusbar.setObjectName(u"statusbar")

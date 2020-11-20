@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>562</height>
+    <width>631</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -70,45 +70,57 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="tech_radio_buttons_horizontalLayout">
-        <property name="spacing">
-         <number>15</number>
+       <widget class="QFrame" name="frame_2">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <item>
-         <widget class="QRadioButton" name="MinION_radioButton">
-          <property name="text">
-           <string>MinION</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
-          <property name="text">
-           <string>Ilumina NextSeq</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
-          <property name="text">
-           <string>Ilumina miSeq</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="tech_radio_buttons_horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="tech_radio_buttons_horizontalLayout">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="MinION_radioButton">
+             <property name="text">
+              <string>MinION</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
+             <property name="text">
+              <string>Ilumina NextSeq</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
+             <property name="text">
+              <string>Ilumina miSeq</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="tech_radio_buttons_horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </item>
@@ -136,45 +148,66 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="synthesis_tech_radio_buttons_horizontalLayout">
-        <property name="spacing">
-         <number>15</number>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <item>
-         <widget class="QRadioButton" name="twist_bioscience_radioButton">
-          <property name="text">
-           <string>Twist Bioscience</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="customArray_radioButton">
-          <property name="text">
-           <string>CustomArray</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="IDT_radioButton">
-          <property name="text">
-           <string>Integrated DNA Technology (IDT)</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="synthesis_tech_radio_buttons_horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="synthesis_tech_radio_buttons_horizontalLayout">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="twist_bioscience_radioButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Twist Bioscience</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="customArray_radioButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>CustomArray</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDT_radioButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Integrated DNA Technology (IDT)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="synthesis_tech_radio_buttons_horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </item>
@@ -509,7 +542,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>620</width>
+     <width>631</width>
      <height>21</height>
     </rect>
    </property>
