@@ -196,12 +196,6 @@ class Ui_dnaSimulator(object):
 
         self.error_stats_inputs_horizontalLayout.addWidget(self.long_del_lineEdit)
 
-        self.set_current_values_PushButton = QPushButton(self.centralwidget)
-        self.set_current_values_PushButton.setObjectName(u"set_current_values_PushButton")
-        self.set_current_values_PushButton.setIconSize(QSize(16, 16))
-
-        self.error_stats_inputs_horizontalLayout.addWidget(self.set_current_values_PushButton)
-
 
         self.error_stats_verticalLayout.addLayout(self.error_stats_inputs_horizontalLayout)
 
@@ -456,7 +450,6 @@ class Ui_dnaSimulator(object):
         self.insertion_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Insertion", None))
         self.one_base_del_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"1-base Deletion", None))
         self.long_del_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
-        self.set_current_values_PushButton.setText(QCoreApplication.translate("dnaSimulator", u"Set Values", None))
         self.G_base_label.setText(QCoreApplication.translate("dnaSimulator", u"G", None))
         self.empty_label.setText("")
         self.long_del_label.setText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
