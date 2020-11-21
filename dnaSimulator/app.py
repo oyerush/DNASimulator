@@ -14,10 +14,22 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.inputDNAPath = ""
-        self.sub_value = 0
-        self.insertion_value = 0
-        self.one_base_del_value = 0
-        self.log_del_value = 0
+
+        # initialize general errors
+        self.general_errors = {
+            'd': '',
+            'ld': '',
+            'i': '',
+            's': ''
+        }
+
+        # initialize per-base errors
+        self.per_base_errors = {
+            'A': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''},
+            'C': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''},
+            'G': {'s': '', 'i': '', 'pi': '', 'd': 'test', 'ld': ''},
+            'T': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''}
+        }
 
         # connect push buttons to an event
         self.browse_PushButton.clicked.connect(self.openFileDialog)
@@ -38,17 +50,105 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.one_base_del_lineEdit.textChanged.connect(self.set_one_base_del)
         self.long_del_lineEdit.textChanged.connect(self.set_long_del)
 
-    def set_substitution(self, sub_value):
-        self.sub_value = sub_value
+        # connect the lineEdits of per base errors
+        self.A_substitution_lineEdit.textChanged.connect(self.set_A_substitution)
+        self.C_substitution_lineEdit.textChanged.connect(self.set_C_substitution)
+        self.G_substitution_lineEdit.textChanged.connect(self.set_G_substitution)
+        self.T_substitution_lineEdit.textChanged.connect(self.set_T_substitution)
 
-    def set_insertion(self, insertion_value):
-        self.insertion_value = insertion_value
+        self.A_insertion_lineEdit.textChanged.connect(self.set_A_insertion)
+        self.C_insertion_lineEdit.textChanged.connect(self.set_C_insertion)
+        self.G_insertion_lineEdit.textChanged.connect(self.set_G_insertion)
+        self.T_insertion_lineEdit.textChanged.connect(self.set_T_insertion)
 
-    def set_one_base_del(self, one_base_del_value):
-        self.one_base_del_value = one_base_del_value
+        self.A_pre_insertion_lineEdit.textChanged.connect(self.set_A_pre_insertion)
+        self.C_pre_insertion_lineEdit.textChanged.connect(self.set_C_pre_insertion)
+        self.G_pre_insertion_lineEdit.textChanged.connect(self.set_G_pre_insertion)
+        self.T_pre_insertion_lineEdit.textChanged.connect(self.set_T_pre_insertion)
 
-    def set_long_del(self, log_del_value):
-        self.log_del_value = log_del_value
+        self.A_one_base_del_lineEdit.textChanged.connect(self.set_A_one_base_del)
+        self.C_one_base_del_lineEdit.textChanged.connect(self.set_C_one_base_del)
+        self.G_one_base_del_lineEdit.textChanged.connect(self.set_G_one_base_del)
+        self.T_one_base_del_lineEdit.textChanged.connect(self.set_T_one_base_del)
+
+        self.A_long_del_lineEdit.textChanged.connect(self.set_A_long_del)
+        self.C_long_del_lineEdit.textChanged.connect(self.set_C_long_del)
+        self.G_long_del_lineEdit.textChanged.connect(self.set_G_long_del)
+        self.T_long_del_lineEdit.textChanged.connect(self.set_T_long_del)
+
+
+
+    def set_substitution(self, value):
+        self.general_errors['s'] = value
+
+    def set_insertion(self, value):
+        self.general_errors['i'] = value
+
+    def set_one_base_del(self, value):
+        self.general_errors['d'] = value
+
+    def set_long_del(self, value):
+        self.general_errors['ld'] = value
+
+    def set_A_substitution(self, value):
+        self.per_base_errors['A']['s'] = value
+
+    def set_C_substitution(self, value):
+        self.per_base_errors['C']['s'] = value
+
+    def set_G_substitution(self, value):
+        self.per_base_errors['G']['s'] = value
+
+    def set_T_substitution(self, value):
+        self.per_base_errors['T']['s'] = value
+
+    def set_A_insertion(self, value):
+        self.per_base_errors['A']['i'] = value
+
+    def set_C_insertion(self, value):
+        self.per_base_errors['C']['i'] = value
+
+    def set_G_insertion(self, value):
+        self.per_base_errors['G']['i'] = value
+
+    def set_T_insertion(self, value):
+        self.per_base_errors['T']['i'] = value
+
+    def set_A_pre_insertion(self, value):
+        self.per_base_errors['A']['pi'] = value
+
+    def set_C_pre_insertion(self, value):
+        self.per_base_errors['C']['pi'] = value
+
+    def set_G_pre_insertion(self, value):
+        self.per_base_errors['G']['pi'] = value
+
+    def set_T_pre_insertion(self, value):
+        self.per_base_errors['T']['pi'] = value
+
+    def set_A_one_base_del(self, value):
+        self.per_base_errors['A']['d'] = value
+
+    def set_C_one_base_del(self, value):
+        self.per_base_errors['C']['d'] = value
+
+    def set_G_one_base_del(self, value):
+        self.per_base_errors['G']['d'] = value
+
+    def set_T_one_base_del(self, value):
+        self.per_base_errors['T']['d'] = value
+
+    def set_A_long_del(self, value):
+        self.per_base_errors['A']['ld'] = value
+
+    def set_C_long_del(self, value):
+        self.per_base_errors['C']['ld'] = value
+
+    def set_G_long_del(self, value):
+        self.per_base_errors['G']['ld'] = value
+
+    def set_T_long_del(self, value):
+        self.per_base_errors['T']['ld'] = value
 
     def MinIon_chosen(self):
         self.twist_bioscience_radioButton.setEnabled(False)
@@ -99,29 +199,91 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         if self.MinION_radioButton.isChecked() and self.IDT_radioButton.isChecked():
             self.set_Y16_values()
 
+    def set_per_base_substitution(self, a, c, g, t):
+        self.A_substitution_lineEdit.setText(a)
+        self.C_substitution_lineEdit.setText(c)
+        self.G_substitution_lineEdit.setText(g)
+        self.T_substitution_lineEdit.setText(t)
+
+    def set_per_base_insertion(self, a, c, g, t):
+        self.A_insertion_lineEdit.setText(a)
+        self.C_insertion_lineEdit.setText(c)
+        self.G_insertion_lineEdit.setText(g)
+        self.T_insertion_lineEdit.setText(t)
+
+    def set_per_base_pre_insertion(self, a, c, g, t):
+        self.A_pre_insertion_lineEdit.setText(a)
+        self.C_pre_insertion_lineEdit.setText(c)
+        self.G_pre_insertion_lineEdit.setText(g)
+        self.T_pre_insertion_lineEdit.setText(t)
+
+    def set_per_base_del(self, a, c, g, t):
+        self.A_one_base_del_lineEdit.setText(a)
+        self.C_one_base_del_lineEdit.setText(c)
+        self.G_one_base_del_lineEdit.setText(g)
+        self.T_one_base_del_lineEdit.setText(t)
+
+    def set_per_base_long_del(self, a, c, g, t):
+        self.A_long_del_lineEdit.setText(a)
+        self.C_long_del_lineEdit.setText(c)
+        self.G_long_del_lineEdit.setText(g)
+        self.T_long_del_lineEdit.setText(t)
+
     def set_EZ17_values(self):
+        # general errors
         self.substitution_lineEdit.setText('1.32E-03')
         self.insertion_lineEdit.setText('5.81E-04')
         self.one_base_del_lineEdit.setText('9.58E-04')
         self.long_del_lineEdit.setText('2.33E-04')
 
+        # per base errors
+        self.set_per_base_substitution('0.135', '0.135', '0.126', '0.132')
+        self.set_per_base_insertion('0.057', '0.059', '0.059', '0.058')
+        self.set_per_base_pre_insertion('0.059', '0.058', '0.057', '0.058')
+        self.set_per_base_del('0.099', '0.098', '0.094', '0.096')
+        self.set_per_base_long_del('0.024', '0.023', '0.023', '0.023')
+
     def set_O17_values(self):
+        # general errors
         self.substitution_lineEdit.setText('7.09E-03')
         self.insertion_lineEdit.setText('4.14E-03')
         self.one_base_del_lineEdit.setText('2.77E-03')
         self.long_del_lineEdit.setText('4.79E-04')
 
+        # per base errors
+        self.set_per_base_substitution('0.724', '0.701', '0.706', '0.704')
+        self.set_per_base_insertion('0.411', '0.415', '0.415', '0.413')
+        self.set_per_base_pre_insertion('0.429', '0.415', '0.403', '0.408')
+        self.set_per_base_del('0.289', '0.279', '0.276', '0.28')
+        self.set_per_base_long_del('0.048', '0.048', '0.047', '0.049')
+
     def set_G15_values(self):
+        # general errors
         self.substitution_lineEdit.setText('5.84E-03')
         self.insertion_lineEdit.setText('8.57E-04')
         self.one_base_del_lineEdit.setText('5.37E-03')
         self.long_del_lineEdit.setText('3.48E-04')
 
+        # per base errors
+        self.set_per_base_substitution('0.605', '0.563', '0.577', '0.591')
+        self.set_per_base_insertion('0.09', '0.083', '0.085', '0.084')
+        self.set_per_base_pre_insertion('0.092', '0.081', '0.087', '0.084')
+        self.set_per_base_del('0.543', '0.513', '0.539', '0.559')
+        self.set_per_base_long_del('0.036', '0.034', '0.034', '0.036')
+
     def set_Y16_values(self):
+        # general errors
         self.substitution_lineEdit.setText('1.21E-01')
         self.insertion_lineEdit.setText('3.67E-01')
         self.one_base_del_lineEdit.setText('4.33E-02')
         self.long_del_lineEdit.setText('1.87E-02')
+
+        # per base errors
+        self.set_per_base_substitution('11.9', '13.3', '11.2', '11.9')
+        self.set_per_base_insertion('33.1', '40.6', '36.1', '36.7')
+        self.set_per_base_pre_insertion('33.2', '40.8', '34.1', '38.2')
+        self.set_per_base_del('4.4', '4.8', '4.0', '4.1')
+        self.set_per_base_long_del('1.9', '2.1', '1.7', '1.8')
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
