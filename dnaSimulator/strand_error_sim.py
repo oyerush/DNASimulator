@@ -36,6 +36,9 @@ Strings of types of errors supported (in dictionary):
 For base error rates: Same as above, adding:
 'pi'     - symbol pre-insertion
 
+For stutter error rates:
+use the 'd' (deletion) & 'i' (insertion) keys.
+
 Do not use:
 'n'     - none (no error), used in some cases to represent a "dummy" error. (to receive no-error)
 
@@ -87,6 +90,49 @@ class StrandErrorSimulation:
             self.simulate_error_on_base()
             self.index += 1
         return self.strand
+
+    def simulate_stutter_errors_on_strand(self) -> str:
+        while self.index < len(self.strand):
+            self.simulate_stutter_error_on_base()
+            self.index += 1
+        return self.strand
+
+    def simulate_stutter_error_on_base(self):
+        # this method doesn't have long deletion
+        base = self.strand[self.index]
+        base_deletion_rate = 0
+        base_stutter_rate = 0
+        if base == 'A':
+            base_deletion_rate = self.a_base_error_rates['d']
+            base_stutter_rate = self.a_base_error_rates['i']
+        elif base == 'T':
+            base_deletion_rate = self.t_base_error_rates['d']
+            base_stutter_rate = self.t_base_error_rates['i']
+        elif base == 'C':
+            base_deletion_rate = self.c_base_error_rates['d']
+            base_stutter_rate = self.c_base_error_rates['i']
+        elif base == 'G':
+            base_deletion_rate = self.g_base_error_rates['d']
+            base_stutter_rate = self.g_base_error_rates['i']
+        # draw whether there was deletion or not:
+        options = ['y', 'n']
+        rates = [base_deletion_rate, 1 - base_deletion_rate]
+        draw = random.choices(options, weights=rates, k=1)
+        if draw[0] == 'y':
+            self.strand = self.inject_error('d')
+            return
+        else:
+            rates = [base_stutter_rate, 1 - base_stutter_rate]
+            draw = random.choices(options, weights=rates, k=1)
+            is_stutter = (draw[0] == 'y')
+            while is_stutter:
+                self.strand = self.strand[:self.index] + base + self.strand[self.index:]
+                # draw again before next iteration:
+                draw = random.choices(options, weights=rates, k=1)
+                is_stutter = (draw[0] == 'y')
+            # increment index to approach next original base:
+            self.index += 1
+            return
 
     def simulate_error_on_base(self):
         base = self.strand[self.index]
@@ -179,8 +225,8 @@ class StrandErrorSimulation:
             else:
                 modified_strand = self.strand[:self.index] + self.strand[self.index + deletion_length:]
 
-            # keep index the same! The original base in that index (or further) was deleted.
-            self.index -= 1
+        # keep index the same! The original base in that index (or further) was deleted.
+        self.index -= 1
         return modified_strand
 
     # Inject insertion to the given strand, starting from the base in `index` location of the strand.
