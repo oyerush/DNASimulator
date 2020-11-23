@@ -105,18 +105,26 @@ class StrandErrorSimulation:
         draw = random.choices(options, weights=rates, k=1)
         if draw[0] == 'y':
             self.strand = self.inject_error('d')
+            self.err_type = 'd'  # for testing
             return
         else:
             rates = [base_stutter_rate, 1 - base_stutter_rate]
             draw = random.choices(options, weights=rates, k=1)
             is_stutter = (draw[0] == 'y')
+            # for testing, count stutter times
+            self.err_type = 0
             while is_stutter:
                 self.strand = self.strand[:self.index] + base + self.strand[self.index:]
+                # for testing, count stutter times
+                self.err_type += 1
                 # draw again before next iteration:
                 draw = random.choices(options, weights=rates, k=1)
                 is_stutter = (draw[0] == 'y')
             # increment index to approach next original base:
             self.index += 1
+            # for testing:
+            if self.err_type == 0:
+                self.err_type = 'n'
             return
 
     def simulate_error_on_base(self):
@@ -260,6 +268,75 @@ Testing:
 
 # if __name__ == '__main__':
 #
+#     # stutter test:
+#     stutter_error_rates_example = {}  # can be empty - not used!
+#     stutter_deletion_length_rates_example = {}  # can be empty - not used!
+#
+#     # base error rates can have only relevant values:
+#     # NOTE: THESE VALUES ARE NOT REAL (they don't represent correct rates regarding conditional probability and so),
+#     # TO CHECK CORRECTNESS IT IS NEEDED TO HAVE REAL VALUES AND THEIR TOTAL PROBABILITIES SUM
+#     stutter_base_error_rates_example = {'A':
+#                                         {'d': 0.1,
+#                                          'i': 0.3},
+#                                         'C':
+#                                             {'d': 0.1,
+#                                              'i': 0.2},
+#                                         'T':
+#                                             {'d': 0.1,
+#                                              'i': 0.05},
+#                                         'G':
+#                                             {'d': 0.1,
+#                                              'i': 0.05}}
+#
+#     # http://www.faculty.ucr.edu/~mmaduro/random.htm
+#     example_strand = "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCCTA" \
+#                      "GTGCAATGGGGCTTTTTTTCCATAGTCCTCGAGAGGAGGAGACGTCAGTCCAGATATCTTTGATGTCGTGATTGGAAGGACCCTTGGCCCTCCA" \
+#                      "CCCTTAGGCAGT"
+#
+#     # full stutter test:
+#
+#     full_stutter_sim_f = open('full_stutter_simulation', 'w')
+#     full_stutter_err_type_f = open('full_stutter_error_types', 'w')
+#     full_stutter_loc_f = open('full_stutter_locations', 'w')
+#     for j in range(1000):
+#         stutter_simulator = StrandErrorSimulation(stutter_base_error_rates_example, stutter_base_error_rates_example,
+#                                                   stutter_base_error_rates_example, example_strand)
+#         while stutter_simulator.index < len(stutter_simulator.strand):
+#             stutter_simulator.simulate_stutter_error_on_base()
+#             type_result_to_write = str(stutter_simulator.err_type) + '\n'
+#             full_stutter_err_type_f.write(type_result_to_write)
+#             if stutter_simulator.err_type != 'n':
+#                 location_result_to_write = str(stutter_simulator.index) + '\n'
+#                 full_stutter_loc_f.write(location_result_to_write)
+#             output_strand_to_write = str(stutter_simulator.strand) + '\n'
+#             full_stutter_sim_f.write(output_strand_to_write)
+#             stutter_simulator.index += 1
+#         full_stutter_sim_f.write(stutter_simulator.strand + '\n')
+#
+#     full_stutter_sim_f.close()
+#     full_stutter_loc_f.close()
+#     full_stutter_err_type_f.close()
+#
+#     # analyze types:
+#
+#     full_stutter_err_type_f = open('full_stutter_error_types', 'r')
+#     hist = [['d', 0], ['i', 0], ['n', 0]]
+#     lines = full_stutter_err_type_f.readlines()
+#     for line in lines:
+#         if line == 'd\n':
+#             hist[0][1] += 1
+#         if line == 'n\n':
+#             hist[2][1] += 1
+#         else:  # number appears
+#             hist[1][1] += 1
+#     full_stutter_err_type_f.close()
+#
+#     full_stutter_err_type_ana_f = open('stutter_error_types_analysis', 'w')
+#     full_stutter_err_type_ana_f.write('d appearance rate: ' + str(hist[0][1] / (1000 * len(example_strand))) + '\n')
+#     full_stutter_err_type_ana_f.write('i appearance rate: ' + str(hist[2][1] / (1000 * len(example_strand))) + '\n')
+#     full_stutter_err_type_ana_f.write('n appearance rate: ' + str(hist[1][1] / (1000 * len(example_strand))) + '\n')
+#     full_stutter_err_type_ana_f.close()
+# 
 #     # 'd': 0.0009580000000000001
 #     # 'ld': 0.00023300000000000003
 #     # 's': 0.00132
@@ -298,10 +375,6 @@ Testing:
 #                                      4: 3.25 * (10 ** (-5)),
 #                                      5: 10 ** (-6),
 #                                      6: 5.5 * (10 ** (-8))}
-#     # http://www.faculty.ucr.edu/~mmaduro/random.htm
-#     example_strand = "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCCTA" \
-#                      "GTGCAATGGGGCTTTTTTTCCATAGTCCTCGAGAGGAGGAGACGTCAGTCCAGATATCTTTGATGTCGTGATTGGAAGGACCCTTGGCCCTCCA" \
-#                      "CCCTTAGGCAGT"
 #
 #     simulator = StrandErrorSimulation(error_rates_example, base_error_rates_example, deletion_length_rates_example,
 #                                       example_strand)
