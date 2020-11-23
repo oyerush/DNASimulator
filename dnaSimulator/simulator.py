@@ -2,6 +2,8 @@
 
 import strand_error_sim
 import copy
+from scipy.stats import skewnorm
+
 
 # Simulator class.
 # Holds the attributes needed for error simulation on a single strand:
@@ -25,7 +27,7 @@ import copy
 #       TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC
 # @ is_stutter_method - False by default, set to True if stutter method should be used instead of other methods.
 #                       Note: other methods have the same error simulation algorithm but with different rates, therefore
-#                       no other statements are needed except the rates. (
+#                       no other statements are needed except the rates.
 #
 # Class variables:
 # * method - the method used,
@@ -55,10 +57,13 @@ class Simulator:
         self.duplicate_strands()
 
         strands_f = open('duplicated_strands', 'r')
-        output_f = open('eyyat.txt', 'r')  # TODO: Check if that's the file...?
+        output_f = open('eyyat.txt', 'w')
 
         # read input file line by line, each line is a separate strand:
         strands = strands_f.readlines()
+
+        # TODO: Get only strands from *****************************
+
         for strand in strands:
             # create a strand simulator for each strand:
             strand_error_simulator = strand_error_sim.StrandErrorSimulation(self.total_error_rates,
@@ -83,9 +88,26 @@ class Simulator:
 
         # read input file line by line, each line is a separate strand:
         strands = input_f.readlines()
-        for strand in strands:
-            for i in range(100):  # TODO: Check how many copies of each strand to produce
-                output_f.write(strand + '\n')
+        # generate number of copies for each strand, as the number of strands:
+        # https://stackoverflow.com/questions/24854965/create-random-numbers-with-left-skewed-probability-distribution
+        num_values = len(strands)
+        max_value = 499
+        skewness = 10  # Negative values are left skewed, positive values are right skewed.
+        random = skewnorm.rvs(a=skewness, loc=max_value, size=num_values)  # Skewnorm function
+        random = random - min(random)  # Shift the set so the minimum value is equal to zero.
+        random = random / max(random)  # Standadize all the vlues between 0 and 1.
+        random = random * max_value  # Multiply the standardized values by the maximum value.
+        random = random + 1  # avoid 0
+        random = [int(x) for x in random]  # convert to integers
+
+        # copy each strand the corresponding generated number of times:
+        for i in range(num_values):
+            # write original strand with divider first:
+            output_f.write(strands[i] + '\n' + '*****************************\n')
+            for j in range(random[i]):
+                output_f.write(strands[i] + '\n')
+            # after each strand, add 2 newlines:
+            output_f.write('\n')
 
         output_f.close()
         input_f.close()
