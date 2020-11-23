@@ -10,6 +10,12 @@ The simulator gets a strand and implements an error.
 
 1. Create an object of the simulator with a dictionaries of errors and the source strand passed as arguments:
     example of an error dictionary: {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
+    example of a base error dictionary:
+        {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
+            'T': {...},
+            'C': {...},
+            'G': {...}
+        }
     example of s strand: "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC"
         (can be any length)
                                _  _
@@ -23,6 +29,7 @@ The simulator gets a strand and implements an error.
         https://www.asciiart.eu/television/sesame-street
         
 2. For each strand of your input file, call simulate_error_on_strand.
+    For stutter method, call simulate_stutter_errors_on_strand.
 3. WALLAH!
 
 
@@ -53,7 +60,7 @@ Do not use:
 #       {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
 # @ base_error_rates - dictionary of dictionaries for each base.
 #       Example:
-#       {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'ld': 0.6},
+#       {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
 #           'T': {...},
 #           'C': {...},
 #           'G': {...}
@@ -64,7 +71,7 @@ Do not use:
 #
 # Class variables:
 # * error_rates - dictionary of the total error rates used in the simulation, as provided in error_rates parameter.
-# * x_base_error_rates - error rates corresponding to the base x, each base has its own set.
+# * base_error_rates - error rates corresponding to each base, as passed.
 # * deletion_length_rates - as passed.
 #       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F15.large.jpg?width=800&height=600&carousel=1
 #       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
@@ -81,19 +88,28 @@ class StrandErrorSimulation:
         # for testing only:
         self.err_type = None
 
+    ''' Main Methods: '''
+
     # Simulates errors on the given strand and returns the target strand.
+    # Use for any method EXCEPT stutter.
     def simulate_errors_on_strand(self) -> str:
         while self.index < len(self.strand):
             self.simulate_error_on_base()
             self.index += 1
         return self.strand
 
+    # Simulates stutter errors on the given strand and returns the target strand.
+    # Use only for stutter.
     def simulate_stutter_errors_on_strand(self) -> str:
         while self.index < len(self.strand):
             self.simulate_stutter_error_on_base()
             self.index += 1
         return self.strand
 
+    ''' Helper Methods: '''
+
+    # Simulates a stutter error on the current base (in the current index)
+    # Modifies the working strand stored in class.
     def simulate_stutter_error_on_base(self):
         # this method doesn't have long deletion
         base = self.strand[self.index]
@@ -127,6 +143,8 @@ class StrandErrorSimulation:
                 self.err_type = 'n'
             return
 
+    # Simulates any error EXCEPT stutter on the current base (in the current index).
+    # Modifies the working strand stored in class.
     def simulate_error_on_base(self):
         base = self.strand[self.index]
         # 1. summarize all error rates into total rate, and conclude the complementary non-error rate:
@@ -160,12 +178,12 @@ class StrandErrorSimulation:
             self.err_type = 'n'  # for testing only
 
     # Generate an error from the error rates dictionary passed as arguments:
-    # Returns the error type generated for the base:
+    # Returns the error type generated for the base (string):
     # $ 'd' - for deletion
     # $ 'ld' - for long deletion
     # $ 'pi' - for insertion (base on pre-insertion symbol)
     # $ 's' - for substitution
-    def generate_error_type_for_base(self, base):
+    def generate_error_type_for_base(self, base) -> str:
         # create two lists of the dictionary - options list and rates list:
         options = []
         rates = []
@@ -216,7 +234,7 @@ class StrandErrorSimulation:
 
     # Inject insertion to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_insertion(self):
+    def inject_insertion(self) -> str:
         base_insertion_rates = {'A': self.base_error_rates['A']['i'],
                                 'T': self.base_error_rates['T']['i'],
                                 'C': self.base_error_rates['C']['i'],
@@ -231,7 +249,7 @@ class StrandErrorSimulation:
 
     # Inject substitution to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_substitution(self):
+    def inject_substitution(self) -> str:
         base = self.strand[self.index]
         modified_strand = list(self.strand)
         bases = ['A', 'T', 'G', 'C']
@@ -251,7 +269,7 @@ class StrandErrorSimulation:
 
     # Inject the error type to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
-    def inject_error(self, error_type: str):
+    def inject_error(self, error_type: str) -> str:
         # check error type and act accordingly:
         if error_type == 'd' or error_type == 'ld':
             return self.inject_deletion(error_type)
@@ -336,7 +354,7 @@ Testing:
 #     full_stutter_err_type_ana_f.write('i appearance rate: ' + str(hist[2][1] / (1000 * len(example_strand))) + '\n')
 #     full_stutter_err_type_ana_f.write('n appearance rate: ' + str(hist[1][1] / (1000 * len(example_strand))) + '\n')
 #     full_stutter_err_type_ana_f.close()
-# 
+#
 #     # 'd': 0.0009580000000000001
 #     # 'ld': 0.00023300000000000003
 #     # 's': 0.00132
