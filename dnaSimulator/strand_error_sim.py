@@ -74,10 +74,7 @@ Do not use:
 class StrandErrorSimulation:
     def __init__(self, total_error_rates, base_error_rates, deletion_length_rates, strand):
         self.total_error_rates = total_error_rates
-        self.a_base_error_rates = base_error_rates['A']
-        self.t_base_error_rates = base_error_rates['T']
-        self.c_base_error_rates = base_error_rates['C']
-        self.g_base_error_rates = base_error_rates['G']
+        self.base_error_rates = base_error_rates
         self.deletion_length_rates = deletion_length_rates
         self.strand = strand
         self.index = 0
@@ -100,20 +97,8 @@ class StrandErrorSimulation:
     def simulate_stutter_error_on_base(self):
         # this method doesn't have long deletion
         base = self.strand[self.index]
-        base_deletion_rate = 0
-        base_stutter_rate = 0
-        if base == 'A':
-            base_deletion_rate = self.a_base_error_rates['d']
-            base_stutter_rate = self.a_base_error_rates['i']
-        elif base == 'T':
-            base_deletion_rate = self.t_base_error_rates['d']
-            base_stutter_rate = self.t_base_error_rates['i']
-        elif base == 'C':
-            base_deletion_rate = self.c_base_error_rates['d']
-            base_stutter_rate = self.c_base_error_rates['i']
-        elif base == 'G':
-            base_deletion_rate = self.g_base_error_rates['d']
-            base_stutter_rate = self.g_base_error_rates['i']
+        base_deletion_rate = self.base_error_rates[base]['d']
+        base_stutter_rate = self.base_error_rates[base]['i']
         # draw whether there was deletion or not:
         options = ['y', 'n']
         rates = [base_deletion_rate, 1 - base_deletion_rate]
@@ -176,15 +161,7 @@ class StrandErrorSimulation:
         # create two lists of the dictionary - options list and rates list:
         options = []
         rates = []
-        base_rates = {}
-        if base == 'A':
-            base_rates = copy.deepcopy(self.a_base_error_rates)
-        elif base == 'T':
-            base_rates = copy.deepcopy(self.t_base_error_rates)
-        elif base == 'C':
-            base_rates = copy.deepcopy(self.c_base_error_rates)
-        elif base == 'G':
-            base_rates = copy.deepcopy(self.g_base_error_rates)
+        base_rates = copy.deepcopy(self.base_error_rates[base])
 
         # remove insertion rates (as they are not needed in this stage - they are used for inserted base generation)
         del base_rates['i']
@@ -232,10 +209,10 @@ class StrandErrorSimulation:
     # Inject insertion to the given strand, starting from the base in `index` location of the strand.
     # Returns a strand with the injected error.
     def inject_insertion(self):
-        base_insertion_rates = {'A': self.a_base_error_rates['i'],
-                                'T': self.t_base_error_rates['i'],
-                                'C': self.c_base_error_rates['i'],
-                                'G': self.g_base_error_rates['i']}
+        base_insertion_rates = {'A': self.base_error_rates['A']['i'],
+                                'T': self.base_error_rates['T']['i'],
+                                'C': self.base_error_rates['C']['i'],
+                                'G': self.base_error_rates['G']['i']}
         options = list(base_insertion_rates.keys())
         rates = list(base_insertion_rates.values())
         draw = random.choices(options, weights=rates, k=1)
@@ -428,24 +405,24 @@ Testing:
 #     err_loc_ana_f.write('after 1/3 appearance rate: ' + str(hist[1][1] / 1000) + '\n')
 #
 #     err_loc_ana_f.close()
-
-    # deletion test: - OBSOLETE!
-
-    # simulator.err_type = 'd'
-    # new_strand = simulator.inject_deletion('d')
-    # deletion_f = open('deletion', 'w')
-    # deletion_f.write('single base:\n')
-    # deletion_f.write('original:\n' + example_strand + '\n')
-    # deletion_f.write('modified:\n' + new_strand + '\n')
-    #
-    # deletion_f.write('\n')
-    #
-    # simulator.err_type = 'ld'
-    # new_strand = simulator.inject_deletion('ld')
-    # deletion_f.write('multiple base:\n')
-    # deletion_f.write('original:\n' + example_strand + '\n')
-    # deletion_f.write('modified:\n' + new_strand + '\n')
-    #
-    # deletion_f.close()
+#
+#     deletion test: - OBSOLETE!
+#
+#     simulator.err_type = 'd'
+#     new_strand = simulator.inject_deletion('d')
+#     deletion_f = open('deletion', 'w')
+#     deletion_f.write('single base:\n')
+#     deletion_f.write('original:\n' + example_strand + '\n')
+#     deletion_f.write('modified:\n' + new_strand + '\n')
+#
+#     deletion_f.write('\n')
+#
+#     simulator.err_type = 'ld'
+#     new_strand = simulator.inject_deletion('ld')
+#     deletion_f.write('multiple base:\n')
+#     deletion_f.write('original:\n' + example_strand + '\n')
+#     deletion_f.write('modified:\n' + new_strand + '\n')
+#
+#     deletion_f.close()
 
 
