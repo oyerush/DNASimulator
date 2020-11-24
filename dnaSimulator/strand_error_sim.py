@@ -3,7 +3,7 @@
 import random
 import copy
 
-'''
+"""
 How to use:
 
 The simulator gets a strand and implements an error.
@@ -18,6 +18,7 @@ The simulator gets a strand and implements an error.
         }
     example of s strand: "TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC"
         (can be any length)
+        NOTE: SUPPLY STRAND ONLY, WITHOUT ANY OTHER CHARACTERS (INCLUDING NEWLINES)!
                                _  _
                              _/0\/ \_
                     .-.   .-` \_/\0/ '-.
@@ -48,38 +49,42 @@ use the 'd' (deletion) & 'i' (insertion) keys.
 
 Do not use:
 'n'     - none (no error), used in some cases to represent a "dummy" error. (to receive no-error)
+"""
 
-'''
 
-
-# Strand Error Simulation class.
-# Holds the attributes needed for error simulation on a single strand:
-# PARAMS:
-# @ error_rates - dictionary of the total error rates used in the simulation.
-#       Example of a dictionary:
-#       {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
-# @ base_error_rates - dictionary of dictionaries for each base.
-#       Example:
-#       {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
-#           'T': {...},
-#           'C': {...},
-#           'G': {...}
-#       }
-# @ deletion_length_rates - dictionary of deletion length rates:
-#       Example:
-#       {1: 0.1, 2: 0.2, 3: 0.1, 4: 0.3, 5: 0.05, 6: 0.001}
-#
-# Class variables:
-# * error_rates - dictionary of the total error rates used in the simulation, as provided in error_rates parameter.
-# * base_error_rates - error rates corresponding to each base, as passed.
-# * deletion_length_rates - as passed.
-#       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F15.large.jpg?width=800&height=600&carousel=1
-#       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
-# * strand - the strand to simulate the error on, as passed. This is also the final strand.
-# * index - the index to implement the error on.
-#       Initialized to 0. Use generate_error_type to get a valid error rate.
 class StrandErrorSimulation:
+    """
+    # Strand Error Simulation class.
+    Holds the attributes needed for error simulation on a single strand:
+
+    Class variables:
+    :var self.total_error_rates: dictionary of the total error rates used in the simulation, as provided in error_rates
+        parameter.
+    :var self.base_error_rates: error rates corresponding to each base, as passed.
+    :var self.deletion_length_rates: as passed.
+        https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F15.large.jpg?width=800&height=600&carousel=1
+        https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
+    :var self.strand: the strand to simulate the error on, as passed. This is also the final strand.
+    :var self.index: the index to implement the error on.
+          Initialized to 0. Use generate_error_type to get a valid error rate.
+    """
     def __init__(self, total_error_rates, base_error_rates, deletion_length_rates, strand):
+        """
+        :param total_error_rates: Dictionary of the total error rates used in the simulation.
+            Example of a dictionary:
+            {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
+        :param base_error_rates: Dictionary of dictionaries for each base.
+            Example:
+            {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
+                'T': {...},
+                'C': {...},
+                'G': {...}
+            }
+        :param deletion_length_rates: Dictionary of deletion length rates for higher lengths than 1 (start from 2):
+            Example:
+            {2: 0.2, 3: 0.1, 4: 0.3, 5: 0.05, 6: 0.001}
+        :param strand: The strand to implement errors on.
+        """
         self.total_error_rates = total_error_rates
         self.base_error_rates = base_error_rates
         self.deletion_length_rates = deletion_length_rates
@@ -90,17 +95,25 @@ class StrandErrorSimulation:
 
     ''' Main Methods: '''
 
-    # Simulates errors on the given strand and returns the target strand.
-    # Use for any method EXCEPT stutter.
     def simulate_errors_on_strand(self) -> str:
+        """
+        Simulates errors on the given strand and returns the target strand.
+        Use for any method EXCEPT stutter.
+        :return:
+        Modified strand after errors simulation
+        """
         while self.index < len(self.strand):
             self.simulate_error_on_base()
             self.index += 1
         return self.strand
 
-    # Simulates stutter errors on the given strand and returns the target strand.
-    # Use only for stutter.
     def simulate_stutter_errors_on_strand(self) -> str:
+        """
+        Simulates stutter errors on the given strand and returns the target strand.
+        Use only for stutter.
+        :return:
+        Modified strand after errors simulation
+        """
         while self.index < len(self.strand):
             self.simulate_stutter_error_on_base()
             self.index += 1
@@ -108,9 +121,12 @@ class StrandErrorSimulation:
 
     ''' Helper Methods: '''
 
-    # Simulates a stutter error on the current base (in the current index)
-    # Modifies the working strand stored in class.
     def simulate_stutter_error_on_base(self):
+        """
+        Simulates a stutter error on the current base (in the current index)
+        Modifies the working strand stored in class.
+        NO RETURN VALUE
+        """
         # this method doesn't have long deletion
         base = self.strand[self.index]
         base_deletion_rate = self.base_error_rates[base]['d']
@@ -143,9 +159,11 @@ class StrandErrorSimulation:
                 self.err_type = 'n'
             return
 
-    # Simulates any error EXCEPT stutter on the current base (in the current index).
-    # Modifies the working strand stored in class.
     def simulate_error_on_base(self):
+        """
+        Simulates any error EXCEPT stutter on the current base (in the current index).
+        Modifies the working strand stored in class.
+        """
         base = self.strand[self.index]
         # 1. summarize all error rates into total rate, and conclude the complementary non-error rate:
         total_error_rate = 0
@@ -177,13 +195,16 @@ class StrandErrorSimulation:
         else:
             self.err_type = 'n'  # for testing only
 
-    # Generate an error from the error rates dictionary passed as arguments:
-    # Returns the error type generated for the base (string):
-    # $ 'd' - for deletion
-    # $ 'ld' - for long deletion
-    # $ 'pi' - for insertion (base on pre-insertion symbol)
-    # $ 's' - for substitution
     def generate_error_type_for_base(self, base) -> str:
+        """
+        Generate an error from the error rates dictionary passed as arguments:
+        Returns the error type generated for the base (string).
+        :param base: The value of the base currently working on: 'A', 'T', 'C', 'G'.
+        :return 'd': for deletion
+        :return 'ld': for long deletion
+        :return 'pi': for insertion (base on pre-insertion symbol)
+        :return 's': for substitution
+        """
         # create two lists of the dictionary - options list and rates list:
         options = []
         rates = []
@@ -201,9 +222,13 @@ class StrandErrorSimulation:
         # return error type string:
         return draw[0]
 
-    # Inject deletion to the given strand, starting from the base in `index` location of the strand.
-    # Returns a strand with the injected error.
     def inject_deletion(self, error_type) -> str:
+        """
+        Inject deletion to the given strand, starting from the base in `index` location of the strand.
+        Returns a strand with the injected error.
+        :param error_type: Type of deletion: 'd' for single base deletion or 'ld' for long deletion.
+        :return: a strand with the injected deletion.
+        """
         modified_strand = ""
 
         if error_type == 'd':
@@ -232,9 +257,12 @@ class StrandErrorSimulation:
         self.index -= 1
         return modified_strand
 
-    # Inject insertion to the given strand, starting from the base in `index` location of the strand.
-    # Returns a strand with the injected error.
     def inject_insertion(self) -> str:
+        """
+        Inject insertion to the given strand, starting from the base in `index` location of the strand.
+        Returns a strand with the injected error.
+        :return: a strand with the injected insertion.
+        """
         base_insertion_rates = {'A': self.base_error_rates['A']['i'],
                                 'T': self.base_error_rates['T']['i'],
                                 'C': self.base_error_rates['C']['i'],
@@ -247,9 +275,12 @@ class StrandErrorSimulation:
         self.index += 1
         return modified_strand
 
-    # Inject substitution to the given strand, starting from the base in `index` location of the strand.
-    # Returns a strand with the injected error.
     def inject_substitution(self) -> str:
+        """
+        Inject substitution to the given strand, starting from the base in `index` location of the strand.
+        Returns a strand with the injected error.
+        :return: a strand with the injected substitution.
+        """
         base = self.strand[self.index]
         modified_strand = list(self.strand)
         bases = ['A', 'T', 'G', 'C']
@@ -267,9 +298,13 @@ class StrandErrorSimulation:
         modified_strand = ''.join(modified_strand)
         return modified_strand
 
-    # Inject the error type to the given strand, starting from the base in `index` location of the strand.
-    # Returns a strand with the injected error.
     def inject_error(self, error_type: str) -> str:
+        """
+        Inject the error type to the given strand, starting from the base in `index` location of the strand.
+        Returns a strand with the injected error.
+        :param error_type: Error type to inject ('d', 'ld', 's', 'pi' as documented)
+        :return: a strand with the injected error.
+        """
         # check error type and act accordingly:
         if error_type == 'd' or error_type == 'ld':
             return self.inject_deletion(error_type)
@@ -279,10 +314,7 @@ class StrandErrorSimulation:
             return self.inject_substitution()
 
 
-"""
-Testing:
-"""
-
+# Testing:
 
 # if __name__ == '__main__':
 #
