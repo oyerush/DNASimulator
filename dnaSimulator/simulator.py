@@ -5,41 +5,46 @@ import copy
 from scipy.stats import skewnorm
 
 
-# Simulator class.
-# Holds the attributes needed for error simulation on a single strand:
-# PARAMS:
-# @ total_error_rates - dictionary of the total error rates used in the simulation.
-#       Example of a dictionary:
-#       {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
-# @ base_error_rates - dictionary of dictionaries for each base.
-#       Example:
-#       {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
-#           'T': {...},
-#           'C': {...},
-#           'G': {...}
-#       }
-# @ input_path - path of the input file.
-#       Example of input file content:
-#       TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC
-#       TGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGT
-#       AAATTTGCAACCAGAAATTTGCAACCAGAATTCACTAGAGGACGCACGCTCTATTTCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC
-#       TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC
-#       TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC
-# @ is_stutter_method - False by default, set to True if stutter method should be used instead of other methods.
-#                       Note: other methods have the same error simulation algorithm but with different rates, therefore
-#                       no other statements are needed except the rates.
-#
-# Class variables:
-# * method - the method used,
-# * total_error_rates - dictionary of the total error rates used in the simulation, as provided in error_rates
-#                       parameter.
-# * base_error_rates - error rates corresponding to each base, as passed.
-# * long_deletion_length_rates - based on (excluding single base deletion):
-#       https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
-# * input_path - path of input file.
-# * is_stutter_method - indicates whether simulator should use stutter method of not.
 class Simulator:
+    """
+    Simulator class.
+    Holds the attributes needed for error simulation on a single strand:
+
+    Class variables:
+    :var self.total_error_rates: Dictionary of the total error rates used in the simulation, as provided in error_rates
+        parameter.
+    :var self.base_error_rates: Error rates corresponding to each base, as passed.
+    :var self.long_deletion_length_rates: Based on (excluding single base deletion):
+        https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
+    :var self.input_path: Path of input file, as passed.
+    :var self.is_stutter_method: Indicates whether simulator should use stutter method of not.
+    """
     def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False):
+        """
+        :param total_error_rates: Dictionary of the total error rates used in the simulation.
+            Example of a dictionary:
+            {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
+            NOTE: Dictionary can be passed with values as strings, as the constructor can to parse them to floats.
+        :param base_error_rates: Dictionary of dictionaries for each base.
+            Example:
+            {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
+                'T': {...},
+                'C': {...},
+                'G': {...}
+            }
+            NOTE: Dictionary can be passed with rates values as strings, as the constructor can to parse them to floats.
+        :param input_path: path of the input file.
+            Example of input file content:
+            TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
+            TGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGT\n
+            AAATTTGCAACCAGAAATTTGCAACCAGAATTCACTAGAGGACGCACGCTCTATTTCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
+            TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
+            TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
+        :param is_stutter_method: False by default, set to True if stutter method should be used instead of other
+            methods.
+            Note: other methods have the same error simulation algorithm but with different rates, therefore
+            no other statements are needed except the rates.
+        """
         self.total_error_rates = copy.deepcopy(total_error_rates)
         self.base_error_rates = copy.deepcopy(base_error_rates)
         parse_rates_dictionary(self.total_error_rates)
@@ -53,6 +58,26 @@ class Simulator:
         self.is_stutter_method = is_stutter_method
 
     def simulate_errors(self):
+        """
+        Simulates strands duplication with errors on the strands from the input file.
+        Writes the output in evyat.txt file in the following format:
+            [original strand][\n]
+            *****************************[\n]
+            [copy][\n]
+            [copy][\n]
+            ...
+            [copy][\n]
+            [\n]
+            [\n]
+            [original strand][\n]
+            *****************************[\n]
+            [copy][\n]
+            [copy][\n]
+            ...
+            [copy][\n]
+
+            ...
+        """
         input_f = open(self.input_path, 'r')
         output_f = open('eyyat.txt', 'w')
 
@@ -107,6 +132,17 @@ class Simulator:
 
 
 def parse_rate(rate_str) -> float:
+    """
+    Parses string of a single string of a numeric value representing a rate.
+    If the parameter is already a float, does nothing (and returns it).
+    :param rate_str: Can be either:
+        - a number, eg. '0.053'
+        or
+        - use 10^x exp, eg. '53E-4' (which is equivalent to 0.053 or 53 * 10^(-4))
+        NOTE: it can be a float as well, in this case it will simply be returned.
+    :return: The float value of the given string.
+        NOTE: If a float is passed as argument, it'll be returned as-is.
+    """
     if isinstance(rate_str, float):
         return rate_str
     # if string is a number, convert it to float as-is.
@@ -121,6 +157,12 @@ def parse_rate(rate_str) -> float:
 
 
 def parse_rates_dictionary(rates_dict):
+    """
+    Parses dictionary's rates to floats if they appear as strings.
+    Handles both "one level" and "two level" dictionaries used in the simulator.
+    Modifies the passed dictionary!
+    :param rates_dict: The dictionary to parse.
+    """
     for key, value in rates_dict.items():
         if isinstance(value, dict):  # the given dictionary is a base error rates dictionary
             # key is the base, value is the dictionary for the base, consisting of errors & rates.
