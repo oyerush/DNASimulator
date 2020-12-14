@@ -317,6 +317,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             if not os.path.isfile(self.inputDNAPath):
                 print('The chosen input file doesn\'t exist')
                 self.show_error_dialog('no_such_file')
+                self.file_path_lineEdit.clear()
                 break
             else:
                 break
