@@ -174,47 +174,47 @@ def parse_rates_dictionary(rates_dict):
 
 
 # Testing:
-
-if __name__ == '__main__':
-
-    error_rates_example = {'d': 9.58 * (10 ** (-4)),
-                           'ld': 2.33 * (10 ** (-4)),
-                           'i': 5.81 * (10 ** (-4)),
-                           's': 1.32 * (10 ** (-3))}
-    base_error_rates_example = {'A':
-                                {'s': 0.135 * (10**(-2)),
-                                 'i': 0.057 * (10**(-2)),
-                                 'pi': 0.059 * (10**(-2)),
-                                 'd': 0.099 * (10**(-2)),
-                                 'ld': 0.024 * (10**(-2))},
-                                'C':
-                                    {'s': 0.135 * (10 ** (-2)),
-                                     'i': 0.059 * (10 ** (-2)),
-                                     'pi': 0.058 * (10 ** (-2)),
-                                     'd': 0.098 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))},
-                                'T':
-                                    {'s': 0.126 * (10 ** (-2)),
-                                     'i': 0.059 * (10 ** (-2)),
-                                     'pi': 0.057 * (10 ** (-2)),
-                                     'd': 0.094 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))},
-                                'G':
-                                    {'s': 0.132 * (10 ** (-2)),
-                                     'i': 0.058 * (10 ** (-2)),
-                                     'pi': 0.058 * (10 ** (-2)),
-                                     'd': 0.096 * (10 ** (-2)),
-                                     'ld': 0.023 * (10 ** (-2))}}
-
-    input_path_example = 'input.txt'
-
-    sim = Simulator(error_rates_example, base_error_rates_example, input_path_example)
-
-    sim.simulate_errors()
-
-    sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, True)
-
-    sim.simulate_errors()
+#
+# if __name__ == '__main__':
+#
+#     error_rates_example = {'d': 9.58 * (10 ** (-4)),
+#                            'ld': 2.33 * (10 ** (-4)),
+#                            'i': 5.81 * (10 ** (-4)),
+#                            's': 1.32 * (10 ** (-3))}
+#     base_error_rates_example = {'A':
+#                                 {'s': 0.135 * (10**(-2)),
+#                                  'i': 0.057 * (10**(-2)),
+#                                  'pi': 0.059 * (10**(-2)),
+#                                  'd': 0.099 * (10**(-2)),
+#                                  'ld': 0.024 * (10**(-2))},
+#                                 'C':
+#                                     {'s': 0.135 * (10 ** (-2)),
+#                                      'i': 0.059 * (10 ** (-2)),
+#                                      'pi': 0.058 * (10 ** (-2)),
+#                                      'd': 0.098 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))},
+#                                 'T':
+#                                     {'s': 0.126 * (10 ** (-2)),
+#                                      'i': 0.059 * (10 ** (-2)),
+#                                      'pi': 0.057 * (10 ** (-2)),
+#                                      'd': 0.094 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))},
+#                                 'G':
+#                                     {'s': 0.132 * (10 ** (-2)),
+#                                      'i': 0.058 * (10 ** (-2)),
+#                                      'pi': 0.058 * (10 ** (-2)),
+#                                      'd': 0.096 * (10 ** (-2)),
+#                                      'ld': 0.023 * (10 ** (-2))}}
+#
+#     input_path_example = 'input.txt'
+#
+#     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example)
+#
+#     sim.simulate_errors()
+#
+#     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, True)
+#
+#     sim.simulate_errors()
 
 
 
