@@ -60,7 +60,7 @@ class Simulator:
     def simulate_errors(self):
         """
         Simulates strands duplication with errors on the strands from the input file.
-        Writes the output in evyat.txt file in the following format:
+        Writes the output in HeadEvyaLuis.txt file in the following format:
             [original strand][\n]
             *****************************[\n]
             [copy][\n]
@@ -99,7 +99,7 @@ class Simulator:
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
         i = 0
         with open(self.input_path, 'r') as input_f:
-            with open('evyat.txt', 'w') as output_f:
+            with open('HeadEvyaLuis.txt', 'w') as output_f:
                 for line in input_f:
 
                     # write ORIGINAL strand with divider first:

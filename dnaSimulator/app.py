@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from PySide2 import QtGui, QtWidgets
 from PySide2.QtCore import *
@@ -323,6 +324,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             else:
                 error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
                 error_sim.simulate_errors()
+                # os.system('hyb.exe')
+                subprocess.run('hyb.exe')
                 break
 
 
