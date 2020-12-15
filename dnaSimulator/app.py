@@ -238,11 +238,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('2.33E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.135', '0.135', '0.126', '0.132')
-        self.set_per_base_insertion('0.057', '0.059', '0.059', '0.058')
-        self.set_per_base_pre_insertion('0.059', '0.058', '0.057', '0.058')
-        self.set_per_base_del('0.099', '0.098', '0.094', '0.096')
-        self.set_per_base_long_del('0.024', '0.023', '0.023', '0.023')
+        self.set_per_base_substitution('0.00135', '0.00135', '0.00126', '0.00132')
+        self.set_per_base_insertion('0.00057', '0.00059', '0.00059', '0.00058')
+        self.set_per_base_pre_insertion('0.00059', '0.00058', '0.00057', '0.00058')
+        self.set_per_base_del('0.00099', '0.00098', '0.00094', '0.00096')
+        self.set_per_base_long_del('0.00024', '0.00023', '0.00023', '0.00023')
 
     def set_O17_values(self):
         # general errors
@@ -252,11 +252,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('4.79E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.724', '0.701', '0.706', '0.704')
-        self.set_per_base_insertion('0.411', '0.415', '0.415', '0.413')
-        self.set_per_base_pre_insertion('0.429', '0.415', '0.403', '0.408')
-        self.set_per_base_del('0.289', '0.279', '0.276', '0.28')
-        self.set_per_base_long_del('0.048', '0.048', '0.047', '0.049')
+        self.set_per_base_substitution('0.00724', '0.00701', '0.00706', '0.00704')
+        self.set_per_base_insertion('0.00411', '0.00415', '0.00415', '0.00413')
+        self.set_per_base_pre_insertion('0.00429', '0.00415', '0.00403', '0.00408')
+        self.set_per_base_del('0.00289', '0.00279', '0.00276', '0.0028')
+        self.set_per_base_long_del('0.00048', '0.00048', '0.00047', '0.00049')
 
     def set_G15_values(self):
         # general errors
@@ -266,11 +266,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('3.48E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.605', '0.563', '0.577', '0.591')
-        self.set_per_base_insertion('0.09', '0.083', '0.085', '0.084')
-        self.set_per_base_pre_insertion('0.092', '0.081', '0.087', '0.084')
-        self.set_per_base_del('0.543', '0.513', '0.539', '0.559')
-        self.set_per_base_long_del('0.036', '0.034', '0.034', '0.036')
+        self.set_per_base_substitution('0.00605', '0.00563', '0.00577', '0.00591')
+        self.set_per_base_insertion('0.0009', '0.00083', '0.00085', '0.00084')
+        self.set_per_base_pre_insertion('0.00092', '0.00081', '0.00087', '0.00084')
+        self.set_per_base_del('0.00543', '0.00513', '0.00539', '0.00559')
+        self.set_per_base_long_del('0.00036', '0.00034', '0.00034', '0.00036')
 
     def set_Y16_values(self):
         # general errors
@@ -280,11 +280,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('1.87E-02')
 
         # per base errors
-        self.set_per_base_substitution('11.9', '13.3', '11.2', '11.9')
-        self.set_per_base_insertion('33.1', '40.6', '36.1', '36.7')
-        self.set_per_base_pre_insertion('33.2', '40.8', '34.1', '38.2')
-        self.set_per_base_del('4.4', '4.8', '4.0', '4.1')
-        self.set_per_base_long_del('1.9', '2.1', '1.7', '1.8')
+        self.set_per_base_substitution('0.119', '0.133', '0.112', '0.119')
+        self.set_per_base_insertion('0.331', '0.406', '0.361', '0.367')
+        self.set_per_base_pre_insertion('0.332', '0.408', '0.341', '0.382')
+        self.set_per_base_del('0.044', '0.048', '0.040', '0.041')
+        self.set_per_base_long_del('0.019', '0.021', '0.017', '0.018')
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
