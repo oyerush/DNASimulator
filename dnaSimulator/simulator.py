@@ -78,58 +78,59 @@ class Simulator:
 
             ...
         """
-        input_f = open(self.input_path, 'r')
-        output_f = open('eyyat.txt', 'w')
 
-        # read input lines, each line is a separate strand:
-        strands = input_f.readlines()
+        # count num of origin strands, each line is a separate strand:
+        num_values = 0
+        with open(self.input_path, 'r') as input_f:
+            for line in input_f:
+                num_values += 1
 
         # generate number of copies for each strand, as the number of strands:
         # https://stackoverflow.com/questions/24854965/create-random-numbers-with-left-skewed-probability-distribution
-        num_values = len(strands)
         max_value = 499
         skewness = 10  # Negative values are left skewed, positive values are right skewed.
         random = skewnorm.rvs(a=skewness, loc=max_value, size=num_values)  # Skewnorm function
         random = random - min(random)  # Shift the set so the minimum value is equal to zero.
-        random = random / max(random)  # Standadize all the vlues between 0 and 1.
+        random = random / max(random)  # Standardize all the values between 0 and 1.
         random = random * max_value  # Multiply the standardized values by the maximum value.
         random = random + 1  # avoid 0
         random = [int(x) for x in random]  # convert to integers
 
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
-        for i in range(num_values):
+        i = 0
+        with open(self.input_path, 'r') as input_f:
+            with open('evyat.txt', 'w') as output_f:
+                for line in input_f:
 
-            # write ORIGINAL strand with divider first:
-            original_strand = strands[i]
-            # strip the strand from newline:
-            original_strand = original_strand.rstrip()
-            output_f.write(original_strand + '\n' + '*****************************\n')
+                    # write ORIGINAL strand with divider first:
+                    original_strand = line
+                    # strip the strand from newline:
+                    original_strand = original_strand.rstrip()
+                    output_f.write(original_strand + '\n' + '*****************************\n')
 
-            # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
-            for j in range(random[i]):
+                    # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
+                    for j in range(random[i]):
 
-                # duplicate strand to create a working (output) strand:
-                output_strand = copy.deepcopy(original_strand)
-                # create a strand simulator for it:
-                strand_error_simulator = strand_error_sim.StrandErrorSimulation(self.total_error_rates,
-                                                                                self.base_error_rates,
-                                                                                self.long_deletion_length_rates,
-                                                                                output_strand)
-                # simulate according to method:
-                if self.is_stutter_method:
-                    output_strand = strand_error_simulator.simulate_stutter_errors_on_strand()
-                else:
-                    output_strand = strand_error_simulator.simulate_errors_on_strand()
+                        # duplicate strand to create a working (output) strand:
+                        output_strand = copy.deepcopy(original_strand)
+                        # create a strand simulator for it:
+                        strand_error_simulator = strand_error_sim.StrandErrorSimulation(self.total_error_rates,
+                                                                                        self.base_error_rates,
+                                                                                        self.long_deletion_length_rates,
+                                                                                        output_strand)
+                        # simulate according to method:
+                        if self.is_stutter_method:
+                            output_strand = strand_error_simulator.simulate_stutter_errors_on_strand()
+                        else:
+                            output_strand = strand_error_simulator.simulate_errors_on_strand()
 
-                # write the output strand to file:
-                output_f.write(output_strand + '\n')
+                        # write the output strand to file:
+                        output_f.write(output_strand + '\n')
 
-            # after each strand, add 2 newlines:
-            output_f.write('\n')
+                    # after each strand, add 2 newlines:
+                    output_f.write('\n\n')
 
-        output_f.close()
-        input_f.close()
-
+                    i += 1
 
 def parse_rate(rate_str) -> float:
     """
@@ -173,47 +174,47 @@ def parse_rates_dictionary(rates_dict):
 
 
 # Testing:
-#
-# if __name__ == '__main__':
-#
-#     error_rates_example = {'d': 9.58 * (10 ** (-4)),
-#                            'ld': 2.33 * (10 ** (-4)),
-#                            'i': 5.81 * (10 ** (-4)),
-#                            's': 1.32 * (10 ** (-3))}
-#     base_error_rates_example = {'A':
-#                                 {'s': 0.135 * (10**(-2)),
-#                                  'i': 0.057 * (10**(-2)),
-#                                  'pi': 0.059 * (10**(-2)),
-#                                  'd': 0.099 * (10**(-2)),
-#                                  'ld': 0.024 * (10**(-2))},
-#                                 'C':
-#                                     {'s': 0.135 * (10 ** (-2)),
-#                                      'i': 0.059 * (10 ** (-2)),
-#                                      'pi': 0.058 * (10 ** (-2)),
-#                                      'd': 0.098 * (10 ** (-2)),
-#                                      'ld': 0.023 * (10 ** (-2))},
-#                                 'T':
-#                                     {'s': 0.126 * (10 ** (-2)),
-#                                      'i': 0.059 * (10 ** (-2)),
-#                                      'pi': 0.057 * (10 ** (-2)),
-#                                      'd': 0.094 * (10 ** (-2)),
-#                                      'ld': 0.023 * (10 ** (-2))},
-#                                 'G':
-#                                     {'s': 0.132 * (10 ** (-2)),
-#                                      'i': 0.058 * (10 ** (-2)),
-#                                      'pi': 0.058 * (10 ** (-2)),
-#                                      'd': 0.096 * (10 ** (-2)),
-#                                      'ld': 0.023 * (10 ** (-2))}}
-#
-#     input_path_example = 'input.txt'
-#
-#     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example)
-#
-#     sim.simulate_errors()
-#
-#     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, True)
-#
-#     sim.simulate_errors()
+
+if __name__ == '__main__':
+
+    error_rates_example = {'d': 9.58 * (10 ** (-4)),
+                           'ld': 2.33 * (10 ** (-4)),
+                           'i': 5.81 * (10 ** (-4)),
+                           's': 1.32 * (10 ** (-3))}
+    base_error_rates_example = {'A':
+                                {'s': 0.135 * (10**(-2)),
+                                 'i': 0.057 * (10**(-2)),
+                                 'pi': 0.059 * (10**(-2)),
+                                 'd': 0.099 * (10**(-2)),
+                                 'ld': 0.024 * (10**(-2))},
+                                'C':
+                                    {'s': 0.135 * (10 ** (-2)),
+                                     'i': 0.059 * (10 ** (-2)),
+                                     'pi': 0.058 * (10 ** (-2)),
+                                     'd': 0.098 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))},
+                                'T':
+                                    {'s': 0.126 * (10 ** (-2)),
+                                     'i': 0.059 * (10 ** (-2)),
+                                     'pi': 0.057 * (10 ** (-2)),
+                                     'd': 0.094 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))},
+                                'G':
+                                    {'s': 0.132 * (10 ** (-2)),
+                                     'i': 0.058 * (10 ** (-2)),
+                                     'pi': 0.058 * (10 ** (-2)),
+                                     'd': 0.096 * (10 ** (-2)),
+                                     'ld': 0.023 * (10 ** (-2))}}
+
+    input_path_example = 'input.txt'
+
+    sim = Simulator(error_rates_example, base_error_rates_example, input_path_example)
+
+    sim.simulate_errors()
+
+    sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, True)
+
+    sim.simulate_errors()
 
 
 
