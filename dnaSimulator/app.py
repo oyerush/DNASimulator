@@ -7,6 +7,7 @@ from PySide2.QtWidgets import *
 import sys
 
 import dnaSimulator_ui
+from simulator import *
 
 
 class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
@@ -320,7 +321,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                 self.file_path_lineEdit.clear()
                 break
             else:
+                error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
+                error_sim.simulate_errors()
                 break
+
 
 
 if __name__ == '__main__':

@@ -17,7 +17,7 @@ class Simulator:
     :var self.long_deletion_length_rates: Based on (excluding single base deletion):
         https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
     :var self.input_path: Path of input file, as passed.
-    :var self.is_stutter_method: Indicates whether simulator should use stutter method of not.
+    :var self.is_stutter_method: Indicates whether simulator should use stutter method or not.
     """
     def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False):
         """
