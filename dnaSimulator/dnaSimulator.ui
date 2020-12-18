@@ -6,14 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>631</width>
-    <height>706</height>
+    <width>676</width>
+    <height>618</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <layout class="QHBoxLayout" name="file_input_horizontalLayout">
@@ -57,6 +69,12 @@
      <layout class="QVBoxLayout" name="sequencing_tech_verticalLayout">
       <item>
        <widget class="QLabel" name="sequencing_tech_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
@@ -71,6 +89,12 @@
       </item>
       <item>
        <widget class="QFrame" name="frame_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -82,6 +106,9 @@
           <layout class="QHBoxLayout" name="tech_radio_buttons_horizontalLayout">
            <property name="spacing">
             <number>15</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetFixedSize</enum>
            </property>
            <item>
             <widget class="QRadioButton" name="MinION_radioButton">
@@ -135,6 +162,12 @@
      <layout class="QVBoxLayout" name="synthesis_tech_verticalLayout">
       <item>
        <widget class="QLabel" name="synthesis_tech_radio_buttons_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
@@ -149,6 +182,12 @@
       </item>
       <item>
        <widget class="QFrame" name="frame_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -222,6 +261,12 @@
      <layout class="QVBoxLayout" name="error_stats_verticalLayout">
       <item>
        <widget class="QLabel" name="error_stats_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
@@ -302,24 +347,18 @@
       <property name="verticalSpacing">
        <number>10</number>
       </property>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="G_substitution_lineEdit"/>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="A_substitution_lineEdit"/>
       </item>
-      <item row="3" column="3">
-       <widget class="QLineEdit" name="G_pre_insertion_lineEdit"/>
-      </item>
-      <item row="6" column="3">
-       <widget class="QLabel" name="G_base_label">
+      <item row="2" column="0">
+       <widget class="QLabel" name="Insertion_label">
         <property name="text">
-         <string>G</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <string>Insertion</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
-       <widget class="QLineEdit" name="T_substitution_lineEdit"/>
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="C_insertion_lineEdit"/>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="empty_label">
@@ -328,59 +367,46 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="A_substitution_lineEdit"/>
-      </item>
-      <item row="5" column="3">
-       <widget class="QLineEdit" name="G_long_del_lineEdit"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="long_del_label">
-        <property name="text">
-         <string>Long Deletion</string>
+      <item row="6" column="2">
+       <widget class="QLabel" name="C_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="A_long_del_lineEdit"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="one_base_del_label">
         <property name="text">
-         <string>1-base Deletion</string>
+         <string>C</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item row="4" column="2">
        <widget class="QLineEdit" name="C_one_base_del_lineEdit"/>
       </item>
-      <item row="3" column="5">
-       <widget class="QLineEdit" name="T_pre_insertion_lineEdit"/>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLineEdit" name="C_pre_insertion_lineEdit"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="A_pre_insertion_lineEdit"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="pre_insertion_label">
+      <item row="6" column="1">
+       <widget class="QLabel" name="A_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="text">
-         <string>pre-insertion</string>
+         <string>A</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="C_substitution_lineEdit"/>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLineEdit" name="C_insertion_lineEdit"/>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLineEdit" name="G_insertion_lineEdit"/>
-      </item>
-      <item row="5" column="5">
-       <widget class="QLineEdit" name="T_long_del_lineEdit"/>
+      <item row="2" column="5">
+       <widget class="QLineEdit" name="T_insertion_lineEdit"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="Substitution_label">
@@ -389,11 +415,17 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="A_one_base_del_lineEdit"/>
+      <item row="1" column="5">
+       <widget class="QLineEdit" name="T_substitution_lineEdit"/>
       </item>
       <item row="6" column="5">
        <widget class="QLabel" name="T_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>T</string>
         </property>
@@ -402,8 +434,17 @@
         </property>
        </widget>
       </item>
+      <item row="4" column="5">
+       <widget class="QLineEdit" name="T_one_base_del_lineEdit"/>
+      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="error_stats_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
@@ -416,50 +457,84 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QLineEdit" name="C_long_del_lineEdit"/>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="G_long_del_lineEdit"/>
       </item>
-      <item row="2" column="5">
-       <widget class="QLineEdit" name="T_insertion_lineEdit"/>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="A_pre_insertion_lineEdit"/>
       </item>
-      <item row="6" column="1">
-       <widget class="QLabel" name="A_base_label">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="G_substitution_lineEdit"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="one_base_del_label">
         <property name="text">
-         <string>A</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <string>1-base Deletion</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="5">
-       <widget class="QLineEdit" name="T_one_base_del_lineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="Insertion_label">
+      <item row="3" column="0">
+       <widget class="QLabel" name="pre_insertion_label">
         <property name="text">
-         <string>Insertion</string>
+         <string>pre-insertion</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="A_insertion_lineEdit"/>
       </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="A_long_del_lineEdit"/>
+      </item>
       <item row="4" column="3">
        <widget class="QLineEdit" name="G_one_base_del_lineEdit"/>
       </item>
-      <item row="6" column="2">
-       <widget class="QLabel" name="C_base_label">
+      <item row="3" column="2">
+       <widget class="QLineEdit" name="C_pre_insertion_lineEdit"/>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="G_pre_insertion_lineEdit"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="G_insertion_lineEdit"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="long_del_label">
         <property name="text">
-         <string>C</string>
+         <string>Long Deletion</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="A_one_base_del_lineEdit"/>
+      </item>
+      <item row="5" column="5">
+       <widget class="QLineEdit" name="T_long_del_lineEdit"/>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLabel" name="G_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>G</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLineEdit" name="C_long_del_lineEdit"/>
+      </item>
+      <item row="3" column="5">
+       <widget class="QLineEdit" name="T_pre_insertion_lineEdit"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="C_substitution_lineEdit"/>
       </item>
      </layout>
     </item>
@@ -522,6 +597,83 @@
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="Line" name="line_6">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_progress">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>5</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QProgressBar" name="progressBar">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -529,7 +681,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>631</width>
+     <width>676</width>
      <height>21</height>
     </rect>
    </property>

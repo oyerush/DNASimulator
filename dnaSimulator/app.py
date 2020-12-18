@@ -1,5 +1,6 @@
 import os
 import subprocess
+import time
 
 from PySide2 import QtGui, QtWidgets
 from PySide2.QtCore import *
@@ -32,6 +33,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             'G': {'s': '', 'i': '', 'pi': '', 'd': 'test', 'ld': ''},
             'T': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''}
         }
+
+        self.progressBar.setVisible(False)
 
         # connect push buttons to an event
         self.browse_PushButton.clicked.connect(self.openFileDialog)
@@ -77,8 +80,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.C_long_del_lineEdit.textChanged.connect(self.set_C_long_del)
         self.G_long_del_lineEdit.textChanged.connect(self.set_G_long_del)
         self.T_long_del_lineEdit.textChanged.connect(self.set_T_long_del)
-
-
 
     def set_substitution(self, value):
         self.general_errors['s'] = value
@@ -313,6 +314,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
 
             retval = msg.exec_()
 
+    def report_func(self, total_lines, curr_line):
+        percent = int(curr_line * 100 // total_lines)
+        self.progressBar.setValue(percent+1)
+        # print('total: ' + str(total_lines) + 'curr: ' + str(curr_line))
+        if percent+1 == 99:
+            self.label_progress.setText('Running reconstruction, please wait!')
+
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
         while True:
@@ -323,9 +331,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                 break
             else:
                 error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
-                error_sim.simulate_errors()
+                self.progressBar.setVisible(True)
+                self.label_progress.setText('Injecting errors, please wait!')
+                error_sim.simulate_errors(self.report_func)
                 # os.system('hyb.exe')
+                self.progressBar.setValue(0)
                 subprocess.run('hyb.exe')
+                self.label_progress.setText('We are done :)')
+                self.progressBar.setValue(100)
+                self.progressBar.setVisible(False)
                 break
 
 

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'dnaSimulator.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,9 +17,16 @@ class Ui_dnaSimulator(object):
     def setupUi(self, dnaSimulator):
         if not dnaSimulator.objectName():
             dnaSimulator.setObjectName(u"dnaSimulator")
-        dnaSimulator.resize(631, 706)
+        dnaSimulator.resize(676, 618)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(dnaSimulator.sizePolicy().hasHeightForWidth())
+        dnaSimulator.setSizePolicy(sizePolicy)
         self.centralwidget = QWidget(dnaSimulator)
         self.centralwidget.setObjectName(u"centralwidget")
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
+        self.centralwidget.setSizePolicy(sizePolicy)
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.file_input_horizontalLayout = QHBoxLayout()
@@ -54,6 +61,8 @@ class Ui_dnaSimulator(object):
         self.sequencing_tech_verticalLayout.setObjectName(u"sequencing_tech_verticalLayout")
         self.sequencing_tech_label = QLabel(self.centralwidget)
         self.sequencing_tech_label.setObjectName(u"sequencing_tech_label")
+        sizePolicy.setHeightForWidth(self.sequencing_tech_label.sizePolicy().hasHeightForWidth())
+        self.sequencing_tech_label.setSizePolicy(sizePolicy)
         font = QFont()
         font.setBold(True)
         font.setUnderline(True)
@@ -64,6 +73,8 @@ class Ui_dnaSimulator(object):
 
         self.frame_2 = QFrame(self.centralwidget)
         self.frame_2.setObjectName(u"frame_2")
+        sizePolicy.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
+        self.frame_2.setSizePolicy(sizePolicy)
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame_2)
@@ -71,6 +82,7 @@ class Ui_dnaSimulator(object):
         self.tech_radio_buttons_horizontalLayout = QHBoxLayout()
         self.tech_radio_buttons_horizontalLayout.setSpacing(15)
         self.tech_radio_buttons_horizontalLayout.setObjectName(u"tech_radio_buttons_horizontalLayout")
+        self.tech_radio_buttons_horizontalLayout.setSizeConstraint(QLayout.SetFixedSize)
         self.MinION_radioButton = QRadioButton(self.frame_2)
         self.MinION_radioButton.setObjectName(u"MinION_radioButton")
 
@@ -110,12 +122,16 @@ class Ui_dnaSimulator(object):
         self.synthesis_tech_verticalLayout.setObjectName(u"synthesis_tech_verticalLayout")
         self.synthesis_tech_radio_buttons_label = QLabel(self.centralwidget)
         self.synthesis_tech_radio_buttons_label.setObjectName(u"synthesis_tech_radio_buttons_label")
+        sizePolicy.setHeightForWidth(self.synthesis_tech_radio_buttons_label.sizePolicy().hasHeightForWidth())
+        self.synthesis_tech_radio_buttons_label.setSizePolicy(sizePolicy)
         self.synthesis_tech_radio_buttons_label.setFont(font)
 
         self.synthesis_tech_verticalLayout.addWidget(self.synthesis_tech_radio_buttons_label)
 
         self.frame_3 = QFrame(self.centralwidget)
         self.frame_3.setObjectName(u"frame_3")
+        sizePolicy.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
+        self.frame_3.setSizePolicy(sizePolicy)
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_3)
@@ -165,6 +181,8 @@ class Ui_dnaSimulator(object):
         self.error_stats_verticalLayout.setObjectName(u"error_stats_verticalLayout")
         self.error_stats_label = QLabel(self.centralwidget)
         self.error_stats_label.setObjectName(u"error_stats_label")
+        sizePolicy.setHeightForWidth(self.error_stats_label.sizePolicy().hasHeightForWidth())
+        self.error_stats_label.setSizePolicy(sizePolicy)
         self.error_stats_label.setFont(font)
 
         self.error_stats_verticalLayout.addWidget(self.error_stats_label)
@@ -173,11 +191,11 @@ class Ui_dnaSimulator(object):
         self.error_stats_inputs_horizontalLayout.setObjectName(u"error_stats_inputs_horizontalLayout")
         self.substitution_lineEdit = QLineEdit(self.centralwidget)
         self.substitution_lineEdit.setObjectName(u"substitution_lineEdit")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.substitution_lineEdit.sizePolicy().hasHeightForWidth())
-        self.substitution_lineEdit.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.substitution_lineEdit.sizePolicy().hasHeightForWidth())
+        self.substitution_lineEdit.setSizePolicy(sizePolicy1)
 
         self.error_stats_inputs_horizontalLayout.addWidget(self.substitution_lineEdit)
 
@@ -211,11 +229,11 @@ class Ui_dnaSimulator(object):
 
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy2)
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
 
@@ -224,166 +242,176 @@ class Ui_dnaSimulator(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setVerticalSpacing(10)
-        self.G_substitution_lineEdit = QLineEdit(self.centralwidget)
-        self.G_substitution_lineEdit.setObjectName(u"G_substitution_lineEdit")
-
-        self.gridLayout.addWidget(self.G_substitution_lineEdit, 1, 3, 1, 1)
-
-        self.G_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.G_pre_insertion_lineEdit.setObjectName(u"G_pre_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.G_pre_insertion_lineEdit, 3, 3, 1, 1)
-
-        self.G_base_label = QLabel(self.centralwidget)
-        self.G_base_label.setObjectName(u"G_base_label")
-        self.G_base_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.G_base_label, 6, 3, 1, 1)
-
-        self.T_substitution_lineEdit = QLineEdit(self.centralwidget)
-        self.T_substitution_lineEdit.setObjectName(u"T_substitution_lineEdit")
-
-        self.gridLayout.addWidget(self.T_substitution_lineEdit, 1, 5, 1, 1)
-
-        self.empty_label = QLabel(self.centralwidget)
-        self.empty_label.setObjectName(u"empty_label")
-
-        self.gridLayout.addWidget(self.empty_label, 6, 0, 1, 1)
-
         self.A_substitution_lineEdit = QLineEdit(self.centralwidget)
         self.A_substitution_lineEdit.setObjectName(u"A_substitution_lineEdit")
 
         self.gridLayout.addWidget(self.A_substitution_lineEdit, 1, 1, 1, 1)
-
-        self.G_long_del_lineEdit = QLineEdit(self.centralwidget)
-        self.G_long_del_lineEdit.setObjectName(u"G_long_del_lineEdit")
-
-        self.gridLayout.addWidget(self.G_long_del_lineEdit, 5, 3, 1, 1)
-
-        self.long_del_label = QLabel(self.centralwidget)
-        self.long_del_label.setObjectName(u"long_del_label")
-
-        self.gridLayout.addWidget(self.long_del_label, 5, 0, 1, 1)
-
-        self.A_long_del_lineEdit = QLineEdit(self.centralwidget)
-        self.A_long_del_lineEdit.setObjectName(u"A_long_del_lineEdit")
-
-        self.gridLayout.addWidget(self.A_long_del_lineEdit, 5, 1, 1, 1)
-
-        self.one_base_del_label = QLabel(self.centralwidget)
-        self.one_base_del_label.setObjectName(u"one_base_del_label")
-
-        self.gridLayout.addWidget(self.one_base_del_label, 4, 0, 1, 1)
-
-        self.C_one_base_del_lineEdit = QLineEdit(self.centralwidget)
-        self.C_one_base_del_lineEdit.setObjectName(u"C_one_base_del_lineEdit")
-
-        self.gridLayout.addWidget(self.C_one_base_del_lineEdit, 4, 2, 1, 1)
-
-        self.T_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.T_pre_insertion_lineEdit.setObjectName(u"T_pre_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.T_pre_insertion_lineEdit, 3, 5, 1, 1)
-
-        self.C_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.C_pre_insertion_lineEdit.setObjectName(u"C_pre_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.C_pre_insertion_lineEdit, 3, 2, 1, 1)
-
-        self.A_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.A_pre_insertion_lineEdit.setObjectName(u"A_pre_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.A_pre_insertion_lineEdit, 3, 1, 1, 1)
-
-        self.pre_insertion_label = QLabel(self.centralwidget)
-        self.pre_insertion_label.setObjectName(u"pre_insertion_label")
-
-        self.gridLayout.addWidget(self.pre_insertion_label, 3, 0, 1, 1)
-
-        self.C_substitution_lineEdit = QLineEdit(self.centralwidget)
-        self.C_substitution_lineEdit.setObjectName(u"C_substitution_lineEdit")
-
-        self.gridLayout.addWidget(self.C_substitution_lineEdit, 1, 2, 1, 1)
-
-        self.C_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.C_insertion_lineEdit.setObjectName(u"C_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.C_insertion_lineEdit, 2, 2, 1, 1)
-
-        self.G_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.G_insertion_lineEdit.setObjectName(u"G_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.G_insertion_lineEdit, 2, 3, 1, 1)
-
-        self.T_long_del_lineEdit = QLineEdit(self.centralwidget)
-        self.T_long_del_lineEdit.setObjectName(u"T_long_del_lineEdit")
-
-        self.gridLayout.addWidget(self.T_long_del_lineEdit, 5, 5, 1, 1)
-
-        self.Substitution_label = QLabel(self.centralwidget)
-        self.Substitution_label.setObjectName(u"Substitution_label")
-
-        self.gridLayout.addWidget(self.Substitution_label, 1, 0, 1, 1)
-
-        self.A_one_base_del_lineEdit = QLineEdit(self.centralwidget)
-        self.A_one_base_del_lineEdit.setObjectName(u"A_one_base_del_lineEdit")
-
-        self.gridLayout.addWidget(self.A_one_base_del_lineEdit, 4, 1, 1, 1)
-
-        self.T_base_label = QLabel(self.centralwidget)
-        self.T_base_label.setObjectName(u"T_base_label")
-        self.T_base_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.T_base_label, 6, 5, 1, 1)
-
-        self.error_stats_base_label = QLabel(self.centralwidget)
-        self.error_stats_base_label.setObjectName(u"error_stats_base_label")
-        self.error_stats_base_label.setFont(font)
-
-        self.gridLayout.addWidget(self.error_stats_base_label, 0, 0, 1, 1)
-
-        self.C_long_del_lineEdit = QLineEdit(self.centralwidget)
-        self.C_long_del_lineEdit.setObjectName(u"C_long_del_lineEdit")
-
-        self.gridLayout.addWidget(self.C_long_del_lineEdit, 5, 2, 1, 1)
-
-        self.T_insertion_lineEdit = QLineEdit(self.centralwidget)
-        self.T_insertion_lineEdit.setObjectName(u"T_insertion_lineEdit")
-
-        self.gridLayout.addWidget(self.T_insertion_lineEdit, 2, 5, 1, 1)
-
-        self.A_base_label = QLabel(self.centralwidget)
-        self.A_base_label.setObjectName(u"A_base_label")
-        self.A_base_label.setAutoFillBackground(False)
-        self.A_base_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.A_base_label, 6, 1, 1, 1)
-
-        self.T_one_base_del_lineEdit = QLineEdit(self.centralwidget)
-        self.T_one_base_del_lineEdit.setObjectName(u"T_one_base_del_lineEdit")
-
-        self.gridLayout.addWidget(self.T_one_base_del_lineEdit, 4, 5, 1, 1)
 
         self.Insertion_label = QLabel(self.centralwidget)
         self.Insertion_label.setObjectName(u"Insertion_label")
 
         self.gridLayout.addWidget(self.Insertion_label, 2, 0, 1, 1)
 
+        self.C_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.C_insertion_lineEdit.setObjectName(u"C_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.C_insertion_lineEdit, 2, 2, 1, 1)
+
+        self.empty_label = QLabel(self.centralwidget)
+        self.empty_label.setObjectName(u"empty_label")
+
+        self.gridLayout.addWidget(self.empty_label, 6, 0, 1, 1)
+
+        self.C_base_label = QLabel(self.centralwidget)
+        self.C_base_label.setObjectName(u"C_base_label")
+        sizePolicy.setHeightForWidth(self.C_base_label.sizePolicy().hasHeightForWidth())
+        self.C_base_label.setSizePolicy(sizePolicy)
+        self.C_base_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.C_base_label, 6, 2, 1, 1)
+
+        self.C_one_base_del_lineEdit = QLineEdit(self.centralwidget)
+        self.C_one_base_del_lineEdit.setObjectName(u"C_one_base_del_lineEdit")
+
+        self.gridLayout.addWidget(self.C_one_base_del_lineEdit, 4, 2, 1, 1)
+
+        self.A_base_label = QLabel(self.centralwidget)
+        self.A_base_label.setObjectName(u"A_base_label")
+        sizePolicy.setHeightForWidth(self.A_base_label.sizePolicy().hasHeightForWidth())
+        self.A_base_label.setSizePolicy(sizePolicy)
+        self.A_base_label.setAutoFillBackground(False)
+        self.A_base_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.A_base_label, 6, 1, 1, 1)
+
+        self.T_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.T_insertion_lineEdit.setObjectName(u"T_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.T_insertion_lineEdit, 2, 5, 1, 1)
+
+        self.Substitution_label = QLabel(self.centralwidget)
+        self.Substitution_label.setObjectName(u"Substitution_label")
+
+        self.gridLayout.addWidget(self.Substitution_label, 1, 0, 1, 1)
+
+        self.T_substitution_lineEdit = QLineEdit(self.centralwidget)
+        self.T_substitution_lineEdit.setObjectName(u"T_substitution_lineEdit")
+
+        self.gridLayout.addWidget(self.T_substitution_lineEdit, 1, 5, 1, 1)
+
+        self.T_base_label = QLabel(self.centralwidget)
+        self.T_base_label.setObjectName(u"T_base_label")
+        sizePolicy.setHeightForWidth(self.T_base_label.sizePolicy().hasHeightForWidth())
+        self.T_base_label.setSizePolicy(sizePolicy)
+        self.T_base_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.T_base_label, 6, 5, 1, 1)
+
+        self.T_one_base_del_lineEdit = QLineEdit(self.centralwidget)
+        self.T_one_base_del_lineEdit.setObjectName(u"T_one_base_del_lineEdit")
+
+        self.gridLayout.addWidget(self.T_one_base_del_lineEdit, 4, 5, 1, 1)
+
+        self.error_stats_base_label = QLabel(self.centralwidget)
+        self.error_stats_base_label.setObjectName(u"error_stats_base_label")
+        sizePolicy.setHeightForWidth(self.error_stats_base_label.sizePolicy().hasHeightForWidth())
+        self.error_stats_base_label.setSizePolicy(sizePolicy)
+        self.error_stats_base_label.setFont(font)
+
+        self.gridLayout.addWidget(self.error_stats_base_label, 0, 0, 1, 1)
+
+        self.G_long_del_lineEdit = QLineEdit(self.centralwidget)
+        self.G_long_del_lineEdit.setObjectName(u"G_long_del_lineEdit")
+
+        self.gridLayout.addWidget(self.G_long_del_lineEdit, 5, 3, 1, 1)
+
+        self.A_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.A_pre_insertion_lineEdit.setObjectName(u"A_pre_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.A_pre_insertion_lineEdit, 3, 1, 1, 1)
+
+        self.G_substitution_lineEdit = QLineEdit(self.centralwidget)
+        self.G_substitution_lineEdit.setObjectName(u"G_substitution_lineEdit")
+
+        self.gridLayout.addWidget(self.G_substitution_lineEdit, 1, 3, 1, 1)
+
+        self.one_base_del_label = QLabel(self.centralwidget)
+        self.one_base_del_label.setObjectName(u"one_base_del_label")
+
+        self.gridLayout.addWidget(self.one_base_del_label, 4, 0, 1, 1)
+
+        self.pre_insertion_label = QLabel(self.centralwidget)
+        self.pre_insertion_label.setObjectName(u"pre_insertion_label")
+
+        self.gridLayout.addWidget(self.pre_insertion_label, 3, 0, 1, 1)
+
         self.A_insertion_lineEdit = QLineEdit(self.centralwidget)
         self.A_insertion_lineEdit.setObjectName(u"A_insertion_lineEdit")
 
         self.gridLayout.addWidget(self.A_insertion_lineEdit, 2, 1, 1, 1)
+
+        self.A_long_del_lineEdit = QLineEdit(self.centralwidget)
+        self.A_long_del_lineEdit.setObjectName(u"A_long_del_lineEdit")
+
+        self.gridLayout.addWidget(self.A_long_del_lineEdit, 5, 1, 1, 1)
 
         self.G_one_base_del_lineEdit = QLineEdit(self.centralwidget)
         self.G_one_base_del_lineEdit.setObjectName(u"G_one_base_del_lineEdit")
 
         self.gridLayout.addWidget(self.G_one_base_del_lineEdit, 4, 3, 1, 1)
 
-        self.C_base_label = QLabel(self.centralwidget)
-        self.C_base_label.setObjectName(u"C_base_label")
-        self.C_base_label.setAlignment(Qt.AlignCenter)
+        self.C_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.C_pre_insertion_lineEdit.setObjectName(u"C_pre_insertion_lineEdit")
 
-        self.gridLayout.addWidget(self.C_base_label, 6, 2, 1, 1)
+        self.gridLayout.addWidget(self.C_pre_insertion_lineEdit, 3, 2, 1, 1)
+
+        self.G_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.G_pre_insertion_lineEdit.setObjectName(u"G_pre_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.G_pre_insertion_lineEdit, 3, 3, 1, 1)
+
+        self.G_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.G_insertion_lineEdit.setObjectName(u"G_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.G_insertion_lineEdit, 2, 3, 1, 1)
+
+        self.long_del_label = QLabel(self.centralwidget)
+        self.long_del_label.setObjectName(u"long_del_label")
+
+        self.gridLayout.addWidget(self.long_del_label, 5, 0, 1, 1)
+
+        self.A_one_base_del_lineEdit = QLineEdit(self.centralwidget)
+        self.A_one_base_del_lineEdit.setObjectName(u"A_one_base_del_lineEdit")
+
+        self.gridLayout.addWidget(self.A_one_base_del_lineEdit, 4, 1, 1, 1)
+
+        self.T_long_del_lineEdit = QLineEdit(self.centralwidget)
+        self.T_long_del_lineEdit.setObjectName(u"T_long_del_lineEdit")
+
+        self.gridLayout.addWidget(self.T_long_del_lineEdit, 5, 5, 1, 1)
+
+        self.G_base_label = QLabel(self.centralwidget)
+        self.G_base_label.setObjectName(u"G_base_label")
+        sizePolicy.setHeightForWidth(self.G_base_label.sizePolicy().hasHeightForWidth())
+        self.G_base_label.setSizePolicy(sizePolicy)
+        self.G_base_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.G_base_label, 6, 3, 1, 1)
+
+        self.C_long_del_lineEdit = QLineEdit(self.centralwidget)
+        self.C_long_del_lineEdit.setObjectName(u"C_long_del_lineEdit")
+
+        self.gridLayout.addWidget(self.C_long_del_lineEdit, 5, 2, 1, 1)
+
+        self.T_pre_insertion_lineEdit = QLineEdit(self.centralwidget)
+        self.T_pre_insertion_lineEdit.setObjectName(u"T_pre_insertion_lineEdit")
+
+        self.gridLayout.addWidget(self.T_pre_insertion_lineEdit, 3, 5, 1, 1)
+
+        self.C_substitution_lineEdit = QLineEdit(self.centralwidget)
+        self.C_substitution_lineEdit.setObjectName(u"C_substitution_lineEdit")
+
+        self.gridLayout.addWidget(self.C_substitution_lineEdit, 1, 2, 1, 1)
 
 
         self.verticalLayout_3.addLayout(self.gridLayout)
@@ -404,8 +432,8 @@ class Ui_dnaSimulator(object):
 
         self.run_error_simulator_PushButton = QPushButton(self.centralwidget)
         self.run_error_simulator_PushButton.setObjectName(u"run_error_simulator_PushButton")
-        sizePolicy1.setHeightForWidth(self.run_error_simulator_PushButton.sizePolicy().hasHeightForWidth())
-        self.run_error_simulator_PushButton.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.run_error_simulator_PushButton.sizePolicy().hasHeightForWidth())
+        self.run_error_simulator_PushButton.setSizePolicy(sizePolicy2)
         self.run_error_simulator_PushButton.setLayoutDirection(Qt.LeftToRight)
         self.run_error_simulator_PushButton.setAutoFillBackground(False)
 
@@ -418,10 +446,57 @@ class Ui_dnaSimulator(object):
 
         self.verticalLayout_3.addLayout(self.execute_horizontalLayout)
 
+        self.line_6 = QFrame(self.centralwidget)
+        self.line_6.setObjectName(u"line_6")
+        self.line_6.setFrameShape(QFrame.HLine)
+        self.line_6.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_3.addWidget(self.line_6)
+
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_progress = QLabel(self.centralwidget)
+        self.label_progress.setObjectName(u"label_progress")
+        sizePolicy1.setHeightForWidth(self.label_progress.sizePolicy().hasHeightForWidth())
+        self.label_progress.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_4.addWidget(self.label_progress)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.progressBar = QProgressBar(self.centralwidget)
+        self.progressBar.setObjectName(u"progressBar")
+        sizePolicy1.setHeightForWidth(self.progressBar.sizePolicy().hasHeightForWidth())
+        self.progressBar.setSizePolicy(sizePolicy1)
+        self.progressBar.setValue(0)
+
+        self.horizontalLayout_5.addWidget(self.progressBar)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
+
+        self.verticalLayout_3.addLayout(self.verticalLayout)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_3.addItem(self.verticalSpacer)
+
         dnaSimulator.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(dnaSimulator)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 631, 21))
+        self.menubar.setGeometry(QRect(0, 0, 676, 21))
         dnaSimulator.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(dnaSimulator)
         self.statusbar.setObjectName(u"statusbar")
@@ -450,17 +525,18 @@ class Ui_dnaSimulator(object):
         self.insertion_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Insertion", None))
         self.one_base_del_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"1-base Deletion", None))
         self.long_del_lineEdit.setPlaceholderText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
-        self.G_base_label.setText(QCoreApplication.translate("dnaSimulator", u"G", None))
+        self.Insertion_label.setText(QCoreApplication.translate("dnaSimulator", u"Insertion", None))
         self.empty_label.setText("")
-        self.long_del_label.setText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
-        self.one_base_del_label.setText(QCoreApplication.translate("dnaSimulator", u"1-base Deletion", None))
-        self.pre_insertion_label.setText(QCoreApplication.translate("dnaSimulator", u"pre-insertion", None))
+        self.C_base_label.setText(QCoreApplication.translate("dnaSimulator", u"C", None))
+        self.A_base_label.setText(QCoreApplication.translate("dnaSimulator", u"A", None))
         self.Substitution_label.setText(QCoreApplication.translate("dnaSimulator", u"Substitution", None))
         self.T_base_label.setText(QCoreApplication.translate("dnaSimulator", u"T", None))
         self.error_stats_base_label.setText(QCoreApplication.translate("dnaSimulator", u"Error statistics per base:", None))
-        self.A_base_label.setText(QCoreApplication.translate("dnaSimulator", u"A", None))
-        self.Insertion_label.setText(QCoreApplication.translate("dnaSimulator", u"Insertion", None))
-        self.C_base_label.setText(QCoreApplication.translate("dnaSimulator", u"C", None))
+        self.one_base_del_label.setText(QCoreApplication.translate("dnaSimulator", u"1-base Deletion", None))
+        self.pre_insertion_label.setText(QCoreApplication.translate("dnaSimulator", u"pre-insertion", None))
+        self.long_del_label.setText(QCoreApplication.translate("dnaSimulator", u"Long Deletion", None))
+        self.G_base_label.setText(QCoreApplication.translate("dnaSimulator", u"G", None))
         self.run_error_simulator_PushButton.setText(QCoreApplication.translate("dnaSimulator", u"Run error simulator", None))
+        self.label_progress.setText("")
     # retranslateUi
 
