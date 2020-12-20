@@ -7,7 +7,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 import sys
-from sys import platform
+import platform
 
 import dnaSimulator_ui
 from simulator import *
@@ -337,13 +337,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                 error_sim.simulate_errors(self.report_func)
                 # os.system('hyb.exe')
                 self.progressBar.setValue(0)
-                if platform == "linux" or platform == "linux2":
+                if platform.system() == "Linux" or platform == "linux2":
                     # linux
                     pass
-                elif platform == "darwin":
+                elif platform.system() == "Darwin":
                     # OS X
                     subprocess.run('./DNA')
-                elif platform == "win32":
+                elif platform.system() == "Windows":
                     # Windows...
                     # os.system('hyb.exe')
                     subprocess.run('hyb.exe')

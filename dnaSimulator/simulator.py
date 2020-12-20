@@ -85,6 +85,8 @@ class Simulator:
             for line in input_f:
                 num_values += 1
 
+        # TODO: allow user input
+        # TODO: allow user-defined function OR free random vector
         # generate number of copies for each strand, as the number of strands:
         # https://stackoverflow.com/questions/24854965/create-random-numbers-with-left-skewed-probability-distribution
         max_value = 499
