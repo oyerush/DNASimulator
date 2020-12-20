@@ -99,7 +99,7 @@ class Simulator:
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
         i = 0
         with open(self.input_path, 'r') as input_f:
-            with open('HeadEvyaLuis.txt', 'w') as output_f:
+            with open('evyat.txt', 'w') as output_f:
                 for line in input_f:
                     report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
