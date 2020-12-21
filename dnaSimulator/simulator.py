@@ -2,6 +2,8 @@
 
 import strand_error_sim
 import copy
+import platform
+import subprocess
 from scipy.stats import skewnorm
 
 
@@ -138,7 +140,7 @@ class Simulator:
         mess_output_strands()
 
 def mess_output_strands():
-    output_f = open('errors_messed', 'w')
+    output_f = open('errors_temp.txt', 'w')
     with open('evyat.txt', 'r') as errors_f:
         try:
             # skip first line and ****:
@@ -159,6 +161,18 @@ def mess_output_strands():
         except StopIteration:
             output_f.close()
     output_f.close()
+
+    if platform.system() == "Linux":
+        # linux
+        args = ['./shuf_linux', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
+    elif platform.system() == "Darwin":
+        # OS X
+        args = ['./shuf_mac', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
+    elif platform.system() == "Windows":
+        args = ['./shuf_windows', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
 
 
 def parse_rate(rate_str) -> float:
