@@ -165,7 +165,7 @@ def mess_output_strands():
 
     if platform.system() == "Linux":
         # linux
-        args = ['./shuffle_prog/shuf_linux', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        args = ['shuf', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
         subprocess.run(args)
     elif platform.system() == "Darwin":
         # OS X
