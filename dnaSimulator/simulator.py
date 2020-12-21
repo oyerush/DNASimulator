@@ -172,7 +172,7 @@ def mess_output_strands():
         args = ['./shuffle_prog/shuf_mac', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
         subprocess.run(args)
     elif platform.system() == "Windows":
-        args = ['./shuffle_prog/shuf_windows', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        args = ['./shuffle_prog/shuf_windows.exe', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
         subprocess.run(args)
     os.remove('errors_temp.txt')
 
