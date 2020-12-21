@@ -140,7 +140,13 @@ class Simulator:
         # mess the order of the output strands into a new file:
         mess_output_strands()
 
+
 def mess_output_strands():
+    """
+    Messes the output strands.
+    Creates a temporary file from the evyat.txt to run the shuffle program on it,
+    and creates a new output file errors_shuffled.txt with all output strands shuffled and not clustered.
+    """
     output_f = open('errors_temp.txt', 'w')
     with open('evyat.txt', 'r') as errors_f:
         try:
