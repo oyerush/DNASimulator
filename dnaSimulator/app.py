@@ -342,11 +342,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                     pass
                 elif platform.system() == "Darwin":
                     # OS X
-                    subprocess.run('./DNA')
+                    subprocess.run('./reconstruction_algs/DNA')
                 elif platform.system() == "Windows":
                     # Windows...
                     # os.system('hyb.exe')
-                    subprocess.run('hyb.exe')
+                    subprocess.run('reconstruction_algs/hyb.exe')
                 self.label_progress.setText('We are done :)')
                 self.progressBar.setValue(100)
                 self.progressBar.setVisible(False)
