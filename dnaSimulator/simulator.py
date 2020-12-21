@@ -134,6 +134,33 @@ class Simulator:
 
                     i += 1
 
+        # mess the order of the output strands into a new file:
+        mess_output_strands()
+
+def mess_output_strands():
+    output_f = open('errors_messed', 'w')
+    with open('evyat.txt', 'r') as errors_f:
+        try:
+            # skip first line and ****:
+            next(errors_f)
+            next(errors_f)
+
+            # iterate over output strands and skip origin and **** each time.
+            # at this point, current line is the first output strand.
+            for line in errors_f:
+                if line == '\n':
+                    # skip current line and another \n + 2 lines:
+                    next(errors_f)  # first \n skipped, pointing to another \n now
+                    next(errors_f)  # second \n skipped, pointing to origin strand now
+                    next(errors_f)  # origin strand skipped, pointing to **** line.
+                    # now next iteration will point to next output strand
+                else:
+                    output_f.write(line)
+        except StopIteration:
+            output_f.close()
+    output_f.close()
+
+
 def parse_rate(rate_str) -> float:
     """
     Parses string of a single string of a numeric value representing a rate.
