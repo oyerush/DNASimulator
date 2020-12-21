@@ -4,6 +4,7 @@ import strand_error_sim
 import copy
 import platform
 import subprocess
+import os
 from scipy.stats import skewnorm
 
 
@@ -173,6 +174,7 @@ def mess_output_strands():
     elif platform.system() == "Windows":
         args = ['./shuffle_prog/shuf_windows', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
         subprocess.run(args)
+    os.remove('errors_temp.txt')
 
 
 def parse_rate(rate_str) -> float:
