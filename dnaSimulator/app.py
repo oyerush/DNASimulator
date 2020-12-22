@@ -316,9 +316,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
 
     def report_func(self, total_lines, curr_line):
         percent = int(curr_line * 100 // total_lines)
-        self.progressBar.setValue(percent+1)
+        self.progressBar.setValue(percent + 1)
         # print('total: ' + str(total_lines) + 'curr: ' + str(curr_line))
-        if percent+1 == 99:
+        if percent + 1 == 99:
             self.label_progress.setText('Running reconstruction, please wait!')
 
     def runErrorSimulator(self):
@@ -330,18 +330,38 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                 self.file_path_lineEdit.clear()
                 break
             else:
-                error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
+                self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath)
+                self.worker.start()
+                self.worker.finished.connect(self.evt_worker_finished)
+                # error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
                 self.progressBar.setVisible(True)
                 self.label_progress.setText('Injecting errors, please wait!')
-                error_sim.simulate_errors(self.report_func)
+                # error_sim.simulate_errors(self.report_func)
                 # os.system('hyb.exe')
                 self.progressBar.setValue(0)
-                subprocess.run('hyb.exe')
-                self.label_progress.setText('We are done :)')
-                self.progressBar.setValue(100)
-                self.progressBar.setVisible(False)
+                # subprocess.run('hyb.exe')
+
+
+
                 break
 
+    def evt_worker_finished(self):
+        self.label_progress.setText('We are done :)')
+        self.progressBar.setValue(100)
+        self.progressBar.setVisible(False)
+
+class SimulateErrorsWorker(QThread):
+    def __init__(self, general_errors, per_base_errors, input_dna_path):
+        super(SimulateErrorsWorker, self).__init__()
+        self.general_errors = general_errors
+        self.per_base_errors = per_base_errors
+        self.inputDNAPath = input_dna_path
+
+    def run(self):
+        error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
+        error_sim.simulate_errors()
+        subprocess.run('hyb.exe')
+        # error_sim.simulate_errors(self.report_func)
 
 
 if __name__ == '__main__':
