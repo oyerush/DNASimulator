@@ -1,4 +1,5 @@
 # Module: simulator.py
+from PyQt5.QtCore import pyqtSignal
 
 import strand_error_sim
 import copy
@@ -57,7 +58,7 @@ class Simulator:
         self.input_path = input_path
         self.is_stutter_method = is_stutter_method
 
-    def simulate_errors(self):
+    def simulate_errors(self, report_func):
         """
         Simulates strands duplication with errors on the strands from the input file.
         Writes the output in HeadEvyaLuis.txt file in the following format:
@@ -101,7 +102,7 @@ class Simulator:
         with open(self.input_path, 'r') as input_f:
             with open('HeadEvyaLuis.txt', 'w') as output_f:
                 for line in input_f:
-                    # report_func(num_values, i)
+                    report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
                     original_strand = line
                     # strip the strand from newline:

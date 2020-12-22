@@ -3,9 +3,11 @@ import subprocess
 import time
 
 from PySide2 import QtGui, QtWidgets
-from PySide2.QtCore import *
+# from PySide2.QtCore import *
+from PyQt5.QtCore import *
 from PySide2.QtGui import *
-from PySide2.QtWidgets import *
+# from PySide2.QtWidgets import *
+from PyQt5.QtWidgets import *
 import sys
 
 import dnaSimulator_ui
@@ -314,13 +316,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
 
             retval = msg.exec_()
 
-    def report_func(self, total_lines, curr_line):
-        percent = int(curr_line * 100 // total_lines)
-        self.progressBar.setValue(percent + 1)
-        # print('total: ' + str(total_lines) + 'curr: ' + str(curr_line))
-        if percent + 1 == 99:
-            self.label_progress.setText('Running reconstruction, please wait!')
-
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
         while True:
@@ -332,16 +327,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             else:
                 self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath)
                 self.worker.start()
-                self.worker.finished.connect(self.evt_worker_finished)
-                # error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
-                self.progressBar.setVisible(True)
                 self.label_progress.setText('Injecting errors, please wait!')
-                # error_sim.simulate_errors(self.report_func)
-                # os.system('hyb.exe')
-                self.progressBar.setValue(0)
-                # subprocess.run('hyb.exe')
-
-
+                self.worker.finished.connect(self.evt_worker_finished)
+                self.worker.update_progress.connect(self.evt_update_progress)
+                self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
+                self.progressBar.setVisible(True)
 
                 break
 
@@ -350,18 +340,34 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.progressBar.setValue(100)
         self.progressBar.setVisible(False)
 
+    def evt_update_progress(self, val):
+        self.progressBar.setValue(val + 1)
+
+    def evt_update_error_finished(self, val):
+        if val == 'error_sim_finished':
+            self.label_progress.setText('Running reconstruction, please wait!')
+            self.progressBar.setValue(0)
+
+
 class SimulateErrorsWorker(QThread):
+    update_progress = pyqtSignal(int)
+    update_error_sim_finished = pyqtSignal(str)
+
     def __init__(self, general_errors, per_base_errors, input_dna_path):
         super(SimulateErrorsWorker, self).__init__()
         self.general_errors = general_errors
         self.per_base_errors = per_base_errors
         self.inputDNAPath = input_dna_path
 
+    def report_func(self, total_lines, curr_line):
+        percent = int(curr_line * 100 // total_lines)
+        self.update_progress.emit(percent)
+
     def run(self):
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
-        error_sim.simulate_errors()
+        error_sim.simulate_errors(self.report_func)
+        self.update_error_sim_finished.emit('error_sim_finished')
         subprocess.run('hyb.exe')
-        # error_sim.simulate_errors(self.report_func)
 
 
 if __name__ == '__main__':
