@@ -3,6 +3,9 @@ from PyQt5.QtCore import pyqtSignal
 
 import strand_error_sim
 import copy
+import platform
+import subprocess
+import os
 from scipy.stats import skewnorm
 
 
@@ -86,6 +89,8 @@ class Simulator:
             for line in input_f:
                 num_values += 1
 
+        # TODO: allow user input
+        # TODO: allow user-defined function OR free random vector
         # generate number of copies for each strand, as the number of strands:
         # https://stackoverflow.com/questions/24854965/create-random-numbers-with-left-skewed-probability-distribution
         max_value = 499
@@ -100,7 +105,7 @@ class Simulator:
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
         i = 0
         with open(self.input_path, 'r') as input_f:
-            with open('HeadEvyaLuis.txt', 'w') as output_f:
+            with open('evyat.txt', 'w') as output_f:
                 for line in input_f:
                     report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
@@ -132,6 +137,52 @@ class Simulator:
                     output_f.write('\n\n')
 
                     i += 1
+
+        # mess the order of the output strands into a new file:
+        mess_output_strands()
+
+
+def mess_output_strands():
+    """
+    Messes the output strands.
+    Creates a temporary file from the evyat.txt to run the shuffle program on it,
+    and creates a new output file errors_shuffled.txt with all output strands shuffled and not clustered.
+    """
+    output_f = open('errors_temp.txt', 'w')
+    with open('evyat.txt', 'r') as errors_f:
+        try:
+            # skip first line and ****:
+            next(errors_f)
+            next(errors_f)
+
+            # iterate over output strands and skip origin and **** each time.
+            # at this point, current line is the first output strand.
+            for line in errors_f:
+                if line == '\n':
+                    # skip current line and another \n + 2 lines:
+                    next(errors_f)  # first \n skipped, pointing to another \n now
+                    next(errors_f)  # second \n skipped, pointing to origin strand now
+                    next(errors_f)  # origin strand skipped, pointing to **** line.
+                    # now next iteration will point to next output strand
+                else:
+                    output_f.write(line)
+        except StopIteration:
+            output_f.close()
+    output_f.close()
+
+    if platform.system() == "Linux":
+        # linux
+        args = ['shuf', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
+    elif platform.system() == "Darwin":
+        # OS X
+        args = ['./shuffle_prog/shuf_mac', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
+    elif platform.system() == "Windows":
+        args = ['./shuffle_prog/shuf_windows.exe', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        subprocess.run(args)
+    os.remove('errors_temp.txt')
+
 
 def parse_rate(rate_str) -> float:
     """

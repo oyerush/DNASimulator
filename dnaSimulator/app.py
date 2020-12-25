@@ -368,7 +368,15 @@ class SimulateErrorsWorker(QThread):
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
         error_sim.simulate_errors(self.report_func)
         self.update_error_sim_finished.emit('error_sim_finished')
-        subprocess.run('hyb.exe')
+        if platform.system() == "Linux" or platform == "linux2":
+            # linux
+            pass
+        elif platform.system() == "Darwin":
+            # OS X
+            subprocess.run('./reconstruction_algs/DNA')
+        elif platform.system() == "Windows":
+            # Windows...
+            subprocess.run('reconstruction_algs/hyb.exe')
 
 
 if __name__ == '__main__':
