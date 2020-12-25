@@ -19,6 +19,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+
+        # set the title
+        self.setWindowTitle('DNA Simulator')
+
         self.inputDNAPath = ""
 
         # initialize general errors
