@@ -9,6 +9,7 @@ from PySide2.QtGui import *
 # from PySide2.QtWidgets import *
 from PyQt5.QtWidgets import *
 import sys
+import platform
 
 import dnaSimulator_ui
 from simulator import *
@@ -302,7 +303,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
     #     # print(self.sub_value + ', ' + self.insertion_value + ', ' + self.one_base_del + ', ' + self.log_del)
 
     def show_error_dialog(self, error_type):
-        if (error_type == 'no_such_file'):
+        if error_type == 'no_such_file':
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
