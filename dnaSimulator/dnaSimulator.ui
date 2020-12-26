@@ -352,12 +352,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="1" column="5">
        <widget class="SpinBoxCustom" name="T_substitution_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -372,6 +378,9 @@
        <widget class="SpinBoxCustom" name="G_substitution_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -402,6 +411,9 @@
        <widget class="SpinBoxCustom" name="A_insertion_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -449,12 +461,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="2" column="2">
        <widget class="SpinBoxCustom" name="C_insertion_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -523,12 +541,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="2" column="3">
        <widget class="SpinBoxCustom" name="G_insertion_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -537,12 +561,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="3" column="2">
        <widget class="SpinBoxCustom" name="C_pre_insertion_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -551,12 +581,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="3" column="5">
        <widget class="SpinBoxCustom" name="T_pre_insertion_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -565,12 +601,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="4" column="2">
        <widget class="SpinBoxCustom" name="C_one_base_del_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -579,12 +621,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="4" column="5">
        <widget class="SpinBoxCustom" name="T_one_base_del_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -593,12 +641,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="6" column="2">
        <widget class="SpinBoxCustom" name="C_long_del_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -607,12 +661,18 @@
         <property name="decimals">
          <number>10</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="6" column="5">
        <widget class="SpinBoxCustom" name="T_long_del_doubleSpinBox">
         <property name="decimals">
          <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
