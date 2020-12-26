@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>676</width>
-    <height>618</height>
+    <height>755</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -347,78 +347,42 @@
       <property name="verticalSpacing">
        <number>10</number>
       </property>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="A_substitution_lineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="Insertion_label">
-        <property name="text">
-         <string>Insertion</string>
+      <item row="1" column="2">
+       <widget class="SpinBoxCustom" name="C_substitution_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QLineEdit" name="C_insertion_lineEdit"/>
+      <item row="1" column="5">
+       <widget class="SpinBoxCustom" name="T_substitution_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
       </item>
-      <item row="6" column="0">
+      <item row="4" column="0">
+       <widget class="QLabel" name="one_base_del_label">
+        <property name="text">
+         <string>1-base Deletion</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="SpinBoxCustom" name="G_substitution_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
        <widget class="QLabel" name="empty_label">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="6" column="2">
-       <widget class="QLabel" name="C_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>C</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QLineEdit" name="C_one_base_del_lineEdit"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLabel" name="A_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>A</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5">
-       <widget class="QLineEdit" name="T_insertion_lineEdit"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="Substitution_label">
-        <property name="text">
-         <string>Substitution</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QLineEdit" name="T_substitution_lineEdit"/>
-      </item>
-      <item row="6" column="5">
+      <item row="7" column="5">
        <widget class="QLabel" name="T_base_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -434,8 +398,72 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="5">
-       <widget class="QLineEdit" name="T_one_base_del_lineEdit"/>
+      <item row="2" column="1">
+       <widget class="SpinBoxCustom" name="A_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="pre_insertion_label">
+        <property name="text">
+         <string>pre-insertion</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLabel" name="G_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>G</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="C_base_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="SpinBoxCustom" name="T_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="SpinBoxCustom" name="C_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="Insertion_label">
+        <property name="text">
+         <string>Insertion</string>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="error_stats_base_label">
@@ -457,84 +485,136 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
-       <widget class="QLineEdit" name="G_long_del_lineEdit"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="A_pre_insertion_lineEdit"/>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="G_substitution_lineEdit"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="one_base_del_label">
-        <property name="text">
-         <string>1-base Deletion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="pre_insertion_label">
-        <property name="text">
-         <string>pre-insertion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="A_insertion_lineEdit"/>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="A_long_del_lineEdit"/>
-      </item>
-      <item row="4" column="3">
-       <widget class="QLineEdit" name="G_one_base_del_lineEdit"/>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLineEdit" name="C_pre_insertion_lineEdit"/>
-      </item>
-      <item row="3" column="3">
-       <widget class="QLineEdit" name="G_pre_insertion_lineEdit"/>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLineEdit" name="G_insertion_lineEdit"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="long_del_label">
-        <property name="text">
-         <string>Long Deletion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="A_one_base_del_lineEdit"/>
-      </item>
-      <item row="5" column="5">
-       <widget class="QLineEdit" name="T_long_del_lineEdit"/>
-      </item>
-      <item row="6" column="3">
-       <widget class="QLabel" name="G_base_label">
+      <item row="7" column="1">
+       <widget class="QLabel" name="A_base_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="text">
-         <string>G</string>
+         <string>A</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QLineEdit" name="C_long_del_lineEdit"/>
+      <item row="6" column="0">
+       <widget class="QLabel" name="long_del_label">
+        <property name="text">
+         <string>Long Deletion</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="Substitution_label">
+        <property name="text">
+         <string>Substitution</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="SpinBoxCustom" name="A_substitution_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="SpinBoxCustom" name="G_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="SpinBoxCustom" name="A_pre_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="SpinBoxCustom" name="C_pre_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="SpinBoxCustom" name="G_pre_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
       </item>
       <item row="3" column="5">
-       <widget class="QLineEdit" name="T_pre_insertion_lineEdit"/>
+       <widget class="SpinBoxCustom" name="T_pre_insertion_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="C_substitution_lineEdit"/>
+      <item row="4" column="1">
+       <widget class="SpinBoxCustom" name="A_one_base_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="SpinBoxCustom" name="C_one_base_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="SpinBoxCustom" name="G_one_base_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="5">
+       <widget class="SpinBoxCustom" name="T_one_base_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="SpinBoxCustom" name="A_long_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="SpinBoxCustom" name="C_long_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="SpinBoxCustom" name="G_long_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="5">
+       <widget class="SpinBoxCustom" name="T_long_del_doubleSpinBox">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -624,20 +704,20 @@
           </property>
          </widget>
         </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>5</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>5</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -688,6 +768,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SpinBoxCustom</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>SpinBoxCustom.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

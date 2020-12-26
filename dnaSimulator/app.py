@@ -12,6 +12,7 @@ import sys
 import platform
 
 import dnaSimulator_ui
+# from SpinBoxCustom import SpinBoxCustom
 from simulator import *
 
 
@@ -63,30 +64,36 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.textChanged.connect(self.set_long_del)
 
         # connect the lineEdits of per base errors
-        self.A_substitution_lineEdit.textChanged.connect(self.set_A_substitution)
-        self.C_substitution_lineEdit.textChanged.connect(self.set_C_substitution)
-        self.G_substitution_lineEdit.textChanged.connect(self.set_G_substitution)
-        self.T_substitution_lineEdit.textChanged.connect(self.set_T_substitution)
+        self.A_substitution_doubleSpinBox.textChanged.connect(self.set_A_substitution)
+        self.C_substitution_doubleSpinBox.textChanged.connect(self.set_C_substitution)
+        self.G_substitution_doubleSpinBox.textChanged.connect(self.set_G_substitution)
+        self.T_substitution_doubleSpinBox.textChanged.connect(self.set_T_substitution)
 
-        self.A_insertion_lineEdit.textChanged.connect(self.set_A_insertion)
-        self.C_insertion_lineEdit.textChanged.connect(self.set_C_insertion)
-        self.G_insertion_lineEdit.textChanged.connect(self.set_G_insertion)
-        self.T_insertion_lineEdit.textChanged.connect(self.set_T_insertion)
+        self.A_insertion_doubleSpinBox.textChanged.connect(self.set_A_insertion)
+        self.C_insertion_doubleSpinBox.textChanged.connect(self.set_C_insertion)
+        self.G_insertion_doubleSpinBox.textChanged.connect(self.set_G_insertion)
+        self.T_insertion_doubleSpinBox.textChanged.connect(self.set_T_insertion)
 
-        self.A_pre_insertion_lineEdit.textChanged.connect(self.set_A_pre_insertion)
-        self.C_pre_insertion_lineEdit.textChanged.connect(self.set_C_pre_insertion)
-        self.G_pre_insertion_lineEdit.textChanged.connect(self.set_G_pre_insertion)
-        self.T_pre_insertion_lineEdit.textChanged.connect(self.set_T_pre_insertion)
+        self.A_pre_insertion_doubleSpinBox.textChanged.connect(self.set_A_pre_insertion)
+        self.C_pre_insertion_doubleSpinBox.textChanged.connect(self.set_C_pre_insertion)
+        self.G_pre_insertion_doubleSpinBox.textChanged.connect(self.set_G_pre_insertion)
+        self.T_pre_insertion_doubleSpinBox.textChanged.connect(self.set_T_pre_insertion)
 
-        self.A_one_base_del_lineEdit.textChanged.connect(self.set_A_one_base_del)
-        self.C_one_base_del_lineEdit.textChanged.connect(self.set_C_one_base_del)
-        self.G_one_base_del_lineEdit.textChanged.connect(self.set_G_one_base_del)
-        self.T_one_base_del_lineEdit.textChanged.connect(self.set_T_one_base_del)
+        self.A_one_base_del_doubleSpinBox.textChanged.connect(self.set_A_one_base_del)
+        self.C_one_base_del_doubleSpinBox.textChanged.connect(self.set_C_one_base_del)
+        self.G_one_base_del_doubleSpinBox.textChanged.connect(self.set_G_one_base_del)
+        self.T_one_base_del_doubleSpinBox.textChanged.connect(self.set_T_one_base_del)
 
-        self.A_long_del_lineEdit.textChanged.connect(self.set_A_long_del)
-        self.C_long_del_lineEdit.textChanged.connect(self.set_C_long_del)
-        self.G_long_del_lineEdit.textChanged.connect(self.set_G_long_del)
-        self.T_long_del_lineEdit.textChanged.connect(self.set_T_long_del)
+        self.A_long_del_doubleSpinBox.textChanged.connect(self.set_A_long_del)
+        self.C_long_del_doubleSpinBox.textChanged.connect(self.set_C_long_del)
+        self.G_long_del_doubleSpinBox.textChanged.connect(self.set_G_long_del)
+        self.T_long_del_doubleSpinBox.textChanged.connect(self.set_T_long_del)
+
+        # self.spinBoxCustom = SpinBoxCustom(self.centralwidget)
+        # self.spinBoxCustom.setMaximum(1.0)
+        # self.spinBoxCustom.setDecimals(10)
+        # self.spinBoxCustom.setObjectName("doubleSpinBox")
+        # self.verticalLayout_3.addWidget(self.spinBoxCustom)
 
     def set_substitution(self, value):
         self.general_errors['s'] = value
@@ -210,34 +217,34 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             self.set_Y16_values()
 
     def set_per_base_substitution(self, a, c, g, t):
-        self.A_substitution_lineEdit.setText(a)
-        self.C_substitution_lineEdit.setText(c)
-        self.G_substitution_lineEdit.setText(g)
-        self.T_substitution_lineEdit.setText(t)
+        self.A_substitution_doubleSpinBox.setValue(a)
+        self.C_substitution_doubleSpinBox.setValue(c)
+        self.G_substitution_doubleSpinBox.setValue(g)
+        self.T_substitution_doubleSpinBox.setValue(t)
 
     def set_per_base_insertion(self, a, c, g, t):
-        self.A_insertion_lineEdit.setText(a)
-        self.C_insertion_lineEdit.setText(c)
-        self.G_insertion_lineEdit.setText(g)
-        self.T_insertion_lineEdit.setText(t)
+        self.A_insertion_doubleSpinBox.setValue(a)
+        self.C_insertion_doubleSpinBox.setValue(c)
+        self.G_insertion_doubleSpinBox.setValue(g)
+        self.T_insertion_doubleSpinBox.setValue(t)
 
     def set_per_base_pre_insertion(self, a, c, g, t):
-        self.A_pre_insertion_lineEdit.setText(a)
-        self.C_pre_insertion_lineEdit.setText(c)
-        self.G_pre_insertion_lineEdit.setText(g)
-        self.T_pre_insertion_lineEdit.setText(t)
+        self.A_pre_insertion_doubleSpinBox.setValue(a)
+        self.C_pre_insertion_doubleSpinBox.setValue(c)
+        self.G_pre_insertion_doubleSpinBox.setValue(g)
+        self.T_pre_insertion_doubleSpinBox.setValue(t)
 
     def set_per_base_del(self, a, c, g, t):
-        self.A_one_base_del_lineEdit.setText(a)
-        self.C_one_base_del_lineEdit.setText(c)
-        self.G_one_base_del_lineEdit.setText(g)
-        self.T_one_base_del_lineEdit.setText(t)
+        self.A_one_base_del_doubleSpinBox.setValue(a)
+        self.C_one_base_del_doubleSpinBox.setValue(c)
+        self.G_one_base_del_doubleSpinBox.setValue(g)
+        self.T_one_base_del_doubleSpinBox.setValue(t)
 
     def set_per_base_long_del(self, a, c, g, t):
-        self.A_long_del_lineEdit.setText(a)
-        self.C_long_del_lineEdit.setText(c)
-        self.G_long_del_lineEdit.setText(g)
-        self.T_long_del_lineEdit.setText(t)
+        self.A_long_del_doubleSpinBox.setValue(a)
+        self.C_long_del_doubleSpinBox.setValue(c)
+        self.G_long_del_doubleSpinBox.setValue(g)
+        self.T_long_del_doubleSpinBox.setValue(t)
 
     def set_EZ17_values(self):
         # general errors
@@ -247,11 +254,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('2.33E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.00135', '0.00135', '0.00126', '0.00132')
-        self.set_per_base_insertion('0.00057', '0.00059', '0.00059', '0.00058')
-        self.set_per_base_pre_insertion('0.00059', '0.00058', '0.00057', '0.00058')
-        self.set_per_base_del('0.00099', '0.00098', '0.00094', '0.00096')
-        self.set_per_base_long_del('0.00024', '0.00023', '0.00023', '0.00023')
+        self.set_per_base_substitution(0.00135, 0.00135, 0.00126, 0.00132)
+        self.set_per_base_insertion(0.00057, 0.00059, 0.00059, 0.00058)
+        self.set_per_base_pre_insertion(0.00059, 0.00058, 0.00057, 0.00058)
+        self.set_per_base_del(0.00099, 0.00098, 0.00094, 0.00096)
+        self.set_per_base_long_del(0.00024, 0.00023, 0.00023, 0.00023)
 
     def set_O17_values(self):
         # general errors
@@ -261,11 +268,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('4.79E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.00724', '0.00701', '0.00706', '0.00704')
-        self.set_per_base_insertion('0.00411', '0.00415', '0.00415', '0.00413')
-        self.set_per_base_pre_insertion('0.00429', '0.00415', '0.00403', '0.00408')
-        self.set_per_base_del('0.00289', '0.00279', '0.00276', '0.0028')
-        self.set_per_base_long_del('0.00048', '0.00048', '0.00047', '0.00049')
+        self.set_per_base_substitution(0.00724, 0.00701, 0.00706, 0.00704)
+        self.set_per_base_insertion(0.00411, 0.00415, 0.00415, 0.00413)
+        self.set_per_base_pre_insertion(0.00429, 0.00415, 0.00403, 0.00408)
+        self.set_per_base_del(0.00289, 0.00279, 0.00276, 0.0028)
+        self.set_per_base_long_del(0.00048, 0.00048, 0.00047, 0.00049)
 
     def set_G15_values(self):
         # general errors
@@ -275,11 +282,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('3.48E-04')
 
         # per base errors
-        self.set_per_base_substitution('0.00605', '0.00563', '0.00577', '0.00591')
-        self.set_per_base_insertion('0.0009', '0.00083', '0.00085', '0.00084')
-        self.set_per_base_pre_insertion('0.00092', '0.00081', '0.00087', '0.00084')
-        self.set_per_base_del('0.00543', '0.00513', '0.00539', '0.00559')
-        self.set_per_base_long_del('0.00036', '0.00034', '0.00034', '0.00036')
+        self.set_per_base_substitution(0.00605, 0.00563, 0.00577, 0.00591)
+        self.set_per_base_insertion(0.0009, 0.00083, 0.00085, 0.00084)
+        self.set_per_base_pre_insertion(0.00092, 0.00081, 0.00087, 0.00084)
+        self.set_per_base_del(0.00543, 0.00513, 0.00539, 0.00559)
+        self.set_per_base_long_del(0.00036, 0.00034, 0.00034, 0.00036)
 
     def set_Y16_values(self):
         # general errors
@@ -289,11 +296,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.long_del_lineEdit.setText('1.87E-02')
 
         # per base errors
-        self.set_per_base_substitution('0.119', '0.133', '0.112', '0.119')
-        self.set_per_base_insertion('0.331', '0.406', '0.361', '0.367')
-        self.set_per_base_pre_insertion('0.332', '0.408', '0.341', '0.382')
-        self.set_per_base_del('0.044', '0.048', '0.040', '0.041')
-        self.set_per_base_long_del('0.019', '0.021', '0.017', '0.018')
+        self.set_per_base_substitution(0.119, 0.133, 0.112, 0.119)
+        self.set_per_base_insertion(0.331, 0.406, 0.361, 0.367)
+        self.set_per_base_pre_insertion(0.332, 0.408, 0.341, 0.382)
+        self.set_per_base_del(0.044, 0.048, 0.040, 0.041)
+        self.set_per_base_long_del(0.019, 0.021, 0.017, 0.018)
 
     def openFileDialog(self):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
