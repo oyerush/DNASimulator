@@ -42,12 +42,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
             'T': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''}
         }
 
+        self.reconstruction_algo = ''
+
         self.progressBar.setVisible(False)
 
         # connect push buttons to an event
         self.browse_PushButton.clicked.connect(self.openFileDialog)
         # self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
         self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
+        self.reconstruction_run_pushButton.clicked.connect(self.run_reconstruction_algo)
 
         # connect radio buttons to an event
         self.Ilumina_miSeq_radioButton.toggled.connect(self.ilumina_miSeq_chosen)
@@ -89,11 +92,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.G_long_del_doubleSpinBox.textChanged.connect(self.set_G_long_del)
         self.T_long_del_doubleSpinBox.textChanged.connect(self.set_T_long_del)
 
-        # self.spinBoxCustom = SpinBoxCustom(self.centralwidget)
-        # self.spinBoxCustom.setMaximum(1.0)
-        # self.spinBoxCustom.setDecimals(10)
-        # self.spinBoxCustom.setObjectName("doubleSpinBox")
-        # self.verticalLayout_3.addWidget(self.spinBoxCustom)
+        self.reconstruction_listWidget.addItem('Hybrid')
+        self.reconstruction_listWidget.addItem('Not a real algo')
+
+        self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
+
+
+    def set_reconstruction_algo(self):
+        self.reconstruction_algo = self.reconstruction_listWidget.currentItem().text()
+        print(self.reconstruction_algo)
 
     def set_substitution(self, value):
         self.general_errors['s'] = value
@@ -306,13 +313,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
         self.file_path_lineEdit.setText(self.inputDNAPath)
 
-    # def setErrorValues(self):
-    #     self.sub_value = self.substitution_lineEdit.text()
-    #     self.insertion_value = self.insertion_lineEdit.text()
-    #     self.one_base_del_value = self.one_base_del_lineEdit.text()
-    #     self.log_del_value = self.long_del_lineEdit.text()
-    #     # print(self.sub_value + ', ' + self.insertion_value + ', ' + self.one_base_del + ', ' + self.log_del)
-
     def show_error_dialog(self, error_type):
         if error_type == 'no_such_file':
             msg = QMessageBox()
@@ -359,6 +359,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         if val == 'error_sim_finished':
             self.label_progress.setText('Running reconstruction, please wait!')
             self.progressBar.setValue(0)
+
+    def run_reconstruction_algo(self):
+        pass
 
 
 class SimulateErrorsWorker(QThread):
