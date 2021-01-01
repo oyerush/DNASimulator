@@ -25,6 +25,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.setWindowTitle('DNA Simulator')
 
         self.inputDNAPath = ""
+        # self.reconstruction_input_path =
 
         # initialize general errors
         self.general_errors = {
@@ -92,7 +93,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
         self.G_long_del_doubleSpinBox.textChanged.connect(self.set_G_long_del)
         self.T_long_del_doubleSpinBox.textChanged.connect(self.set_T_long_del)
 
-        self.reconstruction_listWidget.addItem('Hybrid')
+        self.reconstruction_listWidget.addItem('Hybrid Reconstruction Algorithm')
+        self.reconstruction_listWidget.addItem('Divider BMA Reconstruction Algorithm')
+        self.reconstruction_listWidget.addItem('BMA Look Ahead Reconstruction Algorithm')
+        self.reconstruction_listWidget.addItem('Iterative Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
@@ -342,7 +346,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
                 self.label_progress.setText('Injecting errors, please wait!')
                 self.worker.finished.connect(self.evt_worker_finished)
                 self.worker.update_progress.connect(self.evt_update_progress)
-                self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
+                # self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
                 self.progressBar.setVisible(True)
 
                 break
@@ -355,13 +359,89 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
     def evt_update_progress(self, val):
         self.progressBar.setValue(val + 1)
 
-    def evt_update_error_finished(self, val):
-        if val == 'error_sim_finished':
-            self.label_progress.setText('Running reconstruction, please wait!')
-            self.progressBar.setValue(0)
+    # def evt_update_error_finished(self, val):
+    #     if val == 'error_sim_finished':
+    #         self.label_progress.setText('Running reconstruction, please wait!')
+    #         self.progressBar.setValue(0)
+
+    def msg_box_with_error(self, error_msg):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText(error_msg)
+        msg.setWindowTitle("Error!")
+        msg.setStandardButtons(QMessageBox.Ok)
+        retval = msg.exec_()
 
     def run_reconstruction_algo(self):
-        pass
+        if not os.path.isfile('evyat.txt'):
+            self.msg_box_with_error('Please run the error simulator first, or provide the evyat.txt input file')
+            self.label_progress.setText('')
+            return
+
+        self.label_progress.setText('Running reconstruction, please wait!')
+        if self.reconstruction_algo == 'Hybrid Reconstruction Algorithm':
+            if platform.system() == "Linux" or platform == "linux2":
+                # linux
+                pass
+            elif platform.system() == "Darwin":
+                # OS X
+                subprocess.run('./reconstruction_algs/DNA')
+            elif platform.system() == "Windows":
+                # Windows...
+                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
+                                            'info')
+                subprocess.run('reconstruction_algs/Hybrid.exe')
+        elif self.reconstruction_algo == 'Divider BMA Reconstruction Algorithm':
+            if platform.system() == "Linux" or platform == "linux2":
+                # linux
+                pass
+            elif platform.system() == "Darwin":
+                # OS X
+                # subprocess.run('./reconstruction_algs/DNA')
+                pass
+            elif platform.system() == "Windows":
+                # Windows...
+                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
+                                            'info')
+                subprocess.run('reconstruction_algs/DivBMA.exe')
+        elif self.reconstruction_algo == 'BMA Look Ahead Reconstruction Algorithm':
+            if platform.system() == "Linux" or platform == "linux2":
+                # linux
+                pass
+            elif platform.system() == "Darwin":
+                # OS X
+                # subprocess.run('./reconstruction_algs/DNA')
+                pass
+            elif platform.system() == "Windows":
+                # Windows...
+                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
+                                            'info')
+                subprocess.run('reconstruction_algs/BMALookahead.exe')
+        elif self.reconstruction_algo == 'Iterative Reconstruction Algorithm':
+            if platform.system() == "Linux" or platform == "linux2":
+                # linux
+                pass
+            elif platform.system() == "Darwin":
+                # OS X
+                # subprocess.run('./reconstruction_algs/DNA')
+                pass
+            elif platform.system() == "Windows":
+                # Windows...
+                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
+                                            'info')
+                subprocess.run('reconstruction_algs/Iterative.exe')
+        else:
+            self.msg_box_with_error('Please choose a reconstruction algorithm')
+            self.label_progress.setText('')
+            return
+
+        if not os.path.isfile('output.txt'):
+            self.msg_box_with_error('Reconstruction doesn\'t have an output. Try running it again')
+            return
+        else:
+            text = open('output.txt').read()
+            self.reconstruction_output_textEdit.setText(text)
+        self.label_progress.setText('We are done :)')
 
 
 class SimulateErrorsWorker(QThread):
@@ -381,16 +461,8 @@ class SimulateErrorsWorker(QThread):
     def run(self):
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
         error_sim.simulate_errors(self.report_func)
-        self.update_error_sim_finished.emit('error_sim_finished')
-        if platform.system() == "Linux" or platform == "linux2":
-            # linux
-            pass
-        elif platform.system() == "Darwin":
-            # OS X
-            subprocess.run('./reconstruction_algs/DNA')
-        elif platform.system() == "Windows":
-            # Windows...
-            subprocess.run('reconstruction_algs/hyb.exe')
+        # self.update_error_sim_finished.emit('error_sim_finished')
+
 
 
 if __name__ == '__main__':

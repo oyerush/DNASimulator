@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>888</height>
+    <width>763</width>
+    <height>1053</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -28,784 +28,794 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <layout class="QHBoxLayout" name="file_input_horizontalLayout">
-      <item>
-       <widget class="QLabel" name="load_Input_Label">
-        <property name="text">
-         <string>Load input file:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="file_path_lineEdit">
-        <property name="placeholderText">
-         <string>File path</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="browse_PushButton">
-        <property name="text">
-         <string>Browse</string>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="sequencing_tech_verticalLayout">
-      <item>
-       <widget class="QLabel" name="sequencing_tech_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="text">
-         <string>Sequencing Technology:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <layout class="QHBoxLayout" name="tech_radio_buttons_horizontalLayout">
-           <property name="spacing">
-            <number>15</number>
-           </property>
-           <property name="sizeConstraint">
-            <enum>QLayout::SetFixedSize</enum>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="MinION_radioButton">
-             <property name="text">
-              <string>MinION</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
-             <property name="text">
-              <string>Ilumina NextSeq</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
-             <property name="text">
-              <string>Ilumina miSeq</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="tech_radio_buttons_horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="synthesis_tech_verticalLayout">
-      <item>
-       <widget class="QLabel" name="synthesis_tech_radio_buttons_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="text">
-         <string>Synthesis Technology:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <layout class="QHBoxLayout" name="synthesis_tech_radio_buttons_horizontalLayout">
-           <property name="spacing">
-            <number>15</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="twist_bioscience_radioButton">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Twist Bioscience</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="customArray_radioButton">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>CustomArray</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="IDT_radioButton">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Integrated DNA Technology (IDT)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="synthesis_tech_radio_buttons_horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="error_stats_verticalLayout">
-      <item>
-       <widget class="QLabel" name="error_stats_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="text">
-         <string>Error Statistics:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="error_stats_inputs_horizontalLayout">
-        <item>
-         <widget class="QLineEdit" name="substitution_lineEdit">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="placeholderText">
-           <string>Substitution</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="insertion_lineEdit">
-          <property name="placeholderText">
-           <string>Insertion</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="one_base_del_lineEdit">
-          <property name="placeholderText">
-           <string>1-base Deletion</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="long_del_lineEdit">
-          <property name="placeholderText">
-           <string>Long Deletion</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="Line" name="line_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QFrame" name="frame">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
+     <widget class="QGroupBox" name="error_simulator_QGroupBox">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+      <property name="title">
+       <string>Error simulator</string>
       </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="5" column="0" colspan="2">
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="verticalSpacing">
+          <number>10</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="QLabel" name="Substitution_label">
+           <property name="text">
+            <string>Substitution</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="SpinBoxCustom" name="T_substitution_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="empty_label">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="pre_insertion_label">
+           <property name="text">
+            <string>pre-insertion</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SpinBoxCustom" name="A_substitution_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="SpinBoxCustom" name="A_one_base_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="5">
+          <widget class="SpinBoxCustom" name="T_pre_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="C_base_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>C</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="SpinBoxCustom" name="G_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SpinBoxCustom" name="A_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="SpinBoxCustom" name="C_long_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="SpinBoxCustom" name="G_substitution_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="SpinBoxCustom" name="T_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="SpinBoxCustom" name="C_substitution_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="SpinBoxCustom" name="C_pre_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="5">
+          <widget class="QLabel" name="T_base_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>T</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3">
+          <widget class="SpinBoxCustom" name="G_long_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="SpinBoxCustom" name="G_one_base_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="3">
+          <widget class="QLabel" name="G_base_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>G</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="5">
+          <widget class="SpinBoxCustom" name="T_long_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="A_base_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>A</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="SpinBoxCustom" name="G_pre_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SpinBoxCustom" name="C_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="SpinBoxCustom" name="C_one_base_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="SpinBoxCustom" name="A_long_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="SpinBoxCustom" name="A_pre_insertion_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="Insertion_label">
+           <property name="text">
+            <string>Insertion</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="error_stats_base_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Error statistics per base</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="one_base_del_label">
+           <property name="text">
+            <string>1-base Deletion</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="long_del_label">
+           <property name="text">
+            <string>Long Deletion</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="5">
+          <widget class="SpinBoxCustom" name="T_one_base_del_doubleSpinBox">
+           <property name="decimals">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="file_input_horizontalLayout">
+         <item>
+          <widget class="QLabel" name="load_Input_Label">
+           <property name="text">
+            <string>Load input file:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="file_path_lineEdit">
+           <property name="placeholderText">
+            <string>File path</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="browse_PushButton">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <layout class="QVBoxLayout" name="synthesis_tech_verticalLayout">
+         <item>
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="synthesis_tech_radio_buttons_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Synthesis Technology</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="synthesis_frame">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="synthesis_tech_radio_buttons_horizontalLayout">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="twist_bioscience_radioButton">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Twist Bioscience</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="customArray_radioButton">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>CustomArray</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDT_radioButton">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Integrated DNA Technology (IDT)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="synthesis_tech_radio_buttons_horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <layout class="QVBoxLayout" name="error_stats_verticalLayout">
+         <item>
+          <widget class="Line" name="line_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="error_stats_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Error Statistics</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="error_stats_inputs_horizontalLayout">
+           <item>
+            <widget class="QLineEdit" name="substitution_lineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="placeholderText">
+              <string>Substitution</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="insertion_lineEdit">
+             <property name="placeholderText">
+              <string>Insertion</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="one_base_del_lineEdit">
+             <property name="placeholderText">
+              <string>1-base Deletion</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="long_del_lineEdit">
+             <property name="placeholderText">
+              <string>Long Deletion</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <layout class="QVBoxLayout" name="sequencing_tech_verticalLayout">
+         <item>
+          <widget class="Line" name="seq_tech_line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="sequencing_tech_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Sequencing Technology</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="seq_tech_frame">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="tech_radio_buttons_horizontalLayout">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetFixedSize</enum>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="MinION_radioButton">
+                <property name="text">
+                 <string>MinION</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="Ilumina_NextSeq_radioButton">
+                <property name="text">
+                 <string>Ilumina NextSeq</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="Ilumina_miSeq_radioButton">
+                <property name="text">
+                 <string>Ilumina miSeq</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="tech_radio_buttons_horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="run_sim_horizontalLayout">
+         <item>
+          <spacer name="run_sim_horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="run_error_simulator_PushButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Run error simulator</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="Line" name="line_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="verticalSpacing">
-       <number>10</number>
+     <widget class="QGroupBox" name="otherOptions">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <item row="1" column="2">
-       <widget class="SpinBoxCustom" name="C_substitution_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="SpinBoxCustom" name="T_substitution_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="one_base_del_label">
-        <property name="text">
-         <string>1-base Deletion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="SpinBoxCustom" name="G_substitution_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="empty_label">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="5">
-       <widget class="QLabel" name="T_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>T</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="SpinBoxCustom" name="A_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="pre_insertion_label">
-        <property name="text">
-         <string>pre-insertion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="3">
-       <widget class="QLabel" name="G_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>G</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="2">
-       <widget class="QLabel" name="C_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>C</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5">
-       <widget class="SpinBoxCustom" name="T_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="SpinBoxCustom" name="C_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="Insertion_label">
-        <property name="text">
-         <string>Insertion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="error_stats_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="text">
-         <string>Error statistics per base:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLabel" name="A_base_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>A</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="long_del_label">
-        <property name="text">
-         <string>Long Deletion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="Substitution_label">
-        <property name="text">
-         <string>Substitution</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="SpinBoxCustom" name="A_substitution_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="SpinBoxCustom" name="G_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="SpinBoxCustom" name="A_pre_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="SpinBoxCustom" name="C_pre_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="SpinBoxCustom" name="G_pre_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="5">
-       <widget class="SpinBoxCustom" name="T_pre_insertion_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="SpinBoxCustom" name="A_one_base_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="SpinBoxCustom" name="C_one_base_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3">
-       <widget class="SpinBoxCustom" name="G_one_base_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="5">
-       <widget class="SpinBoxCustom" name="T_one_base_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="SpinBoxCustom" name="A_long_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="2">
-       <widget class="SpinBoxCustom" name="C_long_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="3">
-       <widget class="SpinBoxCustom" name="G_long_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="5">
-       <widget class="SpinBoxCustom" name="T_long_del_doubleSpinBox">
-        <property name="decimals">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
       </property>
+      <property name="title">
+       <string>Reconstruction</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="1">
+        <layout class="QVBoxLayout" name="reconstruction_output_verticalLayout">
+         <item>
+          <widget class="QLabel" name="reconstruction_output_label">
+           <property name="text">
+            <string>output</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="reconstruction_output_textEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="reconstruction_pick_verticalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetMaximumSize</enum>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="reconstruction_pick_label">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Pick A Reconstruction Algorithm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="reconstruction_listWidget"/>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="run_reconstruction_horizontalLayout">
+         <item>
+          <spacer name="run_reconstruction_horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reconstruction_run_pushButton">
+           <property name="text">
+            <string>Run Reconstruction</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="execute_horizontalLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
+     <layout class="QVBoxLayout" name="progress_bar_verticalLayout">
       <item>
-       <spacer name="execute_horizontalSpacer_left">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="run_error_simulator_PushButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Run error simulator</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="execute_horizontalSpacer_right">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line_6">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="reconstruction_horizontalLayout">
-      <item>
-       <layout class="QVBoxLayout" name="reconstruction_pick_verticalLayout">
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="reconstruction_pick_label">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-            <underline>true</underline>
-           </font>
-          </property>
-          <property name="text">
-           <string>Pick A Reconstruction Algorithm:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QListWidget" name="reconstruction_listWidget"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="reconstruction_run_pushButton">
-          <property name="text">
-           <string>Run Reconstruction</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line_7">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <layout class="QHBoxLayout" name="progbar_label_horizontalLayout">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -825,7 +835,7 @@
        </layout>
       </item>
       <item>
-       <spacer name="horizontalSpacer_2">
+       <spacer name="progbar_horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -838,7 +848,7 @@
        </spacer>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <layout class="QHBoxLayout" name="prog_bar_horizontalLayout">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -860,7 +870,7 @@
      </layout>
     </item>
     <item>
-     <spacer name="verticalSpacer">
+     <spacer name="end_of_app_verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
@@ -879,8 +889,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
-     <height>21</height>
+     <width>763</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
