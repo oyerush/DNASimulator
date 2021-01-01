@@ -11,12 +11,12 @@ from PyQt5.QtWidgets import *
 import sys
 import platform
 
-import dnaSimulator_ui
+import dnaSimulator_ui2
 # from SpinBoxCustom import SpinBoxCustom
 from simulator import *
 
 
-class dnaSimulator(QMainWindow, dnaSimulator_ui.Ui_dnaSimulator):
+class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)

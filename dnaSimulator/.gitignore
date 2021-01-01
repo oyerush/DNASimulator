@@ -11,3 +11,5 @@ mine_strands_in.txt
 errors_shuffled.txt
 output.txt
 output-results.txt
+output-results-fail.txt
+output-results-success.txt
