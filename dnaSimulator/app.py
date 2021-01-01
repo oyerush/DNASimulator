@@ -371,6 +371,21 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
+    def call_reconstruction_alg(self, alg_file_name):
+
+        if platform.system() == "Linux" or platform == "linux2":
+            # linux
+            pass
+        elif platform.system() == "Darwin":
+            # OS X
+            # subprocess.run('./reconstruction_algs/DNA', cwd='output/')
+            pass
+        elif platform.system() == "Windows":
+            # Windows...
+            self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
+                                        'info')
+            subprocess.run('reconstruction_algs/' + alg_file_name + '.exe', cwd='output/')
+
     def run_reconstruction_algo(self):
         if not os.path.isfile('output/evyat.txt'):
             self.msg_box_with_error('Please run the error simulator first, or provide the evyat.txt input file')
@@ -379,56 +394,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         self.label_progress.setText('Running reconstruction, please wait!')
         if self.reconstruction_algo == 'Hybrid Reconstruction Algorithm':
-            if platform.system() == "Linux" or platform == "linux2":
-                # linux
-                pass
-            elif platform.system() == "Darwin":
-                # OS X
-                subprocess.run('./reconstruction_algs/DNA', cwd='output/')
-            elif platform.system() == "Windows":
-                # Windows...
-                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
-                                            'info')
-                subprocess.run('reconstruction_algs/Hybrid.exe', cwd='output/')
+            self.call_reconstruction_alg('Hybrid')
         elif self.reconstruction_algo == 'Divider BMA Reconstruction Algorithm':
-            if platform.system() == "Linux" or platform == "linux2":
-                # linux
-                pass
-            elif platform.system() == "Darwin":
-                # OS X
-                # subprocess.run('./reconstruction_algs/DNA')
-                pass
-            elif platform.system() == "Windows":
-                # Windows...
-                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
-                                            'info')
-                subprocess.run('reconstruction_algs/DivBMA.exe', cwd='output/')
+            self.call_reconstruction_alg('DivBMA')
         elif self.reconstruction_algo == 'BMA Look Ahead Reconstruction Algorithm':
-            if platform.system() == "Linux" or platform == "linux2":
-                # linux
-                pass
-            elif platform.system() == "Darwin":
-                # OS X
-                # subprocess.run('./reconstruction_algs/DNA')
-                pass
-            elif platform.system() == "Windows":
-                # Windows...
-                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
-                                            'info')
-                subprocess.run('reconstruction_algs/BMALookahead.exe', cwd='output/')
+            self.call_reconstruction_alg('BMALookahead')
         elif self.reconstruction_algo == 'Iterative Reconstruction Algorithm':
-            if platform.system() == "Linux" or platform == "linux2":
-                # linux
-                pass
-            elif platform.system() == "Darwin":
-                # OS X
-                # subprocess.run('./reconstruction_algs/DNA')
-                pass
-            elif platform.system() == "Windows":
-                # Windows...
-                self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
-                                            'info')
-                subprocess.run('reconstruction_algs/Iterative.exe', cwd='output/')
+            self.call_reconstruction_alg('Iterative')
         else:
             self.msg_box_with_error('Please choose a reconstruction algorithm')
             self.label_progress.setText('')
