@@ -372,7 +372,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         retval = msg.exec_()
 
     def run_reconstruction_algo(self):
-        if not os.path.isfile('evyat.txt'):
+        if not os.path.isfile('output/evyat.txt'):
             self.msg_box_with_error('Please run the error simulator first, or provide the evyat.txt input file')
             self.label_progress.setText('')
             return
@@ -384,12 +384,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 pass
             elif platform.system() == "Darwin":
                 # OS X
-                subprocess.run('./reconstruction_algs/DNA')
+                subprocess.run('./reconstruction_algs/DNA', cwd='output/')
             elif platform.system() == "Windows":
                 # Windows...
                 self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
                                             'info')
-                subprocess.run('reconstruction_algs/Hybrid.exe')
+                subprocess.run('reconstruction_algs/Hybrid.exe', cwd='output/')
         elif self.reconstruction_algo == 'Divider BMA Reconstruction Algorithm':
             if platform.system() == "Linux" or platform == "linux2":
                 # linux
@@ -402,7 +402,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 # Windows...
                 self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
                                             'info')
-                subprocess.run('reconstruction_algs/DivBMA.exe')
+                subprocess.run('reconstruction_algs/DivBMA.exe', cwd='output/')
         elif self.reconstruction_algo == 'BMA Look Ahead Reconstruction Algorithm':
             if platform.system() == "Linux" or platform == "linux2":
                 # linux
@@ -415,7 +415,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 # Windows...
                 self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
                                             'info')
-                subprocess.run('reconstruction_algs/BMALookahead.exe')
+                subprocess.run('reconstruction_algs/BMALookahead.exe', cwd='output/')
         elif self.reconstruction_algo == 'Iterative Reconstruction Algorithm':
             if platform.system() == "Linux" or platform == "linux2":
                 # linux
@@ -428,17 +428,17 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 # Windows...
                 self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
                                             'info')
-                subprocess.run('reconstruction_algs/Iterative.exe')
+                subprocess.run('reconstruction_algs/Iterative.exe', cwd='output/')
         else:
             self.msg_box_with_error('Please choose a reconstruction algorithm')
             self.label_progress.setText('')
             return
 
-        if not os.path.isfile('output.txt'):
+        if not os.path.isfile('output/output.txt'):
             self.msg_box_with_error('Reconstruction doesn\'t have an output. Try running it again')
             return
         else:
-            text = open('output.txt').read()
+            text = open('output/output.txt').read()
             self.reconstruction_output_textEdit.setText(text)
         self.label_progress.setText('We are done :)')
 

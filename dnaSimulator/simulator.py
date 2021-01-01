@@ -105,7 +105,7 @@ class Simulator:
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
         i = 0
         with open(self.input_path, 'r') as input_f:
-            with open('evyat.txt', 'w') as output_f:
+            with open('output/evyat.txt', 'w') as output_f:
                 for line in input_f:
                     report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
@@ -148,8 +148,8 @@ def mess_output_strands():
     Creates a temporary file from the evyat.txt to run the shuffle program on it,
     and creates a new output file errors_shuffled.txt with all output strands shuffled and not clustered.
     """
-    output_f = open('errors_temp.txt', 'w')
-    with open('evyat.txt', 'r') as errors_f:
+    output_f = open('output/errors_temp.txt', 'w')
+    with open('output/evyat.txt', 'r') as errors_f:
         try:
             # skip first line and ****:
             next(errors_f)
@@ -172,16 +172,16 @@ def mess_output_strands():
 
     if platform.system() == "Linux":
         # linux
-        args = ['shuf', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        args = ['shuf', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
         subprocess.run(args)
     elif platform.system() == "Darwin":
         # OS X
-        args = ['./shuffle_prog/shuf_mac', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        args = ['./shuffle_prog/shuf_mac', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
         subprocess.run(args)
     elif platform.system() == "Windows":
-        args = ['./shuffle_prog/shuf_windows.exe', 'errors_temp.txt', '-o', 'errors_shuffled.txt']
+        args = ['./shuffle_prog/shuf_windows.exe', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
         subprocess.run(args)
-    os.remove('errors_temp.txt')
+    os.remove('output/errors_temp.txt')
 
 
 def parse_rate(rate_str) -> float:
