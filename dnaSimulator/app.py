@@ -61,11 +61,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.customArray_radioButton.toggled.connect(self.customArray_chosen)
         self.IDT_radioButton.toggled.connect(self.IDT_chosen)
 
-        # connect the lineEdits of general errors
-        self.substitution_lineEdit.textChanged.connect(self.set_substitution)
-        self.insertion_lineEdit.textChanged.connect(self.set_insertion)
-        self.one_base_del_lineEdit.textChanged.connect(self.set_one_base_del)
-        self.long_del_lineEdit.textChanged.connect(self.set_long_del)
+        self.substitution_doubleSpinBox.textChanged.connect(self.set_substitution)
+        self.insertion_doubleSpinBox.textChanged.connect(self.set_insertion)
+        self.one_base_del_doubleSpinBox.textChanged.connect(self.set_one_base_del)
+        self.long_del_doubleSpinBox.textChanged.connect(self.set_long_del)
 
         # connect the lineEdits of per base errors
         self.A_substitution_doubleSpinBox.textChanged.connect(self.set_A_substitution)
@@ -259,10 +258,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_EZ17_values(self):
         # general errors
-        self.substitution_lineEdit.setText('1.32E-03')
-        self.insertion_lineEdit.setText('5.81E-04')
-        self.one_base_del_lineEdit.setText('9.58E-04')
-        self.long_del_lineEdit.setText('2.33E-04')
+        self.substitution_doubleSpinBox.setValue(1.32e-03)
+        self.insertion_doubleSpinBox.setValue(5.81e-04)
+        self.one_base_del_doubleSpinBox.setValue(9.58e-04)
+        self.long_del_doubleSpinBox.setValue(2.33e-04)
 
         # per base errors
         self.set_per_base_substitution(0.00135, 0.00135, 0.00126, 0.00132)
@@ -273,10 +272,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_O17_values(self):
         # general errors
-        self.substitution_lineEdit.setText('7.09E-03')
-        self.insertion_lineEdit.setText('4.14E-03')
-        self.one_base_del_lineEdit.setText('2.77E-03')
-        self.long_del_lineEdit.setText('4.79E-04')
+        self.substitution_doubleSpinBox.setValue(7.09e-03)
+        self.insertion_doubleSpinBox.setValue(4.14e-03)
+        self.one_base_del_doubleSpinBox.setValue(2.77e-03)
+        self.long_del_doubleSpinBox.setValue(4.79e-04)
 
         # per base errors
         self.set_per_base_substitution(0.00724, 0.00701, 0.00706, 0.00704)
@@ -287,10 +286,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_G15_values(self):
         # general errors
-        self.substitution_lineEdit.setText('5.84E-03')
-        self.insertion_lineEdit.setText('8.57E-04')
-        self.one_base_del_lineEdit.setText('5.37E-03')
-        self.long_del_lineEdit.setText('3.48E-04')
+        self.substitution_doubleSpinBox.setValue(5.84e-03)
+        self.insertion_doubleSpinBox.setValue(8.57e-04)
+        self.one_base_del_doubleSpinBox.setValue(5.37e-03)
+        self.long_del_doubleSpinBox.setValue(3.48e-04)
 
         # per base errors
         self.set_per_base_substitution(0.00605, 0.00563, 0.00577, 0.00591)
@@ -301,10 +300,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_Y16_values(self):
         # general errors
-        self.substitution_lineEdit.setText('1.21E-01')
-        self.insertion_lineEdit.setText('3.67E-01')
-        self.one_base_del_lineEdit.setText('4.33E-02')
-        self.long_del_lineEdit.setText('1.87E-02')
+        self.substitution_doubleSpinBox.setValue(1.21e-01)
+        self.insertion_doubleSpinBox.setValue(3.67e-01)
+        self.one_base_del_doubleSpinBox.setValue(4.33e-02)
+        self.long_del_doubleSpinBox.setValue(1.87e-02)
 
         # per base errors
         self.set_per_base_substitution(0.119, 0.133, 0.112, 0.119)
