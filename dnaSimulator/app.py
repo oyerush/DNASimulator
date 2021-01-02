@@ -2,11 +2,9 @@ import os
 import subprocess
 import time
 
-from PySide2 import QtGui, QtWidgets
-# from PySide2.QtCore import *
+from PIL.ImageQt import ImageQt
+from PyQt5 import QtGui
 from PyQt5.QtCore import *
-from PySide2.QtGui import *
-# from PySide2.QtWidgets import *
 from PyQt5.QtWidgets import *
 import sys
 import platform
@@ -99,7 +97,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
-
 
     def set_reconstruction_algo(self):
         self.reconstruction_algo = self.reconstruction_listWidget.currentItem().text()
@@ -371,6 +368,37 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
+    def show_hist_graph_result(self):
+        import numpy as np
+        import matplotlib.pyplot as plt
+
+        x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        y = [70, 90, 96, 97, 98, 99, 99.2, 99.5, 99.7, 99.9, 100]
+
+        plt.xticks(x)
+
+        plt.scatter(x, y, color='r', zorder=2)
+        plt.plot(x, y, color='b', zorder=1)
+
+        plt.title("Which title do we want here?")
+        plt.xlabel("Number of edit errors")
+        plt.ylabel("Fraction of reads")
+
+        plt.savefig('output/histogram.png')
+        # plt.show()
+
+        qim = ImageQt('output/histogram.png').copy()
+        pix = QtGui.QPixmap.fromImage(qim)
+        self.histogram_img.setPixmap(pix)
+        self.histogram_img.adjustSize()
+
+        # pixmap = QPixmap('output/unnamed.png').copy()
+        # self.histogram_img.setPixmap(pixmap)
+        # self.histogram_img.show()
+        # self.setCentralWidget(self.histogram_img)
+        # self.resize(pixmap.width(), pixmap.height())
+
+
     def call_reconstruction_alg(self, alg_file_name):
 
         if platform.system() == "Linux" or platform == "linux2":
@@ -385,6 +413,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
                                         'info')
             subprocess.run('reconstruction_algs/' + alg_file_name + '.exe', cwd='output/')
+
+        self.show_hist_graph_result()
 
     def run_reconstruction_algo(self):
         if not os.path.isfile('output/evyat.txt'):
@@ -433,7 +463,6 @@ class SimulateErrorsWorker(QThread):
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
         error_sim.simulate_errors(self.report_func)
         # self.update_error_sim_finished.emit('error_sim_finished')
-
 
 
 if __name__ == '__main__':
