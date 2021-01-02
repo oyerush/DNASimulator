@@ -95,6 +95,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.reconstruction_listWidget.addItem('Divider BMA Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('BMA Look Ahead Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('Iterative Reconstruction Algorithm')
+        self.reconstruction_listWidget.addItem('Mock Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
@@ -456,6 +457,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.call_reconstruction_alg('BMALookahead')
         elif self.reconstruction_algo == 'Iterative Reconstruction Algorithm':
             self.call_reconstruction_alg('Iterative')
+        elif self.reconstruction_algo == 'Mock Reconstruction Algorithm':
+            self.call_reconstruction_alg('mockReconstruction')
         else:
             self.msg_box_with_error('Please choose a reconstruction algorithm')
             self.label_progress.setText('')
