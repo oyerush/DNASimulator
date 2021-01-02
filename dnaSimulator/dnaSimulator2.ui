@@ -826,30 +826,6 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="run_reconstruction_horizontalLayout">
-            <item>
-             <spacer name="run_reconstruction_horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="reconstruction_run_pushButton">
-              <property name="text">
-               <string>Run Reconstruction</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
            <layout class="QVBoxLayout" name="histo_img_verticalLayout">
             <item>
              <widget class="QLabel" name="histogram_img">
@@ -866,6 +842,30 @@
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="run_reconstruction_horizontalLayout">
+              <item>
+               <spacer name="run_reconstruction_horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="reconstruction_run_pushButton">
+                <property name="text">
+                 <string>Run Reconstruction</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>

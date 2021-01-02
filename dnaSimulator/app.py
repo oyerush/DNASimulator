@@ -397,7 +397,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         source = open('output/histogram.txt', 'r')
         for line in source:
-            line_list = re.split(r'\t+', line)
+            line_list = re.split(r'\t+|\s+', line)
             index = int(line_list[0].strip())
             value = int(line_list[1].strip())
             y[index] = (value / num_clusters) * 100
@@ -415,7 +415,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         plt.scatter(x, y, color='r', zorder=2)
         plt.plot(x, y, color='b', zorder=1)
 
-        plt.title("Which title do we want here?")
+        plt.title("Reconstruction Errors Histogram")
         plt.xlabel("Number of edit errors")
         plt.ylabel("Fraction of reads")
 
@@ -453,7 +453,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             # Windows...
             self.progressBar.setVisible(True)
             self.label_progress.setText('Running reconstruction, please wait!')
-            # subprocess.run('reconstruction_algs/' + alg_file_name + '.exe', cwd='output/')
             self.process = QProcess(self)
             self.process.setWorkingDirectory('output/')
             self.process.start('reconstruction_algs/' + alg_file_name + '.exe')
@@ -486,11 +485,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         if not os.path.isfile('output/mock.txt'):
             self.msg_box_with_error('Reconstruction doesn\'t have an output. Try running it again')
             return
-        else:
-            pass
-            # text = open('output/mock.txt').read()
-            # self.reconstruction_output_textEdit.setText(text)
-        # self.label_progress.setText('We are done :)')
 
 
 class SimulateErrorsWorker(QThread):
