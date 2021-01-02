@@ -7,12 +7,13 @@ import platform
 import subprocess
 import os
 from scipy.stats import skewnorm
+import edlib
 from custom_random_variable import CustomRvContinuous
 
 class Simulator:
     """
     Simulator class.
-    Holds the attributes needed for error simulation on a single strand:
+    Holds the attributes needed for error simulation on the strands input file:
 
     Class variables:
     :var self.total_error_rates: Dictionary of the total error rates used in the simulation, as provided in error_rates
@@ -54,14 +55,16 @@ class Simulator:
             the 2nd strand in the input will get 10 copies...)
         - User can supply a random variable. Use default parameter to use default settings (normal distribution with
             skewness).
+    :var self.clustering_options: Information about the clustering method to simulate.
+        None for perfect clustering, or a dictionary with the clustering options as described in init method.
     """
-    def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False, distribution_info=None):
+    def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False, distribution_info=None, clustering_options=None):
         """
-        :param total_error_rates: Dictionary of the total error rates used in the simulation.
+        @param total_error_rates: Dictionary of the total error rates used in the simulation.
             Example of a dictionary:
             {'d': 0.1, 'i': 0.2, 's': 0.1, 'ld': 0.6}
             NOTE: Dictionary can be passed with values as strings, as the constructor can to parse them to floats.
-        :param base_error_rates: Dictionary of dictionaries for each base.
+        @param base_error_rates: Dictionary of dictionaries for each base.
             Example:
             {   'A': {'s': 0.1, 'i': 0.2, 'pi': 0.1, 'd': 0.05, 'ld': 0.6},
                 'T': {...},
@@ -69,17 +72,47 @@ class Simulator:
                 'G': {...}
             }
             NOTE: Dictionary can be passed with rates values as strings, as the constructor can to parse them to floats.
-        :param input_path: path of the input file.
+        @param input_path: path of the input file.
             Example of input file content:
             TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
             TGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGT\n
             AAATTTGCAACCAGAAATTTGCAACCAGAATTCACTAGAGGACGCACGCTCTATTTCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
             TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
             TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
-        :param is_stutter_method: False by default, set to True if stutter method should be used instead of other
+        @param is_stutter_method: False by default, set to True if stutter method should be used instead of other
             methods.
             Note: other methods have the same error simulation algorithm but with different rates, therefore
             no other statements are needed except the rates.
+        @param clustering_options: None by default, supply a dictionary of options as described below to perform a
+            pseudo-clustering operation for the evyat.txt output file.
+            - None (default) - performs a perfect clustering, with no loss or errors.
+            - Dictionary of options. Possible keys and values:
+                + 'start' - start index of the cluster's identifier sequence.
+                + 'end' - end index(not inclusive) of the cluster's identifier sequence.
+                + 'dist' - maximal edit distance allowed for a sequence to be included in a cluster.
+        @param distribution_info: Dictionary containing the information of the desired distribution of the number of
+                copies to generate for each strand. Initiated based on user input:
+                - User can supply a dictionary (as explained below) with the the distribution type, function or list of values,
+                    minimum and maximum values.
+                    Possible dictionary values:
+                    + 'type' : 'continuous' for a random variable, 'vector' for a custom vector of values
+                    + 'value' : the string of the random variable (IN PYTHON SYNTAX) OR the vector of the custom values
+                    + 'min' : minimum number of copies to generate. required only for type 'continuous'.
+                    + 'max' : maximum number of copies to generate. required only for type 'continuous'.
+                - Use default parameter to use default settings (normal distribution with skewness).
+                Examples:
+                * Random variable:
+                    {   'type': 'continuous',
+                        'value': 'x ** 2',  # Note the python syntax
+                        'min': 3,
+                        'max': 100
+                    }
+                * Vector:
+                    {   'type': 'vector',
+                        'value': [1, 10, 5, 9, 6, 200]
+                    }
+                * default:
+                    Pass nothing or None.
         """
         self.total_error_rates = copy.deepcopy(total_error_rates)
         self.base_error_rates = copy.deepcopy(base_error_rates)
@@ -92,6 +125,8 @@ class Simulator:
                                            6: 5.5 * (10 ** (-8))}
         self.input_path = input_path
         self.is_stutter_method = is_stutter_method
+
+        self.clustering_options = clustering_options
 
         self.distribution_info = distribution_info
         self.random = None
@@ -163,6 +198,11 @@ class Simulator:
                     original_strand = original_strand.rstrip()
                     output_f.write(original_strand + '\n' + '*****************************\n')
 
+                    if self.clustering_options is not None:
+                        barcode_start_index = self.clustering_options['start']
+                        barcode_end_index = self.clustering_options['end']
+                        original_strand_barcode = original_strand[barcode_start_index:barcode_end_index]
+
                     # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
                     for j in range(self.random[i]):
 
@@ -179,8 +219,13 @@ class Simulator:
                         else:
                             output_strand = strand_error_simulator.simulate_errors_on_strand()
 
-                        # write the output strand to file:
-                        output_f.write(output_strand + '\n')
+                        if self.clustering_options is not None:
+                            edit_distance = edlib.align(original_strand_barcode,
+                                                        output_strand[barcode_start_index:barcode_end_index])['editDistance']
+
+                        if self.clustering_options is None or edit_distance <= self.clustering_options['dist']:
+                            # write the output strand to file:
+                            output_f.write(output_strand + '\n')
 
                     # after each strand, add 2 newlines:
                     output_f.write('\n\n')
