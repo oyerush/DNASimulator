@@ -7,12 +7,12 @@ import platform
 import subprocess
 import os
 from scipy.stats import skewnorm
-
+import edlib
 
 class Simulator:
     """
     Simulator class.
-    Holds the attributes needed for error simulation on a single strand:
+    Holds the attributes needed for error simulation on the strands input file:
 
     Class variables:
     :var self.total_error_rates: Dictionary of the total error rates used in the simulation, as provided in error_rates
@@ -22,8 +22,10 @@ class Simulator:
         https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
     :var self.input_path: Path of input file, as passed.
     :var self.is_stutter_method: Indicates whether simulator should use stutter method or not.
+    :var self.clustering_options: Information about the clustering method to simulate.
+        None for perfect clustering, or a dictionary with the clustering options as described in init method.
     """
-    def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False):
+    def __init__(self, total_error_rates, base_error_rates, input_path, clustering_options=None, is_stutter_method=False):
         """
         :param total_error_rates: Dictionary of the total error rates used in the simulation.
             Example of a dictionary:
@@ -44,6 +46,13 @@ class Simulator:
             AAATTTGCAACCAGAAATTTGCAACCAGAATTCACTAGAGGACGCACGCTCTATTTCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
             TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
             TTGTCACTAGAGGACGCACGCTCTATTTTTATGATCCATTGATGTCCCTGACGCTGCAAAATTTGCAACCAGGCAGTCTTCGCGGTAGGTCC\n
+        :param clustering_options: None by default, supply a dictionary of options as described below to perform a
+            pseudo-clustering operation for the evyat.txt output file.
+            - None (default) - performs a perfect clustering, with no loss or errors.
+            - Dictionary of options. Possible keys and values:
+                + 'start' - start index of the cluster's identifier sequence.
+                + 'end' - end index(not inclusive) of the cluster's identifier sequence.
+                + 'dist' - maximal edit distance allowed for a sequence to be included in a cluster.
         :param is_stutter_method: False by default, set to True if stutter method should be used instead of other
             methods.
             Note: other methods have the same error simulation algorithm but with different rates, therefore
@@ -60,6 +69,7 @@ class Simulator:
                                            6: 5.5 * (10 ** (-8))}
         self.input_path = input_path
         self.is_stutter_method = is_stutter_method
+        self.clustering_options = clustering_options
 
     def simulate_errors(self, report_func):
         """
@@ -115,6 +125,11 @@ class Simulator:
                     original_strand = original_strand.rstrip()
                     output_f.write(original_strand + '\n' + '*****************************\n')
 
+                    if self.clustering_options is not None:
+                        barcode_start_index = self.clustering_options['start']
+                        barcode_end_index = self.clustering_options['end']
+                        original_strand_barcode = original_strand[barcode_start_index:barcode_end_index]
+
                     # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
                     for j in range(random[i]):
 
@@ -131,8 +146,13 @@ class Simulator:
                         else:
                             output_strand = strand_error_simulator.simulate_errors_on_strand()
 
-                        # write the output strand to file:
-                        output_f.write(output_strand + '\n')
+                        if self.clustering_options is not None:
+                            edit_distance = edlib.align(original_strand_barcode,
+                                                        output_strand[barcode_start_index:barcode_end_index])['editDistance']
+
+                        if self.clustering_options is None or edit_distance <= self.clustering_options['dist']:
+                            # write the output strand to file:
+                            output_f.write(output_strand + '\n')
 
                     # after each strand, add 2 newlines:
                     output_f.write('\n\n')
