@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 import time
 
@@ -368,12 +369,43 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
+    def parse_hist_results(self):
+        num_clusters = 0
+        start_copying = 0
+        x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        y = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+
+        source = open('output/mock.txt', 'r')
+        f = open('output/histogram.txt', 'w')
+
+        for line in source:
+            if line.find('rate') > 0:
+                start_copying = 0
+            if line.find('hist') > 0:
+                start_copying = 1
+            if line.find('clusters') > 0:
+                numbers = [int(s) for s in re.findall(r'\b\d+\b', line)]
+                num_clusters = numbers[0]
+            if start_copying == 1 and not line.find('hist') > 0:
+                f.write(line)
+
+        source.close()
+        f.close()
+
+        source = open('output/histogram.txt', 'r')
+        for line in source:
+            line_list = re.split(r'\t+', line)
+            index = int(line_list[0].strip())
+            value = int(line_list[1].strip())
+            y[index] = (value / num_clusters) * 100
+        source.close()
+        return x, y, num_clusters
+
     def show_hist_graph_result(self):
         import numpy as np
         import matplotlib.pyplot as plt
 
-        x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        y = [70, 90, 96, 97, 98, 99, 99.2, 99.5, 99.7, 99.9, 100]
+        x, y, num_clusters = self.parse_hist_results()
 
         plt.xticks(x)
 
@@ -391,13 +423,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         pix = QtGui.QPixmap.fromImage(qim)
         self.histogram_img.setPixmap(pix)
         self.histogram_img.adjustSize()
-
-        # pixmap = QPixmap('output/unnamed.png').copy()
-        # self.histogram_img.setPixmap(pixmap)
-        # self.histogram_img.show()
-        # self.setCentralWidget(self.histogram_img)
-        # self.resize(pixmap.width(), pixmap.height())
-
 
     def call_reconstruction_alg(self, alg_file_name):
 
@@ -436,11 +461,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.label_progress.setText('')
             return
 
-        if not os.path.isfile('output/output.txt'):
+        if not os.path.isfile('output/mock.txt'):
             self.msg_box_with_error('Reconstruction doesn\'t have an output. Try running it again')
             return
         else:
-            text = open('output/output.txt').read()
+            text = open('output/mock.txt').read()
             self.reconstruction_output_textEdit.setText(text)
         self.label_progress.setText('We are done :)')
 
