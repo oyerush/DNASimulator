@@ -1,7 +1,9 @@
 import os
 import re
+import shlex
 import subprocess
 import time
+from functools import partial
 
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtGui
@@ -425,6 +427,19 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.histogram_img.setPixmap(pix)
         self.histogram_img.adjustSize()
 
+    def dataReady(self):
+        x = str(self.process.readAll(), 'utf-8')
+        res = re.split('\r\n', x.strip())
+        for i in res:
+            self.progressBar.setValue(int(i))
+
+    def reconstruction_finished(self):
+        self.label_progress.setText('We are done :)')
+        self.progressBar.setVisible(False)
+        text = open('output/mock.txt').read()
+        self.reconstruction_output_textEdit.setText(text)
+        self.show_hist_graph_result()
+
     def call_reconstruction_alg(self, alg_file_name):
 
         if platform.system() == "Linux" or platform == "linux2":
@@ -436,11 +451,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             pass
         elif platform.system() == "Windows":
             # Windows...
-            self.label_progress.setText('Hell knows how long it\'s gonna take, until Omer will feed us with some '
-                                        'info')
-            subprocess.run('reconstruction_algs/' + alg_file_name + '.exe', cwd='output/')
+            self.progressBar.setVisible(True)
+            self.label_progress.setText('Running reconstruction, please wait!')
+            # subprocess.run('reconstruction_algs/' + alg_file_name + '.exe', cwd='output/')
+            self.process = QProcess(self)
+            self.process.setWorkingDirectory('output/')
+            self.process.start('reconstruction_algs/' + alg_file_name + '.exe')
+            self.process.readyRead.connect(self.dataReady)
+            self.process.finished.connect(self.reconstruction_finished)
 
-        self.show_hist_graph_result()
 
     def run_reconstruction_algo(self):
         if not os.path.isfile('output/evyat.txt'):
@@ -468,14 +487,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.msg_box_with_error('Reconstruction doesn\'t have an output. Try running it again')
             return
         else:
-            text = open('output/mock.txt').read()
-            self.reconstruction_output_textEdit.setText(text)
-        self.label_progress.setText('We are done :)')
+            pass
+            # text = open('output/mock.txt').read()
+            # self.reconstruction_output_textEdit.setText(text)
+        # self.label_progress.setText('We are done :)')
 
 
 class SimulateErrorsWorker(QThread):
     update_progress = pyqtSignal(int)
-    update_error_sim_finished = pyqtSignal(str)
+    # update_error_sim_finished = pyqtSignal(str)
 
     def __init__(self, general_errors, per_base_errors, input_dna_path):
         super(SimulateErrorsWorker, self).__init__()
@@ -490,7 +510,7 @@ class SimulateErrorsWorker(QThread):
     def run(self):
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
         error_sim.simulate_errors(self.report_func)
-        # self.update_error_sim_finished.emit('error_sim_finished')
+        # self.update_error_sim_finished.emit
 
 
 if __name__ == '__main__':
