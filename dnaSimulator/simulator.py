@@ -6,7 +6,7 @@ import platform
 import subprocess
 import os
 from scipy.stats import skewnorm
-
+from custom_random_variable import CustomRvContinuous
 
 class Simulator:
     """
@@ -137,10 +137,14 @@ class Simulator:
             self.random = self.random / max(self.random)  # Standardize all the values between 0 and 1.
             self.random = self.random * self.max_copies  # Multiply the standardized values by the maximum value.
             self.random = self.random + self.min_copies  # avoid below minimum
-            self.random = [int(x) for x in self.random]  # convert to integers
+            self.random = [round(x) for x in self.random]  # convert to integers
 
         elif self.distribution_info['type'] == 'continuous':
-            pass
+            raw_samples = CustomRvContinuous.multithreaded_rvs(size=num_values,
+                                                               pdf_str=self.distribution_info['value'],
+                                                               min_value=self.distribution_info['min'],
+                                                               max_value=self.distribution_info['max'])
+            self.random = [round(x) for x in raw_samples]
 
         elif self.distribution_info['type'] == 'vector':
             self.random = self.distribution_info['value']
