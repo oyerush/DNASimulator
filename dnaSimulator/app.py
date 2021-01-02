@@ -1,17 +1,12 @@
-import os
 import re
-import subprocess
-import time
+import sys
 
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtGui
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-import sys
-import platform
 
 import dnaSimulator_ui2
-# from SpinBoxCustom import SpinBoxCustom
 from simulator import *
 
 
@@ -402,7 +397,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         return x, y, num_clusters
 
     def show_hist_graph_result(self):
-        import numpy as np
         import matplotlib.pyplot as plt
 
         x, y, num_clusters = self.parse_hist_results()
