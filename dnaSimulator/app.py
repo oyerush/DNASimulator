@@ -397,7 +397,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         source = open('output/histogram.txt', 'r')
         for line in source:
-            line_list = re.split(r'\t+|\s+', line)
+            line_list = re.split(r'\t+|\s+', line) # seperates a string to a list by a delimeter of spaces or tabs
             index = int(line_list[0].strip())
             value = int(line_list[1].strip())
             y[index] = (value / num_clusters) * 100
