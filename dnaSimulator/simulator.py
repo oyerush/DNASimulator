@@ -55,10 +55,8 @@ class Simulator:
             the 2nd strand in the input will get 10 copies...)
         - User can supply a random variable. Use default parameter to use default settings (normal distribution with
             skewness).
-    :var self.clustering_options: Information about the clustering method to simulate.
-        None for perfect clustering, or a dictionary with the clustering options as described in init method.
     """
-    def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False, distribution_info=None, clustering_options=None):
+    def __init__(self, total_error_rates, base_error_rates, input_path, is_stutter_method=False, distribution_info=None):
         """
         @param total_error_rates: Dictionary of the total error rates used in the simulation.
             Example of a dictionary:
@@ -83,13 +81,6 @@ class Simulator:
             methods.
             Note: other methods have the same error simulation algorithm but with different rates, therefore
             no other statements are needed except the rates.
-        @param clustering_options: None by default, supply a dictionary of options as described below to perform a
-            pseudo-clustering operation for the evyat.txt output file.
-            - None (default) - performs a perfect clustering, with no loss or errors.
-            - Dictionary of options. Possible keys and values:
-                + 'start' - start index of the cluster's identifier sequence.
-                + 'end' - end index(not inclusive) of the cluster's identifier sequence.
-                + 'dist' - maximal edit distance allowed for a sequence to be included in a cluster.
         @param distribution_info: Dictionary containing the information of the desired distribution of the number of
                 copies to generate for each strand. Initiated based on user input:
                 - User can supply a dictionary (as explained below) with the the distribution type, function or list of values,
@@ -125,8 +116,6 @@ class Simulator:
                                            6: 5.5 * (10 ** (-8))}
         self.input_path = input_path
         self.is_stutter_method = is_stutter_method
-
-        self.clustering_options = clustering_options
 
         self.distribution_info = distribution_info
         self.random = None
@@ -198,11 +187,6 @@ class Simulator:
                     original_strand = original_strand.rstrip()
                     output_f.write(original_strand + '\n' + '*****************************\n')
 
-                    if self.clustering_options is not None:
-                        barcode_start_index = self.clustering_options['start']
-                        barcode_end_index = self.clustering_options['end']
-                        original_strand_barcode = original_strand[barcode_start_index:barcode_end_index]
-
                     # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
                     for j in range(self.random[i]):
 
@@ -219,14 +203,6 @@ class Simulator:
                         else:
                             output_strand = strand_error_simulator.simulate_errors_on_strand()
 
-                        if self.clustering_options is not None:
-                            edit_distance = edlib.align(original_strand_barcode,
-                                                        output_strand[barcode_start_index:barcode_end_index])['editDistance']
-
-                        if self.clustering_options is None or edit_distance <= self.clustering_options['dist']:
-                            # write the output strand to file:
-                            output_f.write(output_strand + '\n')
-
                     # after each strand, add 2 newlines:
                     output_f.write('\n\n')
 
@@ -234,6 +210,51 @@ class Simulator:
 
         # mess the order of the output strands into a new file:
         mess_output_strands()
+
+
+def pseudo_cluster(start, end, dist):
+    """
+    Performs pseudo clustering on a given evyat.txt file. Modifies the file.
+    :param start: start index of the cluster's identifier sequence.
+    :param end: end index (not inclusive) of the cluster's identifier sequence.
+    :param dist: maximal edit distance allowed for a sequence to be included in a cluster.
+    """
+    with open('output/evyat.txt', 'r') as evyat_f:
+        with open('output/evyat_temp.txt', 'w') as temp_f:
+
+            line = evyat_f.readline()
+            design = line
+
+            while line:
+                # save designs and file structure and filter only copies according to the parameters:
+                temp_f.write(line)
+
+                if line == '*****************************\n':
+                    design_barcode = design[start:end]
+                    # read next line to get potential copy:
+                    line = evyat_f.readline()
+                    while line != '\n':
+                        # if the line is a copy, strip it from newline:
+                        copy_strand = line
+                        # strip the strand from newline:
+                        copy_strand = copy_strand.rstrip()
+                        copy_strand_barcode = copy_strand[start:end]
+                        edit_distance = edlib.align(design_barcode, copy_strand_barcode)['editDistance']
+
+                        # save stand if edit distance is less than the maximal allowed (or drop it if not)
+                        if edit_distance <= dist:
+                            temp_f.write(line)
+
+                        # read next potential copy:
+                        line = evyat_f.readline()
+
+                    temp_f.write(line)  # write the newline (it will be skipped just before next outer loop iteration)
+
+                else:
+                    design = line  # if next line is a separator, last line stored is the design
+
+                # read next:
+                line = evyat_f.readline()
 
 
 def mess_output_strands():
@@ -322,6 +343,7 @@ def parse_rates_dictionary(rates_dict):
 # Testing:
 #
 # if __name__ == '__main__':
+#     pseudo_cluster(1,10,5)
 #
 #     error_rates_example = {'d': 9.58 * (10 ** (-4)),
 #                            'ld': 2.33 * (10 ** (-4)),
