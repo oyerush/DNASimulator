@@ -256,6 +256,9 @@ def pseudo_cluster(start, end, dist):
                 # read next:
                 line = evyat_f.readline()
 
+    os.remove('output/evyat.txt')
+    os.rename(r'output/evyat_temp.txt', r'output/evyat.txt')
+
 
 def mess_output_strands():
     """
@@ -343,7 +346,7 @@ def parse_rates_dictionary(rates_dict):
 # Testing:
 #
 # if __name__ == '__main__':
-#     pseudo_cluster(1,10,5)
+#     pseudo_cluster(1, 10, 5)
 #
 #     error_rates_example = {'d': 9.58 * (10 ** (-4)),
 #                            'ld': 2.33 * (10 ** (-4)),
