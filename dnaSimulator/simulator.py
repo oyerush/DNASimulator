@@ -9,6 +9,7 @@ import os
 from scipy.stats import skewnorm
 import edlib
 from custom_random_variable import CustomRvContinuous
+import random
 
 class Simulator:
     """
@@ -173,6 +174,8 @@ class Simulator:
 
         elif self.distribution_info['type'] == 'vector':
             self.random = self.distribution_info['value']
+            self.min_copies = min(self.random)
+            self.max_copies = max(self.random)
 
         # for each strand, copy it the corresponding generated number of times and simulate error on each copy:
         i = 0
@@ -187,8 +190,17 @@ class Simulator:
                     original_strand = original_strand.rstrip()
                     output_f.write(original_strand + '\n' + '*****************************\n')
 
-                    # for each strand, do the simulation on a copy of it random[i] (the generated number of copies) times:
-                    for j in range(self.random[i]):
+                    # set the number of copies for each design:
+                    num_copies = self.min_copies
+                    # in case of user defined vector, vector can be shorter of longer than the real number of designs.
+                    # so in case of a shorter vector, use all the available values, and generate random ones between the minimum and maximum for the rest:
+                    if i < len(self.random):
+                        num_copies = self.random[i]
+                    else:
+                        num_copies = random.randint(self.min_copies, self.max_copies + 1)
+
+                    # for each strand, do the simulation on a copy of it num_copies (the generated number of copies) times:
+                    for j in range(num_copies):
 
                         # duplicate strand to create a working (output) strand:
                         output_strand = copy.deepcopy(original_strand)
@@ -202,6 +214,8 @@ class Simulator:
                             output_strand = strand_error_simulator.simulate_stutter_errors_on_strand()
                         else:
                             output_strand = strand_error_simulator.simulate_errors_on_strand()
+
+                        output_f.write(output_strand + '\n')
 
                     # after each strand, add 2 newlines:
                     output_f.write('\n\n')
@@ -377,7 +391,7 @@ def parse_rates_dictionary(rates_dict):
 #                                      'd': 0.096 * (10 ** (-2)),
 #                                      'ld': 0.023 * (10 ** (-2))}}
 #
-#     input_path_example = 'input.txt'
+#     input_path_example = 'input/strands_in.txt'
 #
 #     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example)
 #
@@ -386,6 +400,12 @@ def parse_rates_dictionary(rates_dict):
 #     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, True)
 #
 #     sim.simulate_errors()
-
+#
+#     distribution_example = {'type': 'vector', 'value': [100, 10, 5, 9, 6, 200]}
+#
+#     sim = Simulator(error_rates_example, base_error_rates_example, input_path_example, False, distribution_example)
+#
+#     sim.simulate_errors()
+#
 
 
