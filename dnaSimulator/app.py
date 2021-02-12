@@ -335,30 +335,33 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
         self.file_path_lineEdit.setText(self.inputDNAPath)
 
-    def show_error_dialog(self, error_type):
-        if error_type == 'no_such_file':
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
+    # def show_error_dialog(self, error_msg):
+    #     msg = QMessageBox()
+    #     msg.setIcon(QMessageBox.Information)
+    #
+    #     msg.setText(error_msg)
+    #     # msg.setInformativeText("This is additional information")
+    #     msg.setWindowTitle("Error!")
+    #     # msg.setDetailedText("The details are as follows:")
+    #     msg.setStandardButtons(QMessageBox.Ok)
+    #     # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+    #     # msg.buttonClicked.connect(msgbtn)
 
-            msg.setText("The input file you chosen doesn't exist")
-            # msg.setInformativeText("This is additional information")
-            msg.setWindowTitle("Error!")
-            # msg.setDetailedText("The details are as follows:")
-            msg.setStandardButtons(QMessageBox.Ok)
-            # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-            # msg.buttonClicked.connect(msgbtn)
-
-            retval = msg.exec_()
+        # retval = msg.exec_()
 
     def runClustering(self):
-        pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
+        if not os.path.isfile('output/evyat.txt'):
+            print('The evyat.txt doesn\'t exist')
+            self.msg_box_with_error("evyat.txt input file for clustering doesn't exist")
+        else:
+            pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
 
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
         while True:
             if not os.path.isfile(self.inputDNAPath):
                 print('The chosen input file doesn\'t exist')
-                self.show_error_dialog('no_such_file')
+                self.msg_box_with_error("The input file you chosen doesn't exist")
                 self.file_path_lineEdit.clear()
                 break
             else:
