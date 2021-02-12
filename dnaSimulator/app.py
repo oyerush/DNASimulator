@@ -44,6 +44,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             'T': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''}
         }
 
+        self.barcode_start = 0
+        self.barcode_end = 0
+        self.max_clustering_edit_dist = 0
+
         self.reconstruction_algo = ''
 
         self.progressBar.setVisible(False)
@@ -53,6 +57,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         # self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
         self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
         self.reconstruction_run_pushButton.clicked.connect(self.run_reconstruction_algo)
+        self.run_clustering_pushButton.clicked.connect(self.runClustering)
 
         # connect radio buttons to an event
         self.Ilumina_miSeq_radioButton.toggled.connect(self.ilumina_miSeq_chosen)
@@ -93,6 +98,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.G_long_del_doubleSpinBox.textChanged.connect(self.set_G_long_del)
         self.T_long_del_doubleSpinBox.textChanged.connect(self.set_T_long_del)
 
+        self.barcode_start_spinBox.textChanged.connect(self.set_barcode_start)
+        self.barcode_end_spinBox.textChanged.connect(self.set_barcode_end)
+        self.max_edit_dist_spinBox.textChanged.connect(self.set_clustering_edit_dist)
+
         self.reconstruction_listWidget.addItem('Hybrid Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('Divider BMA Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('BMA Look Ahead Reconstruction Algorithm')
@@ -101,6 +110,15 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
+
+    def set_barcode_start(self, value):
+        self.barcode_start = value
+
+    def set_barcode_end(self, value):
+        self.barcode_end = value
+
+    def set_clustering_edit_dist(self, value):
+        self.max_clustering_edit_dist = value
 
     def set_reconstruction_algo(self):
         self.reconstruction_algo = self.reconstruction_listWidget.currentItem().text()
@@ -331,6 +349,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             # msg.buttonClicked.connect(msgbtn)
 
             retval = msg.exec_()
+
+    def runClustering(self):
+        pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
 
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
