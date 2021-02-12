@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>662</width>
-    <height>660</height>
+    <height>711</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -772,6 +772,16 @@
              </size>
             </property>
            </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="clustering_tab">
+         <attribute name="title">
+          <string>Clustering</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3"/>
           </item>
          </layout>
         </widget>
