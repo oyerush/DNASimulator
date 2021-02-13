@@ -513,6 +513,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             else:
                 if self.user_defined_copied_checkBox.isChecked():
                     sent_distance_info = self.dist_info
+                    if sent_distance_info['type'] == 'continuous' and sent_distance_info['min'] >= sent_distance_info['max']:
+                        self.msg_box_with_error('Min should be < Max in user defined amount of copies')
+                        break
+                    if sent_distance_info['value'] == '':
+                        self.msg_box_with_error('Please enter a value in user defined amount on copies')
+                        break
                 else:
                     sent_distance_info = None
                 self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath
