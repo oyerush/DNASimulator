@@ -259,11 +259,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.one_base_del_label.setText('Deletion')
             self.Insertion_label.setText('Stutter')
 
-
-    def Default_chosen(self):
-        self.error_stats_visibility(False)
-        self.set_stutter_default_values()
-
     def ilumina_NextSeq_chosen(self):
         self.twist_bioscience_radioButton.setEnabled(True)
         # self.twist_bioscience_radioButton.setChecked(True)
@@ -313,6 +308,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         if self.MinION_radioButton.isChecked() and self.IDT_radioButton.isChecked():
             self.set_Y16_values()
 
+    def Default_chosen(self):
+        if self.stutter_radioButton.isChecked() and self.default_radioButton.isChecked():
+            self.error_stats_visibility(False)
+            self.set_stutter_default_values()
+
     def set_per_base_substitution(self, a, c, g, t):
         self.A_substitution_doubleSpinBox.setValue(a)
         self.C_substitution_doubleSpinBox.setValue(c)
@@ -344,16 +344,16 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.T_long_del_doubleSpinBox.setValue(t)
 
     def set_stutter_default_values(self):
-        self.substitution_doubleSpinBox.setValue(0)
-        self.insertion_doubleSpinBox.setValue(0)
-        self.one_base_del_doubleSpinBox.setValue(0)
-        self.long_del_doubleSpinBox.setValue(0)
+        self.substitution_doubleSpinBox.setValue(0.1)
+        self.insertion_doubleSpinBox.setValue(0.1)
+        self.one_base_del_doubleSpinBox.setValue(0.1)
+        self.long_del_doubleSpinBox.setValue(0.1)
 
-        self.set_per_base_substitution(0, 0, 0, 0)
-        self.set_per_base_insertion(0, 0, 0, 0)
-        self.set_per_base_pre_insertion(0, 0, 0, 0)
-        self.set_per_base_del(0, 0, 0, 0)
-        self.set_per_base_long_del(0, 0, 0, 0)
+        self.set_per_base_substitution(0.1, 0.1, 0.1, 0.1)
+        self.set_per_base_insertion(0.1, 0.1, 0.1, 0.1)
+        self.set_per_base_pre_insertion(0.1, 0.1, 0.1, 0.1)
+        self.set_per_base_del(0.1, 0.1, 0.1, 0.1)
+        self.set_per_base_long_del(0.1, 0.1, 0.1, 0.1)
 
     def set_EZ17_values(self):
         # general errors
