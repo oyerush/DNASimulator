@@ -68,6 +68,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.IDT_radioButton.toggled.connect(self.IDT_chosen)
         self.stutter_radioButton.toggled.connect(self.Stutter_chosen)
         self.default_radioButton.toggled.connect(self.Default_chosen)
+        self.cont_radioButton.toggled.connect(self.continuous_amount)
+        self.vector_radioButton.toggled.connect(self.vector_amount)
 
         self.substitution_doubleSpinBox.textChanged.connect(self.set_substitution)
         self.insertion_doubleSpinBox.textChanged.connect(self.set_insertion)
@@ -112,6 +114,36 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
+
+        self.cont_radioButton.setVisible(False)
+        self.vector_radioButton.setVisible(False)
+        self.value_lineEdit.setVisible(False)
+        self.min_amount_spinBox.setVisible(False)
+        self.max_amount_spinBox.setVisible(False)
+        self.user_defined_copied_checkBox.stateChanged.connect(self.user_defined_amount)
+
+    def user_defined_amount(self):
+        checkbox_status = self.user_defined_copied_checkBox.isChecked()
+        self.cont_radioButton.setVisible(checkbox_status)
+        self.vector_radioButton.setVisible(checkbox_status)
+        if not checkbox_status:
+            self.value_lineEdit.setVisible(checkbox_status)
+            self.min_amount_spinBox.setVisible(checkbox_status)
+            self.max_amount_spinBox.setVisible(checkbox_status)
+        elif self.cont_radioButton.isChecked():
+            self.continuous_amount()
+        elif self.vector_radioButton.isChecked():
+            self.vector_amount()
+
+    def continuous_amount(self):
+        self.value_lineEdit.setVisible(True)
+        self.min_amount_spinBox.setVisible(True)
+        self.max_amount_spinBox.setVisible(True)
+
+    def vector_amount(self):
+        self.value_lineEdit.setVisible(True)
+        self.min_amount_spinBox.setVisible(False)
+        self.max_amount_spinBox.setVisible(False)
 
     def set_barcode_start(self, value):
         self.barcode_start = value
