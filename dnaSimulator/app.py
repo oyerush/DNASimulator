@@ -66,6 +66,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.twist_bioscience_radioButton.toggled.connect(self.twist_bioscience_chosen)
         self.customArray_radioButton.toggled.connect(self.customArray_chosen)
         self.IDT_radioButton.toggled.connect(self.IDT_chosen)
+        self.stutter_radioButton.toggled.connect(self.Stutter_chosen)
+        self.default_radioButton.toggled.connect(self.Default_chosen)
 
         self.substitution_doubleSpinBox.textChanged.connect(self.set_substitution)
         self.insertion_doubleSpinBox.textChanged.connect(self.set_insertion)
@@ -207,6 +209,60 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.customArray_radioButton.setAutoExclusive(True)
         self.IDT_radioButton.setEnabled(True)
         # self.IDT_radioButton.setChecked(True)
+        self.default_radioButton.setEnabled(False)
+        self.default_radioButton.setAutoExclusive(False)
+        self.default_radioButton.setChecked(False)
+        self.default_radioButton.setAutoExclusive(True)
+        self.error_stats_label.setVisible(True)
+        self.error_stats_visibility(True)
+
+    def Stutter_chosen(self):
+        self.twist_bioscience_radioButton.setEnabled(False)
+        self.twist_bioscience_radioButton.setAutoExclusive(False)
+        self.twist_bioscience_radioButton.setChecked(False)
+        self.twist_bioscience_radioButton.setAutoExclusive(True)
+        self.customArray_radioButton.setEnabled(False)
+        self.customArray_radioButton.setAutoExclusive(False)
+        self.customArray_radioButton.setChecked(False)
+        self.customArray_radioButton.setAutoExclusive(True)
+        self.IDT_radioButton.setEnabled(False)
+        self.IDT_radioButton.setAutoExclusive(False)
+        self.IDT_radioButton.setChecked(False)
+        self.IDT_radioButton.setAutoExclusive(True)
+        self.default_radioButton.setEnabled(True)
+
+    def error_stats_visibility(self, visibility):
+        self.error_stats_label.setVisible(visibility)
+        self.substitution_doubleSpinBox.setVisible(visibility)
+        self.insertion_doubleSpinBox.setVisible(visibility)
+        self.one_base_del_doubleSpinBox.setVisible(visibility)
+        self.long_del_doubleSpinBox.setVisible(visibility)
+        self.substitution_general_label.setVisible(visibility)
+        self.insertion_general_label.setVisible(visibility)
+        self.one_base_del_general_label.setVisible(visibility)
+        self.long_del_general_label.setVisible(visibility)
+        self.line_4.setVisible(visibility)
+        self.pre_insertion_label.setVisible(visibility)
+        self.A_pre_insertion_doubleSpinBox.setVisible(visibility)
+        self.C_pre_insertion_doubleSpinBox.setVisible(visibility)
+        self.G_pre_insertion_doubleSpinBox.setVisible(visibility)
+        self.T_pre_insertion_doubleSpinBox.setVisible(visibility)
+        self.long_del_label.setVisible(visibility)
+        self.A_long_del_doubleSpinBox.setVisible(visibility)
+        self.C_long_del_doubleSpinBox.setVisible(visibility)
+        self.G_long_del_doubleSpinBox.setVisible(visibility)
+        self.T_long_del_doubleSpinBox.setVisible(visibility)
+        if visibility:
+            self.one_base_del_label.setText('1-base Deletion')
+            self.Insertion_label.setText('Insertion')
+        else:
+            self.one_base_del_label.setText('Deletion')
+            self.Insertion_label.setText('Stutter')
+
+
+    def Default_chosen(self):
+        self.error_stats_visibility(False)
+        self.set_stutter_default_values()
 
     def ilumina_NextSeq_chosen(self):
         self.twist_bioscience_radioButton.setEnabled(True)
@@ -219,6 +275,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.IDT_radioButton.setAutoExclusive(False)
         self.IDT_radioButton.setChecked(False)
         self.IDT_radioButton.setAutoExclusive(True)
+        self.default_radioButton.setEnabled(False)
+        self.default_radioButton.setAutoExclusive(False)
+        self.default_radioButton.setChecked(False)
+        self.default_radioButton.setAutoExclusive(True)
+        self.error_stats_label.setVisible(True)
+        self.error_stats_visibility(True)
 
     def ilumina_miSeq_chosen(self):
         self.twist_bioscience_radioButton.setEnabled(True)
@@ -230,6 +292,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.twist_bioscience_radioButton.setAutoExclusive(False)
         self.twist_bioscience_radioButton.setChecked(False)
         self.twist_bioscience_radioButton.setAutoExclusive(True)
+        self.default_radioButton.setEnabled(False)
+        self.default_radioButton.setAutoExclusive(False)
+        self.default_radioButton.setChecked(False)
+        self.default_radioButton.setAutoExclusive(True)
+        self.error_stats_label.setVisible(True)
+        self.error_stats_visibility(True)
 
     def twist_bioscience_chosen(self):
         if self.Ilumina_miSeq_radioButton.isChecked() and self.twist_bioscience_radioButton.isChecked():
@@ -274,6 +342,18 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.C_long_del_doubleSpinBox.setValue(c)
         self.G_long_del_doubleSpinBox.setValue(g)
         self.T_long_del_doubleSpinBox.setValue(t)
+
+    def set_stutter_default_values(self):
+        self.substitution_doubleSpinBox.setValue(0)
+        self.insertion_doubleSpinBox.setValue(0)
+        self.one_base_del_doubleSpinBox.setValue(0)
+        self.long_del_doubleSpinBox.setValue(0)
+
+        self.set_per_base_substitution(0, 0, 0, 0)
+        self.set_per_base_insertion(0, 0, 0, 0)
+        self.set_per_base_pre_insertion(0, 0, 0, 0)
+        self.set_per_base_del(0, 0, 0, 0)
+        self.set_per_base_long_del(0, 0, 0, 0)
 
     def set_EZ17_values(self):
         # general errors
@@ -347,7 +427,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     #     # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
     #     # msg.buttonClicked.connect(msgbtn)
 
-        # retval = msg.exec_()
+    # retval = msg.exec_()
 
     def runClustering(self):
         if not os.path.isfile('output/evyat.txt'):
@@ -365,7 +445,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 self.file_path_lineEdit.clear()
                 break
             else:
-                self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath)
+                self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath, self.default_radioButton.isChecked())
                 self.worker.start()
                 self.label_progress.setText('Injecting errors, please wait!')
                 self.worker.finished.connect(self.evt_worker_finished)
@@ -421,7 +501,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         source = open('output/histogram.txt', 'r')
         for line in source:
-            line_list = re.split(r'\t+|\s+', line) # seperates a string to a list by a delimeter of spaces or tabs
+            line_list = re.split(r'\t+|\s+', line)  # seperates a string to a list by a delimeter of spaces or tabs
             index = int(line_list[0].strip())
             value = int(line_list[1].strip())
             y[index] = (value / num_clusters) * 100
@@ -483,7 +563,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.process.readyRead.connect(self.dataReady)
             self.process.finished.connect(self.reconstruction_finished)
 
-
     def run_reconstruction_algo(self):
         if not os.path.isfile('output/evyat.txt'):
             self.msg_box_with_error('Please run the error simulator first, or provide the evyat.txt input file')
@@ -513,20 +592,22 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
 class SimulateErrorsWorker(QThread):
     update_progress = pyqtSignal(int)
+
     # update_error_sim_finished = pyqtSignal(str)
 
-    def __init__(self, general_errors, per_base_errors, input_dna_path):
+    def __init__(self, general_errors, per_base_errors, input_dna_path, stutter_chosen):
         super(SimulateErrorsWorker, self).__init__()
         self.general_errors = general_errors
         self.per_base_errors = per_base_errors
         self.inputDNAPath = input_dna_path
+        self.stutter_chosen = stutter_chosen
 
     def report_func(self, total_lines, curr_line):
         percent = int(curr_line * 100 // total_lines)
         self.update_progress.emit(percent)
 
     def run(self):
-        error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath)
+        error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath, self.stutter_chosen)
         error_sim.simulate_errors(self.report_func)
         # self.update_error_sim_finished.emit
 

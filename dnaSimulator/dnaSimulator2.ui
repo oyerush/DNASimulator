@@ -144,6 +144,13 @@
                   </widget>
                  </item>
                  <item>
+                  <widget class="QRadioButton" name="stutter_radioButton">
+                   <property name="text">
+                    <string>Stutter</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <spacer name="tech_radio_buttons_horizontalSpacer">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
@@ -239,6 +246,16 @@
                    </property>
                    <property name="text">
                     <string>Integrated DNA Technology (IDT)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="default_radioButton">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="text">
+                    <string>Default</string>
                    </property>
                   </widget>
                  </item>
