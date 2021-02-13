@@ -44,6 +44,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             'T': {'s': '', 'i': '', 'pi': '', 'd': '', 'ld': ''}
         }
 
+        self.dist_info = {
+            'type': '',
+            'value': '',
+            'min': 0,
+            'max': 0
+        }
+
         self.barcode_start = 0
         self.barcode_end = 0
         self.max_clustering_edit_dist = 0
@@ -76,7 +83,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.one_base_del_doubleSpinBox.textChanged.connect(self.set_one_base_del)
         self.long_del_doubleSpinBox.textChanged.connect(self.set_long_del)
 
-        # connect the lineEdits of per base errors
+        # connect the spinboxes of per base errors
         self.A_substitution_doubleSpinBox.textChanged.connect(self.set_A_substitution)
         self.C_substitution_doubleSpinBox.textChanged.connect(self.set_C_substitution)
         self.G_substitution_doubleSpinBox.textChanged.connect(self.set_G_substitution)
@@ -105,6 +112,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.barcode_start_spinBox.textChanged.connect(self.set_barcode_start)
         self.barcode_end_spinBox.textChanged.connect(self.set_barcode_end)
         self.max_edit_dist_spinBox.textChanged.connect(self.set_clustering_edit_dist)
+
+        self.min_amount_spinBox.textChanged.connect(self.set_min_amount)
+        self.max_amount_spinBox.textChanged.connect(self.set_max_amount)
+        self.value_lineEdit.textChanged.connect(self.set_value_amount)
 
         self.reconstruction_listWidget.addItem('Hybrid Reconstruction Algorithm')
         self.reconstruction_listWidget.addItem('Divider BMA Reconstruction Algorithm')
@@ -139,11 +150,22 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.value_lineEdit.setVisible(True)
         self.min_amount_spinBox.setVisible(True)
         self.max_amount_spinBox.setVisible(True)
+        self.dist_info['type'] = self.cont_radioButton.text().lower()
 
     def vector_amount(self):
         self.value_lineEdit.setVisible(True)
         self.min_amount_spinBox.setVisible(False)
         self.max_amount_spinBox.setVisible(False)
+        self.dist_info['type'] = self.vector_radioButton.text().lower()
+
+    def set_min_amount(self, value):
+        self.dist_info['min'] = int(value)
+
+    def set_max_amount(self, value):
+        self.dist_info['max'] = int(value)
+
+    def set_value_amount(self, value):
+        self.dist_info['value'] = value
 
     def set_barcode_start(self, value):
         self.barcode_start = value
@@ -477,7 +499,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 self.file_path_lineEdit.clear()
                 break
             else:
-                self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath, self.default_radioButton.isChecked())
+                if self.user_defined_copied_checkBox.isChecked():
+                    sent_distance_info = self.dist_info
+                else:
+                    sent_distance_info = None
+                self.worker = SimulateErrorsWorker(self.general_errors, self.per_base_errors, self.inputDNAPath
+                                                   , self.default_radioButton.isChecked(), sent_distance_info)
                 self.worker.start()
                 self.label_progress.setText('Injecting errors, please wait!')
                 self.worker.finished.connect(self.evt_worker_finished)
@@ -627,19 +654,21 @@ class SimulateErrorsWorker(QThread):
 
     # update_error_sim_finished = pyqtSignal(str)
 
-    def __init__(self, general_errors, per_base_errors, input_dna_path, stutter_chosen):
+    def __init__(self, general_errors, per_base_errors, input_dna_path, stutter_chosen, dist_info):
         super(SimulateErrorsWorker, self).__init__()
         self.general_errors = general_errors
         self.per_base_errors = per_base_errors
         self.inputDNAPath = input_dna_path
         self.stutter_chosen = stutter_chosen
+        self.dist_info = dist_info
 
     def report_func(self, total_lines, curr_line):
         percent = int(curr_line * 100 // total_lines)
         self.update_progress.emit(percent)
 
     def run(self):
-        error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath, self.stutter_chosen)
+        error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath
+                              , self.stutter_chosen, self.dist_info)
         error_sim.simulate_errors(self.report_func)
         # self.update_error_sim_finished.emit
 
