@@ -758,22 +758,34 @@
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="cont_vector_horizontalLayout">
-              <item>
-               <widget class="QRadioButton" name="cont_radioButton">
-                <property name="text">
-                 <string>Continuous</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="vector_radioButton">
-                <property name="text">
-                 <string>Vector</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <widget class="QFrame" name="frame">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <layout class="QHBoxLayout" name="cont_vector_horizontalLayout">
+                 <item>
+                  <widget class="QRadioButton" name="cont_radioButton">
+                   <property name="text">
+                    <string>Continuous</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="vector_radioButton">
+                   <property name="text">
+                    <string>Vector</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="value_min_max_horizontalLayout">
