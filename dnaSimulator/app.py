@@ -131,6 +131,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.value_lineEdit.setVisible(False)
         self.min_amount_spinBox.setVisible(False)
         self.max_amount_spinBox.setVisible(False)
+        self.value_label.setVisible(False)
+        self.min_label.setVisible(False)
+        self.max_label.setVisible(False)
         self.user_defined_copied_checkBox.stateChanged.connect(self.user_defined_amount)
 
     def user_defined_amount(self):
@@ -141,6 +144,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.value_lineEdit.setVisible(checkbox_status)
             self.min_amount_spinBox.setVisible(checkbox_status)
             self.max_amount_spinBox.setVisible(checkbox_status)
+            self.value_label.setVisible(checkbox_status)
+            self.min_label.setVisible(checkbox_status)
+            self.max_label.setVisible(checkbox_status)
         elif self.cont_radioButton.isChecked():
             self.continuous_amount()
         elif self.vector_radioButton.isChecked():
@@ -148,14 +154,20 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def continuous_amount(self):
         self.value_lineEdit.setVisible(True)
+        self.value_label.setVisible(True)
         self.min_amount_spinBox.setVisible(True)
+        self.min_label.setVisible(True)
         self.max_amount_spinBox.setVisible(True)
+        self.max_label.setVisible(True)
         self.dist_info['type'] = self.cont_radioButton.text().lower()
 
     def vector_amount(self):
         self.value_lineEdit.setVisible(True)
+        self.value_label.setVisible(True)
         self.min_amount_spinBox.setVisible(False)
+        self.min_label.setVisible(False)
         self.max_amount_spinBox.setVisible(False)
+        self.max_label.setVisible(False)
         self.dist_info['type'] = self.vector_radioButton.text().lower()
 
     def set_min_amount(self, value):
