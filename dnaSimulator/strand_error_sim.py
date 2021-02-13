@@ -45,7 +45,7 @@ For base error rates: Same as above, adding:
 'pi'     - symbol pre-insertion
 
 For stutter error rates:
-use the 'd' (deletion) & 'i' (insertion) keys.
+use the 'd' (deletion), 'i' (insertion) and 's' (substitution) keys.
 
 Do not use:
 'n'     - none (no error), used in some cases to represent a "dummy" error. (to receive no-error)
@@ -116,6 +116,17 @@ class StrandErrorSimulation:
         """
         while self.index < len(self.strand):
             self.simulate_stutter_error_on_base()
+            self.index += 1
+        # after implementing the stutter errors, go over the strand again and inject substitutions according to rates:
+        self.index = 0
+        while self.index < len(self.strand):
+            base = self.strand[self.index]
+            base_substitution_rate = self.base_error_rates[base]['s']
+            options = ['y', 'n']
+            rates = [base_substitution_rate, 1 - base_substitution_rate]
+            draw = random.choices(options, weights=rates, k=1)
+            if draw[0] == 'y':
+                self.strand = self.inject_substitution()
             self.index += 1
         return self.strand
 
