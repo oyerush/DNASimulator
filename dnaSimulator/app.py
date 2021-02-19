@@ -136,6 +136,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.max_label.setVisible(False)
         self.user_defined_copied_checkBox.stateChanged.connect(self.user_defined_amount)
 
+        # add tool tips in UI
+        self.value_lineEdit.setToolTip('Vector syntax example: [1, 10, 5, 9, 6, 200]\n\n'
+                                       'Continuous function should be python syntax function. For example: x ** 2')
+        self.file_path_lineEdit.setToolTip('A path to your strands file')
+
     def user_defined_amount(self):
         checkbox_status = self.user_defined_copied_checkBox.isChecked()
         self.cont_radioButton.setVisible(checkbox_status)
