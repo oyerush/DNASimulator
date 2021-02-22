@@ -66,7 +66,7 @@ class StrandErrorSimulation:
         https://www.biorxiv.org/content/biorxiv/early/2019/11/13/840231/F12.large.jpg?width=800&height=600&carousel=1
     :var self.strand: the strand to simulate the error on, as passed. This is also the final strand.
     :var self.index: the index to implement the error on.
-          Initialized to 0. Use generate_error_type to get a valid error rate.
+          Initialized to 0.
     """
     def __init__(self, total_error_rates, base_error_rates, deletion_length_rates, strand):
         """

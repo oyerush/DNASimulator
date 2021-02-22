@@ -22,7 +22,6 @@ class CustomRvContinuous(rv_continuous):
         super().__init__()
         self._min_value = min_value
         self._max_value = max_value
-        self._func_str = pdf_str
         self._raw_pdf = eval("lambda x: {func_str}".format(func_str=pdf_str))
         self._integral_value, self._integral_error = integrate.quad(self._raw_pdf, self._min_value, self._max_value)
 
