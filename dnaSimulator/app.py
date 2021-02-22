@@ -692,7 +692,7 @@ class SimulateErrorsWorker(QThread):
 
     def run(self):
         # parse value to list if type is vector:
-        if self.dist_info['type'] == 'vector':
+        if self.dist_info is not None and self.dist_info['type'] == 'vector':
             self.dist_info['value'] = ast.literal_eval(self.dist_info['value'])
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath
                               , self.stutter_chosen, self.dist_info)
