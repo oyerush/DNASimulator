@@ -4,6 +4,7 @@ import shlex
 import subprocess
 import time
 from functools import partial
+import ast
 
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtGui
@@ -135,6 +136,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.min_label.setVisible(False)
         self.max_label.setVisible(False)
         self.user_defined_copied_checkBox.stateChanged.connect(self.user_defined_amount)
+
+        # add tool tips in UI
+        self.value_lineEdit.setToolTip('Vector syntax example: [1, 10, 5, 9, 6, 200]\n\n'
+                                       'Continuous function should be python syntax function. For example: x ** 2')
+        self.file_path_lineEdit.setToolTip('A path to your strands file')
 
     def user_defined_amount(self):
         checkbox_status = self.user_defined_copied_checkBox.isChecked()
@@ -685,6 +691,9 @@ class SimulateErrorsWorker(QThread):
         self.update_progress.emit(percent)
 
     def run(self):
+        # parse value to list if type is vector:
+        if self.dist_info['type'] == 'vector':
+            self.dist_info['value'] = ast.literal_eval(self.dist_info['value'])
         error_sim = Simulator(self.general_errors, self.per_base_errors, self.inputDNAPath
                               , self.stutter_chosen, self.dist_info)
         error_sim.simulate_errors(self.report_func)
