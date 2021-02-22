@@ -600,10 +600,16 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         import numpy as np
         import matplotlib.pyplot as plt
 
+        # if os.path.isfile('output/histogram.png'):
+        #     os.remove('output/histogram.png')
+
+        # self.histogram_img.setText('')
+
         x, y, num_clusters = self.parse_hist_results()
 
         plt.xticks(x)
 
+        plt.figure() # creates a new plot, so it doesn't plot a couple in one figure
         plt.scatter(x, y, color='r', zorder=2)
         plt.plot(x, y, color='b', zorder=1)
 
@@ -623,7 +629,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.histogram_img.setPixmap(pixmap)
 
         # Optional, resize window to image size
-        self.resize(pixmap.width(), pixmap.height())
+        #self.resize(pixmap.width(), pixmap.height())
 
     def dataReady(self):
         x = str(self.process.readAll(), 'utf-8')
