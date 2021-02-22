@@ -8,6 +8,7 @@ from functools import partial
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtGui
 from PyQt5.QtCore import *
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 import sys
 import platform
@@ -561,10 +562,12 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     def parse_hist_results(self):
         num_clusters = 0
         start_copying = 0
-        x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        y = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        # x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        # y = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        x = []
+        y = []
 
-        source = open('output/mock.txt', 'r')
+        source = open('output/output.txt', 'r')
         f = open('output/histogram.txt', 'w')
 
         for line in source:
@@ -586,7 +589,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             line_list = re.split(r'\t+|\s+', line)  # seperates a string to a list by a delimeter of spaces or tabs
             index = int(line_list[0].strip())
             value = int(line_list[1].strip())
-            y[index] = (value / num_clusters) * 100
+            x.insert(index, index)
+            y.insert(index, (value / num_clusters) * 100)
+            # y[index] = (value / num_clusters) * 100
         source.close()
         return x, y, num_clusters
 
@@ -608,21 +613,28 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         plt.savefig('output/histogram.png')
         # plt.show()
 
-        qim = ImageQt('output/histogram.png').copy()
-        pix = QtGui.QPixmap.fromImage(qim)
-        self.histogram_img.setPixmap(pix)
-        self.histogram_img.adjustSize()
+        # qim = ImageQt('output/histogram.png').copy()
+        # pix = QtGui.QPixmap.fromImage(qim)
+        # self.histogram_img.setPixmap(pix)
+        # self.histogram_img.adjustSize()
+
+        pixmap = QPixmap('output/histogram.png')
+        self.histogram_img.setPixmap(pixmap)
+
+        # Optional, resize window to image size
+        self.resize(pixmap.width(), pixmap.height())
 
     def dataReady(self):
         x = str(self.process.readAll(), 'utf-8')
         res = re.split('\r\n', x.strip())
         for i in res:
-            self.progressBar.setValue(int(i))
+            if i.isnumeric():
+                self.progressBar.setValue(int(i))
 
     def reconstruction_finished(self):
         self.label_progress.setText('We are done :)')
         self.progressBar.setVisible(False)
-        text = open('output/mock.txt').read()
+        text = open('output/output.txt').read()
         self.reconstruction_output_textEdit.setText(text)
         self.show_hist_graph_result()
 
