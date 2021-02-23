@@ -652,8 +652,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             pass
         elif platform.system() == "Darwin":
             # OS X
-            # subprocess.run('./reconstruction_algs/DNA', cwd='output/')
-            pass
+            self.progressBar.setVisible(True)
+            self.label_progress.setText('Running reconstruction, please wait!')
+            self.process = QProcess(self)
+            self.process.setWorkingDirectory('./output/')
+            self.process.start('../reconstruction_algs/' + alg_file_name)
+            self.process.readyRead.connect(self.dataReady)
+            self.process.finished.connect(self.reconstruction_finished)
         elif platform.system() == "Windows":
             # Windows...
             self.progressBar.setVisible(True)
