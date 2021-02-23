@@ -569,7 +569,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         y = []
 
         source = open('output/output.txt', 'r')
-        f = open('output/histogram.txt', 'w')
+        f = open('output/histogram.txt', 'w', newline='\n')
 
         for line in source:
             if line.find('rate') > 0:

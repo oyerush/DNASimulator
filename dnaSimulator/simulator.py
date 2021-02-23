@@ -181,7 +181,7 @@ class Simulator:
         i = 0
         with open(self.input_path, 'r') as input_f:
             os.makedirs('./output', exist_ok=True)  # required to create output directory if it doesn't exist
-            with open('output/evyat.txt', 'w') as output_f:
+            with open('output/evyat.txt', 'w', newline="\n") as output_f:
                 for line in input_f:
                     report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
@@ -234,7 +234,7 @@ def pseudo_cluster(start, end, dist):
     :param dist: maximal edit distance allowed for a sequence to be included in a cluster.
     """
     with open('output/evyat.txt', 'r') as evyat_f:
-        with open('output/evyat_temp.txt', 'w') as temp_f:
+        with open('output/evyat_temp.txt', 'w', newline='\n') as temp_f:
 
             line = evyat_f.readline()
             design = line
@@ -280,7 +280,7 @@ def mess_output_strands():
     Creates a temporary file from the evyat.txt to run the shuffle program on it,
     and creates a new output file errors_shuffled.txt with all output strands shuffled and not clustered.
     """
-    output_f = open('output/errors_temp.txt', 'w')
+    output_f = open('output/errors_temp.txt', 'w', newline='\n')
     with open('output/evyat.txt', 'r') as errors_f:
         try:
             # skip first line and ****:
