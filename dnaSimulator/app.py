@@ -646,28 +646,23 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.show_hist_graph_result()
 
     def call_reconstruction_alg(self, alg_file_name):
-
+        process_path = None
         if platform.system() == "Linux" or platform == "linux2":
             # linux
-            pass
+            process_path = '../reconstruction_algs/' + alg_file_name + "Linux"
         elif platform.system() == "Darwin":
             # OS X
-            self.progressBar.setVisible(True)
-            self.label_progress.setText('Running reconstruction, please wait!')
-            self.process = QProcess(self)
-            self.process.setWorkingDirectory('./output/')
-            self.process.start('../reconstruction_algs/' + alg_file_name)
-            self.process.readyRead.connect(self.dataReady)
-            self.process.finished.connect(self.reconstruction_finished)
+            process_path = '../reconstruction_algs/' + alg_file_name + "Mac"
         elif platform.system() == "Windows":
             # Windows...
-            self.progressBar.setVisible(True)
-            self.label_progress.setText('Running reconstruction, please wait!')
-            self.process = QProcess(self)
-            self.process.setWorkingDirectory('output/')
-            self.process.start('reconstruction_algs/' + alg_file_name + '.exe')
-            self.process.readyRead.connect(self.dataReady)
-            self.process.finished.connect(self.reconstruction_finished)
+            process_path = 'reconstruction_algs/' + alg_file_name + ".exe"
+        self.progressBar.setVisible(True)
+        self.label_progress.setText('Running reconstruction, please wait!')
+        self.process = QProcess(self)
+        self.process.setWorkingDirectory('output/')
+        self.process.start(process_path)
+        self.process.readyRead.connect(self.dataReady)
+        self.process.finished.connect(self.reconstruction_finished)
 
     def run_reconstruction_algo(self):
         if not os.path.isfile('output/evyat.txt'):
