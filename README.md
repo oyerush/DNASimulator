@@ -29,7 +29,7 @@ python app.py
 ```
 or
 ```
-python app.py
+python3 app.py
 ```
 (depends on your environment)
 
