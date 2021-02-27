@@ -255,7 +255,7 @@
                     <bool>false</bool>
                    </property>
                    <property name="text">
-                    <string>Default</string>
+                    <string>Stutter</string>
                    </property>
                   </widget>
                  </item>
@@ -736,6 +736,19 @@
               </property>
               <property name="maximum">
                <double>1.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>(conditional probability)</string>
               </property>
              </widget>
             </item>
