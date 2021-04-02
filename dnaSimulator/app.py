@@ -17,6 +17,7 @@ import platform
 import dnaSimulator_ui2
 # from SpinBoxCustom import SpinBoxCustom
 from simulator import *
+from dbscan_scikitlearn import *
 
 
 class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
