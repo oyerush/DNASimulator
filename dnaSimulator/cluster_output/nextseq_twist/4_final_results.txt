@@ -1,4 +1,0 @@
---- 231.282484292984 seconds ---
-Number of strands in wrong cluster: 65
-Number of false negative: 0
-Number of thrown strands: 2816
