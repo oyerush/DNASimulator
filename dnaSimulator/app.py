@@ -58,6 +58,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.max_clustering_edit_dist = 0
 
         self.reconstruction_algo = ''
+        self.clustering_algo = ''
+        self.clustering_technology = 'miseq_twist'
 
         self.progressBar.setVisible(False)
 
@@ -127,6 +129,22 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.reconstruction_listWidget.addItem('Not a real algo')
 
         self.reconstruction_listWidget.currentItemChanged.connect(self.set_reconstruction_algo)
+
+        self.clustering_listWidget.addItem('Pseudo Clustering Algorithm')
+        self.clustering_listWidget.addItem('Index Based Algorithm')
+
+        self.stackedWidget.addWidget(self.pseudoclustering_settings_verticalWidget)
+        self.stackedWidget.addWidget(self.realclustering_settings_verticalWidget)
+        self.stackedWidget.hide()
+        self.clustering_settings_label.setVisible(False)
+
+        self.technology_comboBox.addItem('Twist Bioscience + Ilumina miSeq')
+        self.technology_comboBox.addItem('CustomArray + Ilumina miSeq')
+        self.technology_comboBox.addItem('Twist Bioscience + Ilumina NextSeq')
+        self.technology_comboBox.addItem('Integrated DNA Technology (IDT) + MinION')
+        self.technology_comboBox.currentTextChanged.connect(self.set_clustering_technology)
+
+        self.clustering_listWidget.currentItemChanged.connect(self.set_clustering_algo)
 
         self.cont_radioButton.setVisible(False)
         self.vector_radioButton.setVisible(False)
@@ -198,6 +216,27 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     def set_reconstruction_algo(self):
         self.reconstruction_algo = self.reconstruction_listWidget.currentItem().text()
         print(self.reconstruction_algo)
+
+    def set_clustering_algo(self):
+        self.clustering_algo = self.clustering_listWidget.currentItem().text()
+        print(self.clustering_algo)
+        self.stackedWidget.show()
+        self.clustering_settings_label.setVisible(True)
+        if self.clustering_algo == 'Pseudo Clustering Algorithm':
+            self.stackedWidget.setCurrentIndex(0)
+        elif self.clustering_algo == 'Index Based Algorithm':
+            self.stackedWidget.setCurrentIndex(1)
+
+    def set_clustering_technology(self):
+        clustering_tech = self.technology_comboBox.currentText()
+        if clustering_tech == 'Twist Bioscience + Ilumina miSeq':
+            self.clustering_technology = 'miseq_twist'
+        elif clustering_tech == 'CustomArray + Ilumina miSeq':
+            self.clustering_technology = 'miseq_custom'
+        elif clustering_tech == 'Twist Bioscience + Ilumina NextSeq':
+            self.clustering_technology = 'nextseq_twist'
+        elif clustering_tech == 'Integrated DNA Technology (IDT) + MinION':
+            self.clustering_technology = 'minion_idt'
 
     def set_substitution(self, value):
         self.general_errors['s'] = value
@@ -503,11 +542,14 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     # retval = msg.exec_()
 
     def runClustering(self):
-        if not os.path.isfile('output/evyat.txt'):
-            print('The evyat.txt doesn\'t exist')
-            self.msg_box_with_error("evyat.txt input file for clustering doesn't exist")
-        else:
-            pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
+        if self.clustering_algo == 'Pseudo Clustering Algorithm':
+            if not os.path.isfile('output/evyat.txt'):
+                print('The evyat.txt doesn\'t exist')
+                self.msg_box_with_error("evyat.txt input file for clustering doesn't exist")
+            else:
+                pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
+        elif self.clustering_algo == 'Index Based Algorithm':
+            print(self.clustering_technology)
 
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
@@ -520,7 +562,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             else:
                 if self.user_defined_copied_checkBox.isChecked():
                     sent_distance_info = self.dist_info
-                    if sent_distance_info['type'] == 'continuous' and sent_distance_info['min'] >= sent_distance_info['max']:
+                    if sent_distance_info['type'] == 'continuous' and sent_distance_info['min'] >= sent_distance_info[
+                        'max']:
                         self.msg_box_with_error('Min should be < Max in user defined amount of copies')
                         break
                     if sent_distance_info['value'] == '':
@@ -609,7 +652,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         plt.xticks(x)
 
-        plt.figure() # creates a new plot, so it doesn't plot a couple in one figure
+        plt.figure()  # creates a new plot, so it doesn't plot a couple in one figure
         plt.scatter(x, y, color='r', zorder=2)
         plt.plot(x, y, color='b', zorder=1)
 
@@ -629,7 +672,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.histogram_img.setPixmap(pixmap)
 
         # Optional, resize window to image size
-        #self.resize(pixmap.width(), pixmap.height())
+        # self.resize(pixmap.width(), pixmap.height())
 
     def dataReady(self):
         x = str(self.process.readAll(), 'utf-8')
