@@ -3,6 +3,7 @@
 **/venv/*
 *.pyc
 output/evyat.txt
+files/minion_idt/evyat.txt
 HeadEvyaLuis.txt
 HeadEvyaLuis_omer.txt
 LuisOutHybrid.txt
