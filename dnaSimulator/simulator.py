@@ -123,7 +123,7 @@ class Simulator:
         self.min_copies = 1
         self.max_copies = 499
 
-    def simulate_errors(self, report_func):
+    def simulate_errors(self, report_func, evyat_path, shuffled_path):
         """
         Simulates strands duplication with errors on the strands from the input file.
         Writes the output in HeadEvyaLuis.txt file in the following format:
@@ -181,7 +181,7 @@ class Simulator:
         i = 0
         with open(self.input_path, 'r') as input_f:
             os.makedirs('./output', exist_ok=True)  # required to create output directory if it doesn't exist
-            with open('output/evyat.txt', 'w', newline="\n") as output_f:
+            with open(evyat_path, 'w', newline="\n") as output_f:
                 for line in input_f:
                     report_func(num_values, i)
                     # write ORIGINAL strand with divider first:
@@ -223,7 +223,7 @@ class Simulator:
                     i += 1
 
         # mess the order of the output strands into a new file:
-        mess_output_strands()
+        mess_output_strands(evyat_path, shuffled_path)
 
 
 def pseudo_cluster(start, end, dist):
@@ -274,14 +274,14 @@ def pseudo_cluster(start, end, dist):
     os.rename(r'output/evyat_temp.txt', r'output/evyat.txt')
 
 
-def mess_output_strands():
+def mess_output_strands(evyat_path, shuffled_path):
     """
     Messes the output strands.
     Creates a temporary file from the evyat.txt to run the shuffle program on it,
     and creates a new output file errors_shuffled.txt with all output strands shuffled and not clustered.
     """
     output_f = open('output/errors_temp.txt', 'w', newline='\n')
-    with open('output/evyat.txt', 'r') as errors_f:
+    with open(evyat_path, 'r') as errors_f:
         try:
             # skip first line and ****:
             next(errors_f)
@@ -304,14 +304,14 @@ def mess_output_strands():
 
     if platform.system() == "Linux":
         # linux
-        args = ['shuf', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
+        args = ['shuf', 'output/errors_temp.txt', '-o', shuffled_path]
         subprocess.run(args)
     elif platform.system() == "Darwin":
         # OS X
-        args = ['./shuffle_prog/shuf_mac', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
+        args = ['./shuffle_prog/shuf_mac', 'output/errors_temp.txt', '-o', shuffled_path]
         subprocess.run(args)
     elif platform.system() == "Windows":
-        args = ['./shuffle_prog/shuf_windows.exe', 'output/errors_temp.txt', '-o', 'output/errors_shuffled.txt']
+        args = ['./shuffle_prog/shuf_windows.exe', 'output/errors_temp.txt', '-o', shuffled_path]
         subprocess.run(args)
     os.remove('output/errors_temp.txt')
 

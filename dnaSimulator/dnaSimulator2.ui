@@ -32,7 +32,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="error_sim_tab">
          <attribute name="title">
@@ -1074,7 +1074,7 @@
                  <enum>QFrame::Plain</enum>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="pseudoclustering_settings_verticalWidget">
                  <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1132,9 +1132,9 @@
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_9">
                   <item>
-                   <widget class="QLabel" name="label_5">
+                   <widget class="QLabel" name="chosen_technologies_label">
                     <property name="text">
-                     <string>Chosen Technologies</string>
+                     <string>Choose Technologies</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1150,6 +1150,16 @@
                      </sizepolicy>
                     </property>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="clustering_index_label">
+                    <property name="text">
+                     <string>Clustering Index Size</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="clustering_index_comboBox"/>
                   </item>
                   <item>
                    <spacer name="verticalSpacer_6">
@@ -1182,20 +1192,6 @@
                </spacer>
               </item>
              </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="clustering_tab_verticalLayout">
-            <item>
-             <widget class="QLabel" name="pseudo_clustering_label">
-              <property name="text">
-               <string>Pseudo Clustering:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="pseudo_clustering_gridLayout"/>
             </item>
            </layout>
           </item>
