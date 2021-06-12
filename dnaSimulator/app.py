@@ -667,7 +667,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
 
-    def parse_hist_results(self):
+    def parse_hist_results(self, working_dir):
         num_clusters = 0
         start_copying = 0
         # x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -675,8 +675,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         x = []
         y = []
 
-        source = open('output/output.txt', 'r')
-        f = open('output/histogram.txt', 'w', newline='\n')
+        source = open(working_dir + '/output.txt', 'r')
+        f = open(working_dir + '/histogram.txt', 'w', newline='\n')
 
         for line in source:
             if line.find('rate') > 0:
@@ -692,7 +692,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         source.close()
         f.close()
 
-        source = open('output/histogram.txt', 'r')
+        source = open(working_dir + '/histogram.txt', 'r')
         for line in source:
             line_list = re.split(r'\t+|\s+', line)  # seperates a string to a list by a delimeter of spaces or tabs
             index = int(line_list[0].strip())
@@ -703,7 +703,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         source.close()
         return x, y, num_clusters
 
-    def show_hist_graph_result(self):
+    def show_hist_graph_result(self, working_dir):
         import numpy as np
         import matplotlib.pyplot as plt
 
@@ -712,7 +712,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         # self.histogram_img.setText('')
 
-        x, y, num_clusters = self.parse_hist_results()
+        x, y, num_clusters = self.parse_hist_results(working_dir)
 
         plt.xticks(x)
 
@@ -724,7 +724,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         plt.xlabel("Number of edit errors")
         plt.ylabel("Fraction of reads")
 
-        plt.savefig('output/histogram.png')
+        plt.savefig(working_dir + '/histogram.png')
         # plt.show()
 
         # qim = ImageQt('output/histogram.png').copy()
@@ -732,7 +732,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         # self.histogram_img.setPixmap(pix)
         # self.histogram_img.adjustSize()
 
-        pixmap = QPixmap('output/histogram.png')
+        pixmap = QPixmap(working_dir + '/histogram.png')
         self.histogram_img.setPixmap(pixmap)
 
         # Optional, resize window to image size
@@ -746,13 +746,17 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
                 self.progressBar.setValue(int(i))
 
     def reconstruction_finished(self):
+        if platform.system() == "Linux":
+            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology
+        elif platform.system() == "Windows":
+            working_dir = 'files/' + self.clustering_technology
         self.label_progress.setText('We are done :)')
         self.progressBar.setVisible(False)
-        text = open('output/output.txt').read()
+        text = open(working_dir + '/output.txt').read()
         self.reconstruction_output_textEdit.setText(text)
-        self.show_hist_graph_result()
+        self.show_hist_graph_result(working_dir)
 
-    def call_reconstruction_alg(self, alg_file_name):
+    def call_reconstruction_alg(self, alg_file_name, working_dir):
         process_path = None
         if platform.system() == "Linux" or platform == "linux2":
             # linux
@@ -766,28 +770,35 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.progressBar.setVisible(True)
         self.label_progress.setText('Running reconstruction, please wait!')
         self.process = QProcess(self)
-        self.process.setWorkingDirectory('output/')
+        self.process.setWorkingDirectory(working_dir)
         self.process.start(process_path)
         self.process.readyRead.connect(self.dataReady)
         self.process.finished.connect(self.reconstruction_finished)
 
     def run_reconstruction_algo(self):
-        if not os.path.isfile('output/evyat.txt'):
-            self.msg_box_with_error('Please run the error simulator first, or provide the evyat.txt input file')
+        if platform.system() == "Linux":
+            evyat_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology + '/' + 'evyat.txt'
+            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology
+        elif platform.system() == "Windows":
+            evyat_path = 'files/' + self.clustering_technology + '/' + 'evyat.txt'
+            working_dir = 'files/' + self.clustering_technology
+
+        if not os.path.isfile(evyat_path):
+            self.msg_box_with_error('Please run clustering first, or provide the evyat.txt input file')
             self.label_progress.setText('')
             return
 
         self.label_progress.setText('Running reconstruction, please wait!')
         if self.reconstruction_algo == 'Hybrid Reconstruction Algorithm':
-            self.call_reconstruction_alg('Hybrid')
+            self.call_reconstruction_alg('Hybrid', working_dir)
         elif self.reconstruction_algo == 'Divider BMA Reconstruction Algorithm':
-            self.call_reconstruction_alg('DivBMA')
+            self.call_reconstruction_alg('DivBMA', working_dir)
         elif self.reconstruction_algo == 'BMA Look Ahead Reconstruction Algorithm':
-            self.call_reconstruction_alg('BMALookahead')
+            self.call_reconstruction_alg('BMALookahead', working_dir)
         elif self.reconstruction_algo == 'Iterative Reconstruction Algorithm':
-            self.call_reconstruction_alg('Iterative')
+            self.call_reconstruction_alg('Iterative', working_dir)
         elif self.reconstruction_algo == 'Mock Reconstruction Algorithm':
-            self.call_reconstruction_alg('mockReconstruction')
+            self.call_reconstruction_alg('mockReconstruction', working_dir)
         else:
             self.msg_box_with_error('Please choose a reconstruction algorithm')
             self.label_progress.setText('')
