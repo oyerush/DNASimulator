@@ -224,15 +224,21 @@ class Clustering:
             for t in threads:
                 t.join()
 
-    def full_edit_distance(self):
+    def full_edit_distance(self, report_func):
         if platform.system() == "Linux":
             edit_dist_avg_f = '/home_nfs/sgamer8/DNAindex' + str(self.index) + '/cluster_output/' + self.technology + '/' + str(
                 self.index) + '_edit_dist_averages.txt'
         elif platform.system() == "Windows":
             edit_dist_avg_f = 'cluster_output/' + self.technology + '/' + str(self.index) + '_edit_dist_averages.txt'
+
+        num_values = pow(4, self.index)
+        i = 0
+
         with open(edit_dist_avg_f, 'w') as avg_file:
             for key in list(self.dict_strings.keys()):
+                report_func(num_values, i)
                 total_avg = self.full_edit_distance_per_cluster(key)
+                i = i + 1
                 print(key)
                 print(key + ' - ' + total_avg, file=avg_file)
 

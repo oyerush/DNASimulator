@@ -591,10 +591,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.cluster_worker = ClusteringWorker(self.clustering_technology, self.clustering_index)
             self.cluster_worker.start()
             self.label_progress.setText('Clustering in progress, please wait!')
-            # self.worker.finished.connect(self.evt_worker_finished)
-            # self.worker.update_progress.connect(self.evt_update_progress)
-            # # self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
-            # self.progressBar.setVisible(True)
+            self.cluster_worker.finished.connect(self.evt_worker_finished)
+            self.cluster_worker.update_progress.connect(self.evt_update_progress)
+            # self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
+            self.progressBar.setVisible(True)
 
             #break
 
@@ -812,17 +812,23 @@ class SimulateErrorsWorker(QThread):
 
 
 class ClusteringWorker(QThread):
+    update_progress = pyqtSignal(int)
+
     def __init__(self, cluster_tech, cluster_index):
         super(ClusteringWorker, self).__init__()
         self.cluster_tech = cluster_tech
         self.cluster_index = cluster_index
+
+    def report_func(self, total_lines, curr_line):
+        percent = int(curr_line * 100 // total_lines)
+        self.update_progress.emit(percent)
 
     def run(self):
         start_time = time.time()
         clusters = Clustering(self.cluster_index, self.cluster_tech)
         clusters.create_all_keys()
         clusters.fill_dict_from_shuffled()
-        clusters.full_edit_distance()
+        clusters.full_edit_distance(self.report_func)
         clusters.create_evyat_dict()
         [num_of_errors, num_of_false_negative] = clusters.compare_evyat_with_clustering()
 
