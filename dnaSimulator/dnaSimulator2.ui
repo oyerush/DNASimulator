@@ -1220,6 +1220,22 @@
            </layout>
           </item>
           <item>
+           <widget class="QLabel" name="clustering_results_label">
+            <property name="text">
+             <string>Clustering Results</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="clustering_results_textEdit">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>

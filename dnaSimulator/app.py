@@ -589,9 +589,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             print(self.clustering_technology)
             self.evyat_path, self.shuffled_path = self.evyat_files_path()
             self.cluster_worker = ClusteringWorker(self.clustering_technology, self.clustering_index)
+            self.progressBar.setValue(0)
             self.cluster_worker.start()
             self.label_progress.setText('Clustering in progress, please wait!')
-            self.cluster_worker.finished.connect(self.evt_worker_finished)
+            self.clustering_results_textEdit.clear()
+            self.cluster_worker.finished.connect(self.evt_cluster_worker_finished)
             self.cluster_worker.update_progress.connect(self.evt_update_progress)
             # self.worker.update_error_sim_finished.connect(self.evt_update_error_finished)
             self.progressBar.setVisible(True)
@@ -634,6 +636,20 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.label_progress.setText('We are done :)')
         self.progressBar.setValue(100)
         self.progressBar.setVisible(False)
+
+    def evt_cluster_worker_finished(self):
+        self.evt_worker_finished()
+
+        if platform.system() == "Linux":
+            results_f = '/home_nfs/sgamer8/DNAindex' + str(
+                self.clustering_index) + '/cluster_output/' + self.clustering_technology + '/' + str(
+                self.clustering_index) + '_final_results.txt'
+        elif platform.system() == "Windows":
+            results_f = 'cluster_output/' + self.clustering_technology + '/' + str(self.clustering_index) + '_final_results.txt'
+
+        text = open(results_f).read()
+        self.clustering_results_textEdit.setText(text)
+
 
     def evt_update_progress(self, val):
         self.progressBar.setValue(val + 1)
@@ -839,9 +855,9 @@ class ClusteringWorker(QThread):
             results_f = 'cluster_output/' + self.cluster_tech + '/' + str(self.cluster_index) + '_final_results.txt'
 
         with open(results_f, 'w') as results_file:
-            print("--- %s seconds ---" % (time.time() - start_time), file=results_file)
-            print('Number of strands in wrong cluster: ' + num_of_errors, file=results_file)
-            print('Number of false negative: ' + num_of_false_negative, file=results_file)
+            print("Run time: %s seconds" % round((time.time() - start_time),2), file=results_file)
+            print('Number of false positives: ' + num_of_errors, file=results_file)
+            print('Number of false negatives: ' + num_of_false_negative, file=results_file)
             print('Number of thrown strands: ' + str(clusters.total_amount_of_thrown), file=results_file)
 
 
