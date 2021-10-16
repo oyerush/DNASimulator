@@ -1073,7 +1073,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="run_clustering_pushButton">
+             <widget class="QPushButton" name="run_pdeudo_clustering_pushButton">
               <property name="text">
                <string>Run Clustering</string>
               </property>

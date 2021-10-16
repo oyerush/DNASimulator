@@ -53,6 +53,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             'max': 0
         }
 
+        self.minHash_local_steps = 220
+        self.minHash_min_local_steps = 20
+        self.minHash_max_local_steps = 1000
         self.barcode_start = 0
         self.barcode_end = 0
         self.max_clustering_edit_dist = 0
@@ -61,12 +64,14 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         self.progressBar.setVisible(False)
 
+        self.set_minHash_cluster_values()
         # connect push buttons to an event
         self.browse_PushButton.clicked.connect(self.openFileDialog)
         # self.set_current_values_PushButton.clicked.connect(self.setErrorValues)
         self.run_error_simulator_PushButton.clicked.connect(self.runErrorSimulator)
         self.reconstruction_run_pushButton.clicked.connect(self.run_reconstruction_algo)
-        self.run_clustering_pushButton.clicked.connect(self.runClustering)
+        self.run_pseudo_clustering_pushButton.clicked.connect(self.runPseudoClustering)
+        self.run_hash_based_clustering_pushButton.clicked.connect(self.runHashBasedClustering)
 
         # connect radio buttons to an event
         self.Ilumina_miSeq_radioButton.toggled.connect(self.ilumina_miSeq_chosen)
@@ -111,6 +116,8 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.G_long_del_doubleSpinBox.textChanged.connect(self.set_G_long_del)
         self.T_long_del_doubleSpinBox.textChanged.connect(self.set_T_long_del)
 
+        self.minHash_local_steps_spinBox.textChanged.connect(self.set_minHash_local_steps)
+
         self.barcode_start_spinBox.textChanged.connect(self.set_barcode_start)
         self.barcode_end_spinBox.textChanged.connect(self.set_barcode_end)
         self.max_edit_dist_spinBox.textChanged.connect(self.set_clustering_edit_dist)
@@ -137,7 +144,6 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.min_label.setVisible(False)
         self.max_label.setVisible(False)
         self.user_defined_copied_checkBox.stateChanged.connect(self.user_defined_amount)
-
         # add tool tips in UI
         self.value_lineEdit.setToolTip('Vector syntax example: [1, 10, 5, 9, 6, 200]\n\n'
                                        'Continuous function should be python syntax function. For example: x ** 2')
@@ -185,6 +191,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_value_amount(self, value):
         self.dist_info['value'] = value
+
+    def set_minHash_local_steps(self, value):
+        self.minHash_local_steps = value
 
     def set_barcode_start(self, value):
         self.barcode_start = value
@@ -329,7 +338,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             self.one_base_del_label.setText('1-base Deletion')
             self.Insertion_label.setText('Insertion')
         else:
-            self.one_base_del_label.setText('Deletion')
+            self.one_base_del_label.setVisible(visibility)
+            self.A_one_base_del_doubleSpinBox.setVisible(visibility)
+            self.C_one_base_del_doubleSpinBox.setVisible(visibility)
+            self.G_one_base_del_doubleSpinBox.setVisible(visibility)
+            self.T_one_base_del_doubleSpinBox.setVisible(visibility)
             self.Insertion_label.setText('Stutter')
 
     def ilumina_NextSeq_chosen(self):
@@ -423,10 +436,14 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.long_del_doubleSpinBox.setValue(0.1)
 
         self.set_per_base_substitution(0.1, 0.1, 0.1, 0.1)
-        self.set_per_base_insertion(0.1, 0.1, 0.1, 0.1)
-        self.set_per_base_pre_insertion(0.1, 0.1, 0.1, 0.1)
-        self.set_per_base_del(0.1, 0.1, 0.1, 0.1)
-        self.set_per_base_long_del(0.1, 0.1, 0.1, 0.1)
+        self.set_per_base_insertion(0.5, 0.5, 0.5, 0.5)
+        self.set_per_base_pre_insertion(0.5, 0.5, 0.5, 0.5)
+        self.set_per_base_del(0.5, 0.5, 0.5, 0.5)
+        self.set_per_base_long_del(0.5, 0.5, 0.5, 0.5)
+
+    def set_minHash_cluster_values(self):
+        self.minHash_local_steps_spinBox.setRange(self.minHash_min_local_steps, self.minHash_max_local_steps)
+        self.minHash_local_steps_spinBox.setValue(self.minHash_local_steps)
 
     def set_EZ17_values(self):
         # general errors
@@ -472,10 +489,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def set_Y16_values(self):
         # general errors
-        self.substitution_doubleSpinBox.setValue(1.21e-01)
-        self.insertion_doubleSpinBox.setValue(3.67e-01)
-        self.one_base_del_doubleSpinBox.setValue(4.33e-02)
-        self.long_del_doubleSpinBox.setValue(1.87e-02)
+        self.substitution_doubleSpinBox.setValue(2.2e-02)
+        self.insertion_doubleSpinBox.setValue(1.7e-02)
+        self.one_base_del_doubleSpinBox.setValue(0.2e-01)
+        self.long_del_doubleSpinBox.setValue(0.4e-02)
 
         # per base errors
         self.set_per_base_substitution(0.119, 0.133, 0.112, 0.119)
@@ -502,12 +519,24 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     # retval = msg.exec_()
 
-    def runClustering(self):
+    def runPseudoClustering(self):
         if not os.path.isfile('output/evyat.txt'):
             print('The evyat.txt doesn\'t exist')
             self.msg_box_with_error("evyat.txt input file for clustering doesn't exist")
         else:
             pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
+
+    def runHashBasedClustering(self):
+        if not os.path.isfile('output/evyat.txt'):
+            print('The evyat.txt doesn\'t exist')
+            self.msg_box_with_error("evyat.txt input file for clustering doesn't exist")
+        else:
+            self.worker = RunClusteringAlgorithmWorker(int(self.minHash_local_steps))
+            self.worker.start()
+            self.label_progress.setText('Running clustering, please wait!')
+            self.worker.finished.connect(self.evt_worker_finished)
+            self.worker.update_progress.connect(self.evt_update_progress)
+            self.progressBar.setVisible(True)
 
     def runErrorSimulator(self):
         self.inputDNAPath = self.file_path_lineEdit.text()
