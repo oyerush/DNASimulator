@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>723</width>
-    <height>806</height>
+    <height>856</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -1222,16 +1222,7 @@
           <item>
            <widget class="QLabel" name="clustering_results_label">
             <property name="text">
-             <string>Clustering Results</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="clustering_results_textEdit">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
+             <string>TextLabel</string>
             </property>
            </widget>
           </item>
@@ -1297,6 +1288,45 @@
                <widget class="QTextEdit" name="reconstruction_output_textEdit"/>
               </item>
              </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="reconstruction_settings_verticalLayout">
+            <item>
+             <widget class="QLabel" name="reconstruction_settings_label">
+              <property name="text">
+               <string>Settings</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="stackedWidget_2">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>70</height>
+               </size>
+              </property>
+              <widget class="QWidget" name="reconstruction_settings_horizontalWidget">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <layout class="QVBoxLayout" name="reconstruction_settings_inner_verticalLayout_2">
+                  <item>
+                   <widget class="QLabel" name="reconstruction_chosen_technologies_label">
+                    <property name="text">
+                     <string>Choose Technologies</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="reconstrcution_technology_comboBox"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
             </item>
            </layout>
           </item>

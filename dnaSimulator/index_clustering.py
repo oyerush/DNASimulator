@@ -155,6 +155,8 @@ class Clustering:
         with open(strands_in_wrong_cluster, 'w') as wrong_strands_file, open(false_positive,
                                                                              'w') as false_positive_file:
             for key in self.dict_strings.keys():
+                # TODO print the full key in the new evyat file (maybe this one doesn't have the full one, so might need to make a dict between the index and the strand
+                # TODO then print *****************************
                 real_cluster_for_key = self.evyat_dict_strings[key]
                 output_cluster_for_key = self.dict_strings[key]
                 for strand in output_cluster_for_key:
@@ -163,12 +165,14 @@ class Clustering:
                         print('Strand: ' + strand, file=wrong_strands_file)
                         print('In the wrong cluster: ' + key, file=wrong_strands_file)
                         print('***************************', file=wrong_strands_file)
+                    # TODO else: write it to the new evyat
                 for strand in self.thrown_strands_dict[key]:
                     if strand in real_cluster_for_key:
                         self.number_of_false_negative = self.number_of_false_negative + 1
                         print('Thrown strand: ' + strand, file=false_positive_file)
                         print('Cluster it should be in: ' + key, file=false_positive_file)
                         print('***************************', file=false_positive_file)
+                # TODO print 2 new lines and then go to the next key
             print('Number of strands in wrong cluster: ' + str(self.number_of_strands_in_wrong_cluster))
             print('Number of false negative: ' + str(self.number_of_false_negative))
             print('Total number of thrown strands: ' + str(self.total_amount_of_thrown))

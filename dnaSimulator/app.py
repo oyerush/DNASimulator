@@ -60,7 +60,7 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         self.reconstruction_algo = ''
         self.clustering_algo = ''
-        self.clustering_technology = 'miseq_twist'
+        self.chosen_technology = 'miseq_twist'
         self.clustering_index = 4
 
         self.evyat_path = ''
@@ -147,7 +147,13 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         self.technology_comboBox.addItem('CustomArray + Ilumina miSeq')
         self.technology_comboBox.addItem('Twist Bioscience + Ilumina NextSeq')
         self.technology_comboBox.addItem('Integrated DNA Technology (IDT) + MinION')
-        self.technology_comboBox.currentTextChanged.connect(self.set_clustering_technology)
+        self.technology_comboBox.currentTextChanged.connect(self.set_chosen_clustering_technology)
+
+        self.reconstrcution_technology_comboBox.addItem('Twist Bioscience + Ilumina miSeq')
+        self.reconstrcution_technology_comboBox.addItem('CustomArray + Ilumina miSeq')
+        self.reconstrcution_technology_comboBox.addItem('Twist Bioscience + Ilumina NextSeq')
+        self.reconstrcution_technology_comboBox.addItem('Integrated DNA Technology (IDT) + MinION')
+        self.reconstrcution_technology_comboBox.currentTextChanged.connect(self.set_chosen_reconstruction_technology)
 
         self.clustering_index_comboBox.addItem('4')
         self.clustering_index_comboBox.addItem('5')
@@ -237,16 +243,27 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
         elif self.clustering_algo == 'Index Based Algorithm':
             self.stackedWidget.setCurrentIndex(1)
 
-    def set_clustering_technology(self):
+    def set_chosen_clustering_technology(self):
         clustering_tech = self.technology_comboBox.currentText()
         if clustering_tech == 'Twist Bioscience + Ilumina miSeq':
-            self.clustering_technology = 'miseq_twist'
+            self.chosen_technology = 'miseq_twist'
         elif clustering_tech == 'CustomArray + Ilumina miSeq':
-            self.clustering_technology = 'miseq_custom'
+            self.chosen_technology = 'miseq_custom'
         elif clustering_tech == 'Twist Bioscience + Ilumina NextSeq':
-            self.clustering_technology = 'nextseq_twist'
+            self.chosen_technology = 'nextseq_twist'
         elif clustering_tech == 'Integrated DNA Technology (IDT) + MinION':
-            self.clustering_technology = 'minion_idt'
+            self.chosen_technology = 'minion_idt'
+
+    def set_chosen_reconstruction_technology(self):
+        reconstruction_tech = self.reconstrcution_technology_comboBox.currentText()
+        if reconstruction_tech == 'Twist Bioscience + Ilumina miSeq':
+            self.chosen_technology = 'miseq_twist'
+        elif reconstruction_tech == 'CustomArray + Ilumina miSeq':
+            self.chosen_technology = 'miseq_custom'
+        elif reconstruction_tech == 'Twist Bioscience + Ilumina NextSeq':
+            self.chosen_technology = 'nextseq_twist'
+        elif reconstruction_tech == 'Integrated DNA Technology (IDT) + MinION':
+            self.chosen_technology = 'minion_idt'
 
     def set_clustering_index(self):
         self.clustering_index = int(self.clustering_index_comboBox.currentText())
@@ -421,20 +438,20 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def twist_bioscience_chosen(self):
         if self.Ilumina_miSeq_radioButton.isChecked() and self.twist_bioscience_radioButton.isChecked():
-            self.clustering_technology = 'miseq_twist'
+            self.chosen_technology = 'miseq_twist'
             self.set_EZ17_values()
         elif self.Ilumina_NextSeq_radioButton.isChecked() and self.twist_bioscience_radioButton.isChecked():
-            self.clustering_technology = 'nextseq_twist'
+            self.chosen_technology = 'nextseq_twist'
             self.set_O17_values()
 
     def customArray_chosen(self):
         if self.Ilumina_miSeq_radioButton.isChecked() and self.customArray_radioButton.isChecked():
-            self.clustering_technology = 'miseq_custom'
+            self.chosen_technology = 'miseq_custom'
             self.set_G15_values()
 
     def IDT_chosen(self):
         if self.MinION_radioButton.isChecked() and self.IDT_radioButton.isChecked():
-            self.clustering_technology = 'minion_idt'
+            self.chosen_technology = 'minion_idt'
             self.set_Y16_values()
 
     def Default_chosen(self):
@@ -561,20 +578,20 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
     def evyat_files_path(self):
         if platform.system() == "Linux":
             # inputDNAPath = '/home_nfs/sgamer8/DNAindex' + str(index) + '/files/' + str(index) + '_allclustersofindex.txt'
-            evyat_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology + '/' + str(
+            evyat_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology + '/' + str(
                 self.clustering_index) + '_evyat.txt'
-            shuffled_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology + '/' + str(
+            shuffled_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology + '/' + str(
                 self.clustering_index) + '_errors_shuffled.txt'
-            if not os.access('/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology, os.F_OK):
-                os.mkdir('/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology)
+            if not os.access('/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology, os.F_OK):
+                os.mkdir('/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology)
         elif platform.system() == "Windows":
             # inputDNAPath = 'files/' + str(index) + '_allclustersofindex.txt'
-            evyat_path = 'files/' + self.clustering_technology + '/' + 'evyat.txt'
-            shuffled_path = 'files/' + self.clustering_technology + '/' + 'errors_shuffled.txt'
+            evyat_path = 'files/' + self.chosen_technology + '/' + 'evyat.txt'
+            shuffled_path = 'files/' + self.chosen_technology + '/' + 'errors_shuffled.txt'
             if not os.access('files', os.F_OK):
                 os.mkdir('files')
-            if not os.access('files/' + self.clustering_technology, os.F_OK):
-                os.mkdir('files/' + self.clustering_technology)
+            if not os.access('files/' + self.chosen_technology, os.F_OK):
+                os.mkdir('files/' + self.chosen_technology)
 
         return evyat_path, shuffled_path
 
@@ -586,9 +603,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
             else:
                 pseudo_cluster(int(self.barcode_start), int(self.barcode_end), int(self.max_clustering_edit_dist))
         elif self.clustering_algo == 'Index Based Algorithm':
-            print(self.clustering_technology)
+            print(self.chosen_technology)
             self.evyat_path, self.shuffled_path = self.evyat_files_path()
-            self.cluster_worker = ClusteringWorker(self.clustering_technology, self.clustering_index)
+            self.cluster_worker = ClusteringWorker(self.chosen_technology, self.clustering_index)
             self.progressBar.setValue(0)
             self.cluster_worker.start()
             self.label_progress.setText('Clustering in progress, please wait!')
@@ -642,10 +659,10 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
         if platform.system() == "Linux":
             results_f = '/home_nfs/sgamer8/DNAindex' + str(
-                self.clustering_index) + '/cluster_output/' + self.clustering_technology + '/' + str(
+                self.clustering_index) + '/cluster_output/' + self.chosen_technology + '/' + str(
                 self.clustering_index) + '_final_results.txt'
         elif platform.system() == "Windows":
-            results_f = 'cluster_output/' + self.clustering_technology + '/' + str(self.clustering_index) + '_final_results.txt'
+            results_f = 'cluster_output/' + self.chosen_technology + '/' + str(self.clustering_index) + '_final_results.txt'
 
         text = open(results_f).read()
         self.clustering_results_textEdit.setText(text)
@@ -747,9 +764,9 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def reconstruction_finished(self):
         if platform.system() == "Linux":
-            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology
+            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology
         elif platform.system() == "Windows":
-            working_dir = 'files/' + self.clustering_technology
+            working_dir = 'files/' + self.chosen_technology
         self.label_progress.setText('We are done :)')
         self.progressBar.setVisible(False)
         text = open(working_dir + '/output.txt').read()
@@ -777,11 +794,11 @@ class dnaSimulator(QMainWindow, dnaSimulator_ui2.Ui_dnaSimulator):
 
     def run_reconstruction_algo(self):
         if platform.system() == "Linux":
-            evyat_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology + '/' + 'evyat.txt'
-            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.clustering_technology
+            evyat_path = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology + '/' + 'evyat.txt'
+            working_dir = '/home_nfs/sgamer8/DNAindex' + str(self.clustering_index) + '/files/' + self.chosen_technology
         elif platform.system() == "Windows":
-            evyat_path = 'files/' + self.clustering_technology + '/' + 'evyat.txt'
-            working_dir = 'files/' + self.clustering_technology
+            evyat_path = 'files/' + self.chosen_technology + '/' + 'evyat.txt'
+            working_dir = 'files/' + self.chosen_technology
 
         if not os.path.isfile(evyat_path):
             self.msg_box_with_error('Please run clustering first, or provide the evyat.txt input file')
