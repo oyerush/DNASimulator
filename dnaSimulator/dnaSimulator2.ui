@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>856</height>
+    <width>866</width>
+    <height>978</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -1222,9 +1222,12 @@
           <item>
            <widget class="QLabel" name="clustering_results_label">
             <property name="text">
-             <string>TextLabel</string>
+             <string>Clustering Results</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="clustering_results_textEdit"/>
           </item>
           <item>
            <spacer name="verticalSpacer_3">
@@ -1457,8 +1460,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>723</width>
-     <height>21</height>
+     <width>866</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
