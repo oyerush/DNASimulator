@@ -98,15 +98,16 @@ def compare_groups(original_cluster, output_cluster):
         else:
             false_p += 1
     false_n = len(original_cluster) - correct
-    print("origin:")
-    for x in original_cluster:
-        print("*", x[:15], "...")
-    print("output:")
-    for x in output_cluster:
-        print("*", x[:15], "...")
+    #print("origin:")
+    #for x in original_cluster:
+    #    print("*", x[:15], "...")
+    #print("output:")
+    #for x in output_cluster:
+    #    print("*", x[:15], "...")
     print("correct:", correct)
     print("false_p:", false_p)
     print("false_n:", false_n)
+    print("_______")
 
 
 
@@ -143,11 +144,12 @@ class StutterCluster:
         for strand in self.strands.values():
             self.strands_by_skeleton[get_strand_skeleton(strand)].append(strand)
 
-    def create_group(self, q):
-        anchor = get_longest_skeleton(list(self.strands_by_skeleton.keys()))
+    def create_group(self, corrent_strands_by_skeleton, q):
+        anchor = get_longest_skeleton(list(corrent_strands_by_skeleton.keys()))
         anchor_sig = bin_sig(anchor, q)
         count = 0
-        for skeleton in self.strands_by_skeleton.keys():
+        self.skeleton_dist = {}
+        for skeleton in corrent_strands_by_skeleton.keys():
             self.skeleton_dist[skeleton] = ham_dis(anchor_sig, bin_sig(skeleton, q))
         group = []
         count = 0
@@ -198,15 +200,17 @@ class StutterCluster:
         print("finish skeleton")
         self.create_evyat_dict()
         print("finish evyat")
-        anchor, group_of_skeleton = self.create_group(4)
-        print(self.strands_by_skeleton[anchor])
-        for cluster in self.evyat_dict_strings.values():
-            if self.strands_by_skeleton[anchor][0] in cluster:
-                print("found anchor cluster")
-                anchors_cluster = cluster
-        
-        compare_groups(anchors_cluster, self.get_strands_in_group_of_skeleton(group_of_skeleton))
-        
+        corrent_strands_by_skeleton = self.strands_by_skeleton.copy()
+        while corrent_strands_by_skeleton != []:
+            anchor, group_of_skeleton = self.create_group(corrent_strands_by_skeleton, 4)
+            #print(self.strands_by_skeleton[anchor])
+            for cluster in self.evyat_dict_strings.values():
+                if corrent_strands_by_skeleton[anchor][0] in cluster:
+                    print("found anchor cluster")
+                    anchors_cluster = cluster
+            compare_groups(anchors_cluster, self.get_strands_in_group_of_skeleton(group_of_skeleton))
+            for skeleton in group_of_skeleton:
+                corrent_strands_by_skeleton.pop(skeleton)
         
         #for x in self.strands_by_skeleton.keys():
         #    if len(self.strands_by_skeleton[x]) > 1:
