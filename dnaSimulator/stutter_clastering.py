@@ -2,8 +2,8 @@ import argparse
 import os
 import shutil
 import threading
-from stutter_clustering.hash_base_functions import *
-from stutter_clustering.skeleton_functions import *
+#from stutter_clustering.hash_base_functions import *
+from skeleton_functions import *
 from simulator import *
 import time
 
@@ -93,11 +93,13 @@ class StutterCluster:
             self.skeleton_dist[skeleton] = ham_dis(
                 anchor_sig, bin_sig(skeleton, q))
         group = []
+        group_strands = []
         count = 0
         for skeleton, dis in self.skeleton_dist.items():
             if dis < self.bound:  # 0.3 * len(skeleton):
                 group.append(skeleton)
-        return get_avarage_skeleton(group.copy()), group
+                group_strands += corrent_strands_by_skeleton[skeleton]
+        return ",".join([str(x) for x in create_cluster_sig(group_strands, 4)]), group
 
     def get_closest_group(self, avarage_skeleton, q):
         min_dist = len(avarage_skeleton)
@@ -110,16 +112,23 @@ class StutterCluster:
                 min_group = group_av_skeleton
         return min_group
 
-    def get_closest_group_by_sig(self, avarage_skeleton, q):
-        min_dist = len(avarage_skeleton)
-        av_skeleton_sig = bin_sig(avarage_skeleton, q)
-        min_group = []
-        for group_av_skeleton in self.Cluster.keys():
-            dist = ham_dis(av_skeleton_sig, bin_sig(group_av_skeleton, q))
-            if dist < min_dist:
-                min_dist = dist
-                min_group = group_av_skeleton
-        return min_group
+    def get_closest_group_by_sig(self, new_cluster_sig, new_len, q):
+        max_similarity = 0
+        new_cluster_sig_arr = [int(x) for x in new_cluster_sig.split(",")]
+        max_similarity_group = ""
+        max_stands_len = 0
+        for cluster_sig, strands in self.Cluster.items():
+            new_similarity = clusters_similarity(
+                new_cluster_sig_arr, [int(x) for x in cluster_sig.split(",")], new_len, len(strands), q)
+            if max_similarity < new_similarity:
+                max_similarity = new_similarity
+                max_similarity_group = cluster_sig
+                max_stands_len = len(strands)
+        print("similarity: ", max_similarity)
+        min_len = min(new_len, max_stands_len)
+        if (max_similarity <= min(0.003*min_len+0.902, 0.94)):
+            return max_similarity_group, False
+        return max_similarity_group, True
 
     def create_evyat_dict(self):
         in_cluster = 0
@@ -163,35 +172,52 @@ class StutterCluster:
         self.Cluster = {}
         self.Cluster_info = {}
         count = 0
-        f = open("out_txt", "w")
+        f = open("temp.txt", "w")
         corrent_strands_by_skeleton = self.strands_by_skeleton.copy()
         while corrent_strands_by_skeleton:
             if count % 50 == 0:
                 f.seek(0)
                 f.write("\n".join(map(str, self.Cluster_info.values())))
             #count += 1
-            avarage_skeleton, group_of_skeleton = self.create_group(
+            cluster_sig, group_of_skeleton = self.create_group(
                 corrent_strands_by_skeleton, 4)
+            group_to_add_to, is_part = self.get_closest_group_by_sig(cluster_sig, len(self.get_strands_in_group_of_skeleton(
+                group_of_skeleton)), 4)
+            #if group_to_add_to != "":
+                #print(num_of_chars(self.Cluster[group_to_add_to], group_of_skeleton))
+                #avarage_skeleton1 = get_avarage_skeleton(
+                #    [get_strand_skeleton(x) for x in self.Cluster[group_to_add_to]])
+                #avarage_skeleton2 = get_avarage_skeleton(group_of_skeleton.copy())
+                #avarage_skeletons = get_avarage_skeleton([avarage_skeleton1, avarage_skeleton2])
+                #print(homopolymer_dist(cluster_avarage_homopolymer(self.Cluster[group_to_add_to], avarage_skeleton1), cluster_avarage_homopolymer(self.get_strands_in_group_of_skeleton(
+                #    group_of_skeleton), avarage_skeleton2), avarage_skeletons))
             # add the new group to the cluster
-            if len(group_of_skeleton) > 8:
-                self.Cluster[avarage_skeleton] = self.get_strands_in_group_of_skeleton(
+            if not is_part:  # len(group_of_skeleton) > 8:
+                self.Cluster[cluster_sig] = self.get_strands_in_group_of_skeleton(
                     group_of_skeleton)
                 for cluster in self.evyat_dict_strings.values():
                     if self.get_strands_in_group_of_skeleton(
                             group_of_skeleton)[0] in cluster:
-                        self.Cluster_info[avarage_skeleton] = compare_groups(
-                            cluster, self.Cluster[avarage_skeleton])
+                        self.Cluster_info[cluster_sig] = compare_groups(
+                            cluster, self.Cluster[cluster_sig])
             else:
-                group_to_add_to = self.get_closest_group(avarage_skeleton, 4)
+                strand_to_search = self.Cluster[group_to_add_to][0]
                 self.Cluster[group_to_add_to] += self.get_strands_in_group_of_skeleton(
                     group_of_skeleton)
                 for cluster in self.evyat_dict_strings.values():
-                    if self.get_strands_in_group_of_skeleton(
-                            group_of_skeleton)[0] in cluster:
+                    if strand_to_search in cluster:
                         print("befor:", self.Cluster_info[group_to_add_to])
                         self.Cluster_info[group_to_add_to] = compare_groups(
                             cluster, self.Cluster[group_to_add_to])
                         print("after:", self.Cluster_info[group_to_add_to])
+
+                        break
+                tmp_cluster = self.Cluster.pop(group_to_add_to)
+                self.Cluster[",".join(
+                    [str(x) for x in create_cluster_sig(tmp_cluster, 4)])] = tmp_cluster
+                tmp_cluster_info = self.Cluster_info.pop(group_to_add_to)
+                self.Cluster_info[",".join(
+                    [str(x) for x in create_cluster_sig(tmp_cluster, 4)])] = tmp_cluster_info
             # remove the old group from the cluster
             for skeleton in group_of_skeleton:
                 corrent_strands_by_skeleton.pop(skeleton)
