@@ -6,7 +6,8 @@ import threading
 from skeleton_functions import *
 from simulator import *
 import time
-
+from cluster_comper import *
+from threading import Thread
 
 
 
@@ -124,7 +125,7 @@ class StutterCluster:
                 max_similarity = new_similarity
                 max_similarity_group = cluster_sig
                 max_stands_len = len(strands)
-        print("similarity: ", max_similarity)
+        #print("similarity: ", max_similarity)
         min_len = min(new_len, max_stands_len)
         if (max_similarity <= min(0.003*min_len+0.902, 0.94)):
             return max_similarity_group, False
@@ -170,15 +171,14 @@ class StutterCluster:
         self.get_strands_skeleton()
         self.create_evyat_dict()
         self.Cluster = {}
-        self.Cluster_info = {}
+        self.cluster_comper = ClusterComper(self.evyat_dict_strings.values())
+        print("start")
+        Thread(target=self.cluster_comper.app, args=()).start()
         count = 0
         f = open("temp.txt", "w")
         corrent_strands_by_skeleton = self.strands_by_skeleton.copy()
         while corrent_strands_by_skeleton:
-            if count % 50 == 0:
-                f.seek(0)
-                f.write("\n".join(map(str, self.Cluster_info.values())))
-            #count += 1
+            count += 1
             cluster_sig, group_of_skeleton = self.create_group(
                 corrent_strands_by_skeleton, 4)
             group_to_add_to, is_part = self.get_closest_group_by_sig(cluster_sig, len(self.get_strands_in_group_of_skeleton(
@@ -195,29 +195,16 @@ class StutterCluster:
             if not is_part:  # len(group_of_skeleton) > 8:
                 self.Cluster[cluster_sig] = self.get_strands_in_group_of_skeleton(
                     group_of_skeleton)
-                for cluster in self.evyat_dict_strings.values():
-                    if self.get_strands_in_group_of_skeleton(
-                            group_of_skeleton)[0] in cluster:
-                        self.Cluster_info[cluster_sig] = compare_groups(
-                            cluster, self.Cluster[cluster_sig])
             else:
-                strand_to_search = self.Cluster[group_to_add_to][0]
+                #strand_to_search = self.Cluster[group_to_add_to][0]
                 self.Cluster[group_to_add_to] += self.get_strands_in_group_of_skeleton(
                     group_of_skeleton)
-                for cluster in self.evyat_dict_strings.values():
-                    if strand_to_search in cluster:
-                        print("befor:", self.Cluster_info[group_to_add_to])
-                        self.Cluster_info[group_to_add_to] = compare_groups(
-                            cluster, self.Cluster[group_to_add_to])
-                        print("after:", self.Cluster_info[group_to_add_to])
-
-                        break
                 tmp_cluster = self.Cluster.pop(group_to_add_to)
                 self.Cluster[",".join(
                     [str(x) for x in create_cluster_sig(tmp_cluster, 4)])] = tmp_cluster
-                tmp_cluster_info = self.Cluster_info.pop(group_to_add_to)
-                self.Cluster_info[",".join(
-                    [str(x) for x in create_cluster_sig(tmp_cluster, 4)])] = tmp_cluster_info
+            self.cluster_comper.update_state(self.Cluster.values())
+            #if count % 50 == 0:    
+            #    self.cluster_comper.print_stat()
             # remove the old group from the cluster
             for skeleton in group_of_skeleton:
                 corrent_strands_by_skeleton.pop(skeleton)
