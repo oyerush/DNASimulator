@@ -87,17 +87,21 @@ class StutterCluster:
         # get the rest of the skeletons (the one that wasn't clustered yet) and size of bin_sig
         # found a group that of all the close skeletons to the longest skeleton
         anchor = get_longest_skeleton(list(corrent_strands_by_skeleton.keys()))
-        anchor_sig = bin_sig(anchor, q)
-        count = 0
-        self.skeleton_dist = {}
-        for skeleton in corrent_strands_by_skeleton.keys():
-            self.skeleton_dist[skeleton] = ham_dis(
-                anchor_sig, bin_sig(skeleton, q))
+        #anchor_sig = bin_sig(anchor, q)
+        #count = 0
+        #self.skeleton_dist = {}
+        #for skeleton in corrent_strands_by_skeleton.keys():
+        #    self.skeleton_dist[skeleton] = ham_dis(
+        #        anchor_sig, bin_sig(skeleton, q))
         group = []
         group_strands = []
-        count = 0
-        for skeleton, dis in self.skeleton_dist.items():
-            if dis < self.bound:  # 0.3 * len(skeleton):
+        #count = 0
+        #for skeleton, dis in self.skeleton_dist.items():
+        #    if dis < self.bound:  # 0.3 * len(skeleton):
+        #        group.append(skeleton)
+        #        group_strands += corrent_strands_by_skeleton[skeleton]
+        for skeleton in corrent_strands_by_skeleton.keys():
+            if edit_dis(skeleton[:20], anchor[:20]) < 5:
                 group.append(skeleton)
                 group_strands += corrent_strands_by_skeleton[skeleton]
         return ",".join([str(x) for x in create_cluster_sig(group_strands, 4)]), group
