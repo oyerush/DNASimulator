@@ -70,6 +70,8 @@ class Clustering:
     # allclustersstringdict file
     def fill_dict_from_shuffled(self):
         with open(self.shuffled_file, 'r') as evyat_shuffled:
+            # dict_indices =  map between indices and strand location in file
+            # dict strings = map between indices and strand string (with index)
             for counter, line in enumerate(evyat_shuffled):
                 # print(counter, line[:5])
                 self.dict_indices[line[:self.index]].append(counter)

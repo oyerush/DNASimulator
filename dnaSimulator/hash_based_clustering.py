@@ -27,6 +27,7 @@ class HashBasedCluster:
         return x[ind:min(len(x), ind + w + l)]
 
     def ind_st(self, st):
+        # convert form DNA-base to decimal-base  
         # All 3-grams: AAA,AAG,AAC,AAT,AGA,AGC,...,TTA,TTG,TTC,TTT
         # A-0, G-1, C-2, T-3
         # index of CAT = Decimal representaion of (203)
@@ -37,6 +38,10 @@ class HashBasedCluster:
         return dec
 
     def bin_sig(self, x, q):
+        # x - st of DNA
+        # q - size of DAN-chunk
+        # return binary string
+        #   i-th character is 1 if DNAbase(i) in x
         bs = [0] * (4 ** q)
         for i in range(0, len(x) - q + 1):
             st = x[i:i + q]
@@ -45,6 +50,7 @@ class HashBasedCluster:
         return bs_str
 
     def ham_dis(self, x, y):
+        # hamming distance between x, y
         dis = 0
         for i in range(0, len(x)):
             if x[i] != y[i]:
@@ -63,6 +69,7 @@ class HashBasedCluster:
         return temp
 
     def edit_dis(self, s1, s2):
+        # edit distance between s1, s2
         m = len(s1) + 1
         n = len(s2) + 1
 
@@ -121,6 +128,7 @@ class HashBasedCluster:
         bin_sig_arr = []
 
         local_comm = number_of_steps
+        #just for bar loading
         tmp_bar = int(local_comm / 10)
         total_bar_size = local_comm + 2 * tmp_bar
 
