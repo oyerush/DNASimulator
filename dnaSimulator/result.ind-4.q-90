@@ -1,0 +1,6517 @@
+finish skeleton
+start evyat
+finish evyat
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 17
+_______
+found anchor cluster
+correct: 116
+false_p: 0
+false_n: 25
+_______
+found anchor cluster
+correct: 63
+false_p: 1
+false_n: 63
+_______
+found anchor cluster
+correct: 29
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+correct: 187
+false_p: 2
+false_n: 116
+_______
+found anchor cluster
+correct: 163
+false_p: 0
+false_n: 156
+_______
+found anchor cluster
+correct: 118
+false_p: 0
+false_n: 54
+_______
+found anchor cluster
+correct: 151
+false_p: 0
+false_n: 50
+_______
+found anchor cluster
+correct: 29
+false_p: 0
+false_n: 25
+_______
+found anchor cluster
+correct: 201
+false_p: 0
+false_n: 108
+_______
+found anchor cluster
+correct: 241
+false_p: 0
+false_n: 110
+_______
+found anchor cluster
+correct: 86
+false_p: 0
+false_n: 65
+_______
+found anchor cluster
+correct: 314
+false_p: 0
+false_n: 138
+_______
+found anchor cluster
+correct: 93
+false_p: 0
+false_n: 49
+_______
+found anchor cluster
+correct: 78
+false_p: 0
+false_n: 59
+_______
+found anchor cluster
+correct: 5
+false_p: 1
+false_n: 60
+_______
+found anchor cluster
+correct: 3
+false_p: 2
+false_n: 25
+_______
+found anchor cluster
+correct: 346
+false_p: 0
+false_n: 67
+_______
+found anchor cluster
+correct: 24
+false_p: 0
+false_n: 44
+_______
+found anchor cluster
+correct: 12
+false_p: 2
+false_n: 18
+_______
+found anchor cluster
+correct: 49
+false_p: 0
+false_n: 80
+_______
+found anchor cluster
+correct: 83
+false_p: 0
+false_n: 37
+_______
+found anchor cluster
+found anchor cluster
+correct: 97
+false_p: 0
+false_n: 84
+_______
+found anchor cluster
+correct: 292
+false_p: 0
+false_n: 162
+_______
+found anchor cluster
+correct: 191
+false_p: 0
+false_n: 209
+_______
+found anchor cluster
+correct: 257
+false_p: 0
+false_n: 89
+_______
+found anchor cluster
+correct: 75
+false_p: 0
+false_n: 81
+_______
+found anchor cluster
+correct: 162
+false_p: 0
+false_n: 132
+_______
+found anchor cluster
+correct: 92
+false_p: 0
+false_n: 191
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 293
+_______
+found anchor cluster
+correct: 155
+false_p: 0
+false_n: 123
+_______
+found anchor cluster
+correct: 49
+false_p: 0
+false_n: 49
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 122
+_______
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+correct: 63
+false_p: 0
+false_n: 44
+_______
+found anchor cluster
+correct: 129
+false_p: 0
+false_n: 35
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 23
+_______
+found anchor cluster
+correct: 111
+false_p: 0
+false_n: 88
+_______
+found anchor cluster
+correct: 122
+false_p: 0
+false_n: 110
+_______
+found anchor cluster
+correct: 56
+false_p: 0
+false_n: 67
+_______
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 42
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 151
+_______
+found anchor cluster
+correct: 226
+false_p: 0
+false_n: 179
+_______
+found anchor cluster
+correct: 29
+false_p: 0
+false_n: 39
+_______
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 304
+_______
+found anchor cluster
+correct: 66
+false_p: 0
+false_n: 28
+_______
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 141
+_______
+found anchor cluster
+correct: 179
+false_p: 0
+false_n: 81
+_______
+found anchor cluster
+correct: 33
+false_p: 0
+false_n: 12
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 61
+_______
+found anchor cluster
+correct: 54
+false_p: 1
+false_n: 53
+_______
+found anchor cluster
+correct: 79
+false_p: 0
+false_n: 50
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 300
+_______
+found anchor cluster
+correct: 237
+false_p: 0
+false_n: 118
+_______
+found anchor cluster
+correct: 69
+false_p: 0
+false_n: 20
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 118
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 88
+_______
+found anchor cluster
+found anchor cluster
+correct: 59
+false_p: 2
+false_n: 93
+_______
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 150
+_______
+found anchor cluster
+correct: 4
+false_p: 1
+false_n: 61
+_______
+found anchor cluster
+correct: 169
+false_p: 0
+false_n: 56
+_______
+found anchor cluster
+found anchor cluster
+correct: 82
+false_p: 0
+false_n: 81
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 313
+_______
+found anchor cluster
+correct: 77
+false_p: 0
+false_n: 55
+_______
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 13
+_______
+found anchor cluster
+correct: 53
+false_p: 0
+false_n: 65
+_______
+found anchor cluster
+found anchor cluster
+correct: 154
+false_p: 0
+false_n: 82
+_______
+found anchor cluster
+found anchor cluster
+correct: 69
+false_p: 0
+false_n: 25
+_______
+found anchor cluster
+found anchor cluster
+correct: 68
+false_p: 0
+false_n: 77
+_______
+found anchor cluster
+correct: 34
+false_p: 0
+false_n: 34
+_______
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 54
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 306
+false_p: 0
+false_n: 96
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 14
+_______
+found anchor cluster
+correct: 44
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 307
+_______
+found anchor cluster
+correct: 22
+false_p: 2
+false_n: 281
+_______
+found anchor cluster
+correct: 11
+false_p: 1
+false_n: 145
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 122
+_______
+found anchor cluster
+found anchor cluster
+correct: 134
+false_p: 1
+false_n: 74
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 312
+_______
+found anchor cluster
+correct: 6
+false_p: 1
+false_n: 123
+_______
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 39
+_______
+found anchor cluster
+correct: 111
+false_p: 0
+false_n: 63
+_______
+found anchor cluster
+correct: 162
+false_p: 0
+false_n: 50
+_______
+found anchor cluster
+correct: 134
+false_p: 0
+false_n: 84
+_______
+found anchor cluster
+correct: 163
+false_p: 0
+false_n: 68
+_______
+found anchor cluster
+correct: 84
+false_p: 0
+false_n: 96
+_______
+found anchor cluster
+found anchor cluster
+correct: 30
+false_p: 0
+false_n: 375
+_______
+found anchor cluster
+found anchor cluster
+correct: 104
+false_p: 0
+false_n: 95
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 48
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 169
+_______
+found anchor cluster
+found anchor cluster
+correct: 167
+false_p: 0
+false_n: 116
+_______
+found anchor cluster
+correct: 188
+false_p: 0
+false_n: 142
+_______
+found anchor cluster
+found anchor cluster
+correct: 83
+false_p: 0
+false_n: 87
+_______
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 57
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 298
+_______
+found anchor cluster
+correct: 99
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 299
+_______
+found anchor cluster
+correct: 55
+false_p: 0
+false_n: 345
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 314
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 174
+_______
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 308
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 6
+_______
+found anchor cluster
+correct: 49
+false_p: 0
+false_n: 234
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 121
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 48
+_______
+found anchor cluster
+correct: 85
+false_p: 0
+false_n: 115
+_______
+found anchor cluster
+correct: 26
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 40
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 133
+_______
+found anchor cluster
+correct: 91
+false_p: 0
+false_n: 94
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 101
+_______
+found anchor cluster
+correct: 105
+false_p: 0
+false_n: 92
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 345
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 150
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 314
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 1
+false_n: 8
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 197
+false_p: 0
+false_n: 57
+_______
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 7
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 191
+_______
+found anchor cluster
+correct: 62
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 276
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 6
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 124
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 297
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 150
+_______
+found anchor cluster
+correct: 200
+false_p: 0
+false_n: 69
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+found anchor cluster
+correct: 47
+false_p: 0
+false_n: 71
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 141
+_______
+found anchor cluster
+correct: 77
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 26
+false_p: 0
+false_n: 154
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+correct: 27
+false_p: 0
+false_n: 26
+_______
+found anchor cluster
+correct: 183
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+correct: 70
+false_p: 0
+false_n: 97
+_______
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 1
+false_n: 140
+_______
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 257
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 344
+_______
+found anchor cluster
+correct: 5
+false_p: 1
+false_n: 147
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 449
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 191
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 287
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 115
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 338
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 290
+_______
+found anchor cluster
+correct: 284
+false_p: 0
+false_n: 130
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 23
+false_p: 0
+false_n: 260
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 388
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 389
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 130
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 94
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 315
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 315
+_______
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 20
+_______
+found anchor cluster
+correct: 114
+false_p: 0
+false_n: 111
+_______
+found anchor cluster
+found anchor cluster
+correct: 190
+false_p: 1
+false_n: 92
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 129
+false_p: 0
+false_n: 54
+_______
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 337
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 273
+_______
+found anchor cluster
+found anchor cluster
+correct: 25
+false_p: 1
+false_n: 154
+_______
+found anchor cluster
+correct: 140
+false_p: 0
+false_n: 89
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 134
+false_p: 0
+false_n: 103
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 93
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 287
+_______
+found anchor cluster
+correct: 104
+false_p: 0
+false_n: 40
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 103
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 276
+_______
+found anchor cluster
+correct: 107
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 276
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 388
+_______
+found anchor cluster
+found anchor cluster
+correct: 347
+false_p: 0
+false_n: 142
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 303
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 297
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 351
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 90
+_______
+found anchor cluster
+correct: 27
+false_p: 0
+false_n: 20
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 138
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 4
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 275
+_______
+found anchor cluster
+found anchor cluster
+correct: 177
+false_p: 0
+false_n: 60
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 187
+_______
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 144
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 176
+_______
+found anchor cluster
+found anchor cluster
+correct: 151
+false_p: 0
+false_n: 130
+_______
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 281
+_______
+found anchor cluster
+found anchor cluster
+correct: 80
+false_p: 0
+false_n: 124
+_______
+found anchor cluster
+correct: 180
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 117
+_______
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 33
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 290
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 298
+_______
+found anchor cluster
+correct: 282
+false_p: 1
+false_n: 160
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 287
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 176
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 79
+false_p: 1
+false_n: 170
+_______
+found anchor cluster
+found anchor cluster
+correct: 371
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 119
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 23
+false_p: 0
+false_n: 41
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 166
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 177
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 150
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 324
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 448
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 101
+false_p: 0
+false_n: 45
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 337
+_______
+found anchor cluster
+found anchor cluster
+correct: 71
+false_p: 0
+false_n: 77
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 322
+_______
+found anchor cluster
+correct: 278
+false_p: 0
+false_n: 70
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 137
+_______
+found anchor cluster
+found anchor cluster
+correct: 240
+false_p: 0
+false_n: 148
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 103
+_______
+found anchor cluster
+correct: 125
+false_p: 0
+false_n: 89
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 270
+_______
+found anchor cluster
+correct: 25
+false_p: 0
+false_n: 175
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 177
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 271
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 160
+_______
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 234
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 51
+_______
+found anchor cluster
+found anchor cluster
+correct: 96
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+correct: 272
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 118
+_______
+found anchor cluster
+found anchor cluster
+correct: 32
+false_p: 0
+false_n: 24
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 305
+_______
+found anchor cluster
+found anchor cluster
+correct: 204
+false_p: 0
+false_n: 169
+_______
+found anchor cluster
+correct: 83
+false_p: 0
+false_n: 39
+_______
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 132
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 39
+false_p: 0
+false_n: 161
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 347
+_______
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 186
+_______
+found anchor cluster
+correct: 96
+false_p: 0
+false_n: 157
+_______
+found anchor cluster
+correct: 82
+false_p: 0
+false_n: 44
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 255
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 449
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 447
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 275
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 204
+_______
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 154
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 60
+false_p: 0
+false_n: 17
+_______
+found anchor cluster
+correct: 41
+false_p: 4
+false_n: 96
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+correct: 9
+false_p: 1
+false_n: 143
+_______
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 184
+_______
+found anchor cluster
+correct: 214
+false_p: 0
+false_n: 72
+_______
+found anchor cluster
+correct: 43
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 447
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 51
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+correct: 6
+false_p: 1
+false_n: 164
+_______
+found anchor cluster
+correct: 54
+false_p: 0
+false_n: 19
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 146
+_______
+found anchor cluster
+found anchor cluster
+correct: 43
+false_p: 0
+false_n: 136
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 168
+_______
+found anchor cluster
+correct: 95
+false_p: 0
+false_n: 53
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+correct: 160
+false_p: 0
+false_n: 238
+_______
+found anchor cluster
+found anchor cluster
+correct: 153
+false_p: 0
+false_n: 111
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 336
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 113
+_______
+found anchor cluster
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 204
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 70
+false_p: 0
+false_n: 113
+_______
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 45
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 196
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 189
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 84
+false_p: 0
+false_n: 79
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 312
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 161
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 116
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 108
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 72
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 395
+_______
+found anchor cluster
+correct: 62
+false_p: 0
+false_n: 106
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 231
+false_p: 0
+false_n: 31
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 50
+_______
+found anchor cluster
+correct: 356
+false_p: 0
+false_n: 91
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 52
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 446
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+correct: 43
+false_p: 0
+false_n: 37
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 177
+_______
+found anchor cluster
+correct: 26
+false_p: 0
+false_n: 347
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 213
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 67
+false_p: 0
+false_n: 331
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 164
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 219
+_______
+found anchor cluster
+correct: 56
+false_p: 0
+false_n: 49
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 347
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 219
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 99
+false_p: 0
+false_n: 20
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 240
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 168
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 195
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 211
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 346
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 279
+_______
+found anchor cluster
+correct: 205
+false_p: 0
+false_n: 47
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 183
+false_p: 0
+false_n: 57
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 173
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 155
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 26
+false_p: 0
+false_n: 206
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 409
+_______
+found anchor cluster
+correct: 37
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 228
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 46
+false_p: 0
+false_n: 122
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 176
+false_p: 0
+false_n: 48
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 110
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 112
+_______
+found anchor cluster
+correct: 109
+false_p: 0
+false_n: 48
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 195
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 32
+false_p: 0
+false_n: 18
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 179
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 35
+false_p: 0
+false_n: 85
+_______
+found anchor cluster
+correct: 114
+false_p: 0
+false_n: 62
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 232
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 52
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 445
+_______
+found anchor cluster
+found anchor cluster
+correct: 146
+false_p: 0
+false_n: 58
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 409
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 161
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 278
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 192
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 115
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 445
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 225
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 148
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 395
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 153
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 342
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 24
+false_p: 0
+false_n: 19
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 449
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 122
+_______
+found anchor cluster
+correct: 38
+false_p: 0
+false_n: 79
+_______
+found anchor cluster
+found anchor cluster
+correct: 64
+false_p: 0
+false_n: 77
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 194
+false_p: 0
+false_n: 51
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 160
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 315
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 116
+_______
+found anchor cluster
+found anchor cluster
+correct: 30
+false_p: 0
+false_n: 6
+_______
+found anchor cluster
+correct: 130
+false_p: 0
+false_n: 126
+_______
+found anchor cluster
+correct: 19
+false_p: 0
+false_n: 213
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 188
+false_p: 0
+false_n: 26
+_______
+found anchor cluster
+correct: 66
+false_p: 0
+false_n: 54
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 162
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 67
+false_p: 0
+false_n: 93
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 180
+_______
+found anchor cluster
+correct: 78
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 273
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 26
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 322
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+correct: 106
+false_p: 0
+false_n: 46
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 27
+false_p: 0
+false_n: 23
+_______
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 51
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 90
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 226
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 24
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 156
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 86
+false_p: 0
+false_n: 110
+_______
+found anchor cluster
+found anchor cluster
+correct: 57
+false_p: 0
+false_n: 211
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 188
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 450
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 127
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 395
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 447
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 323
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 176
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 220
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 102
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 341
+_______
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 224
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 175
+false_p: 11
+false_n: 82
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 9
+_______
+found anchor cluster
+found anchor cluster
+correct: 31
+false_p: 0
+false_n: 49
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 401
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 278
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 89
+false_p: 0
+false_n: 201
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 450
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 122
+false_p: 0
+false_n: 76
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 152
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 207
+_______
+found anchor cluster
+correct: 197
+false_p: 0
+false_n: 118
+_______
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 154
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 163
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 231
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 279
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 390
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 112
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 394
+_______
+found anchor cluster
+correct: 156
+false_p: 0
+false_n: 97
+_______
+found anchor cluster
+correct: 163
+false_p: 0
+false_n: 25
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 399
+_______
+found anchor cluster
+correct: 65
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 187
+_______
+found anchor cluster
+correct: 416
+false_p: 0
+false_n: 84
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 40
+false_p: 0
+false_n: 77
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 233
+false_p: 0
+false_n: 65
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 271
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+found anchor cluster
+correct: 54
+false_p: 0
+false_n: 48
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 207
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 194
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 113
+_______
+found anchor cluster
+found anchor cluster
+correct: 28
+false_p: 0
+false_n: 10
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 303
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 290
+_______
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 326
+_______
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 116
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 4
+false_n: 193
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 39
+false_p: 0
+false_n: 24
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 396
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 178
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 102
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 397
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 45
+_______
+found anchor cluster
+correct: 171
+false_p: 0
+false_n: 169
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 394
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 349
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 154
+_______
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 121
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 224
+_______
+found anchor cluster
+found anchor cluster
+correct: 45
+false_p: 0
+false_n: 25
+_______
+found anchor cluster
+correct: 93
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 290
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 240
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 179
+_______
+found anchor cluster
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 89
+false_p: 0
+false_n: 23
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 259
+false_p: 0
+false_n: 29
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 220
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 25
+false_p: 0
+false_n: 40
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 347
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 69
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 342
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 396
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 347
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 153
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 401
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 20
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 246
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 350
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 80
+false_p: 0
+false_n: 47
+_______
+found anchor cluster
+correct: 53
+false_p: 0
+false_n: 32
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 246
+_______
+found anchor cluster
+correct: 70
+false_p: 0
+false_n: 28
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 437
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 48
+false_p: 0
+false_n: 92
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 131
+false_p: 0
+false_n: 84
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 152
+_______
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 241
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 342
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 103
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 168
+_______
+found anchor cluster
+correct: 171
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+correct: 156
+false_p: 0
+false_n: 50
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 401
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 152
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 382
+_______
+found anchor cluster
+correct: 19
+false_p: 0
+false_n: 249
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 55
+false_p: 0
+false_n: 41
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 29
+false_p: 0
+false_n: 112
+_______
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 109
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 24
+false_p: 0
+false_n: 364
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 289
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 483
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 361
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 226
+_______
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 363
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 246
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 117
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 404
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 94
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 445
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 62
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 295
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 250
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 273
+_______
+found anchor cluster
+correct: 72
+false_p: 0
+false_n: 15
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 153
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 212
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 398
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 153
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 208
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 167
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 45
+false_p: 0
+false_n: 41
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 55
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 198
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 180
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 112
+_______
+found anchor cluster
+found anchor cluster
+correct: 40
+false_p: 0
+false_n: 44
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 181
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 22
+false_p: 0
+false_n: 98
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 358
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 481
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 138
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 56
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 65
+false_p: 0
+false_n: 70
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 54
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 181
+false_p: 0
+false_n: 28
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 213
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 163
+_______
+found anchor cluster
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 90
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 245
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 223
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 2
+false_n: 192
+_______
+found anchor cluster
+found anchor cluster
+correct: 72
+false_p: 0
+false_n: 47
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 27
+false_p: 0
+false_n: 263
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 174
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 105
+false_p: 0
+false_n: 23
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 387
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 128
+_______
+found anchor cluster
+correct: 120
+false_p: 0
+false_n: 106
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 60
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 401
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 325
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 400
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 391
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 230
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 163
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 437
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 248
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 29
+false_p: 0
+false_n: 359
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 383
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 220
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 1
+false_n: 225
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 129
+false_p: 0
+false_n: 106
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 409
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 351
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 300
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 269
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 53
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 480
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 236
+false_p: 0
+false_n: 52
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 112
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 478
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 228
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 147
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 278
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 298
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 122
+false_p: 0
+false_n: 78
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 25
+false_p: 0
+false_n: 158
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 405
+_______
+found anchor cluster
+found anchor cluster
+correct: 71
+false_p: 0
+false_n: 101
+_______
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 433
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 224
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 175
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 158
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 171
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 233
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 27
+false_p: 0
+false_n: 53
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 141
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 102
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 225
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 406
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 142
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 161
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 106
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 278
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 92
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 99
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 32
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 11
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 196
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 12
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 42
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 382
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 79
+_______
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 124
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 133
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 437
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 65
+false_p: 0
+false_n: 16
+_______
+found anchor cluster
+found anchor cluster
+correct: 26
+false_p: 2
+false_n: 242
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 300
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 389
+_______
+found anchor cluster
+correct: 163
+false_p: 0
+false_n: 74
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 224
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 398
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 264
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 443
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 275
+false_p: 0
+false_n: 106
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 118
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 111
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 170
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 257
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 387
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 158
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 194
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 145
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 175
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 242
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 51
+false_p: 0
+false_n: 34
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 273
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 166
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 364
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 17
+false_p: 0
+false_n: 143
+_______
+found anchor cluster
+found anchor cluster
+correct: 92
+false_p: 0
+false_n: 47
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 259
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 298
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 283
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 279
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 151
+false_p: 0
+false_n: 79
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 9
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 446
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 156
+_______
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 363
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 326
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 397
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 99
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 247
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 351
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 237
+false_p: 0
+false_n: 90
+_______
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 36
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 12
+false_p: 0
+false_n: 53
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 366
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 408
+_______
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 245
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 195
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 251
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 104
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 1
+false_n: 113
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 301
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 76
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 113
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 326
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 392
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 165
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 226
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 248
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 18
+false_p: 0
+false_n: 238
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 278
+_______
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 83
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 72
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 225
+_______
+found anchor cluster
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 243
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 286
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 174
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 232
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 301
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 176
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 69
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 249
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 196
+_______
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 306
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+found anchor cluster
+correct: 61
+false_p: 0
+false_n: 37
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 311
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 248
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 384
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 301
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 349
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 110
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 344
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 158
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 175
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 11
+false_p: 0
+false_n: 97
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 228
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 38
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 410
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 100
+_______
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 298
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 30
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 29
+false_p: 1
+false_n: 239
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 129
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 436
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 103
+false_p: 0
+false_n: 99
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 368
+_______
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 378
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 245
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 249
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 34
+false_p: 0
+false_n: 192
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 144
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 200
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 351
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 442
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 4
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 435
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 152
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 219
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 79
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 437
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 9
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 252
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 275
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 115
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 209
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 14
+false_p: 0
+false_n: 126
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 134
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 140
+false_p: 0
+false_n: 35
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 308
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 401
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 391
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 301
+_______
+found anchor cluster
+correct: 13
+false_p: 0
+false_n: 202
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 76
+_______
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 380
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 262
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 219
+_______
+found anchor cluster
+found anchor cluster
+correct: 19
+false_p: 0
+false_n: 21
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 251
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 183
+false_p: 0
+false_n: 99
+_______
+found anchor cluster
+found anchor cluster
+correct: 42
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 189
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 193
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 225
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 81
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 159
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 76
+_______
+found anchor cluster
+found anchor cluster
+correct: 174
+false_p: 0
+false_n: 80
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 284
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 126
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 45
+false_p: 0
+false_n: 49
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 231
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 276
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 23
+false_p: 0
+false_n: 125
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 15
+false_p: 0
+false_n: 266
+_______
+found anchor cluster
+correct: 84
+false_p: 0
+false_n: 187
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 394
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 58
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 439
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 382
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 273
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 0
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 199
+_______
+found anchor cluster
+found anchor cluster
+correct: 21
+false_p: 0
+false_n: 162
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 164
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 54
+false_p: 0
+false_n: 9
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 53
+false_p: 0
+false_n: 17
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 1
+false_p: 3
+false_n: 116
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 291
+_______
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 192
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 300
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 265
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 274
+_______
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 363
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 164
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 249
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 191
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 139
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 275
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 221
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 246
+false_p: 0
+false_n: 107
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 43
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 263
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 410
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 410
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 392
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 60
+false_p: 0
+false_n: 211
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 172
+_______
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 210
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 381
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 222
+_______
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 134
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 233
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 20
+false_p: 0
+false_n: 117
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 263
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 101
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 483
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 77
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 393
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 156
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 98
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 9
+false_p: 0
+false_n: 277
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 393
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 120
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 48
+false_p: 0
+false_n: 90
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 275
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 481
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 382
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 45
+false_p: 0
+false_n: 92
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 76
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 136
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 42
+false_p: 0
+false_n: 22
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 35
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 226
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 190
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 209
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 398
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 126
+false_p: 0
+false_n: 95
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 119
+false_p: 0
+false_n: 64
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 264
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 291
+_______
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 16
+false_p: 0
+false_n: 324
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 247
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 10
+false_p: 0
+false_n: 227
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 114
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 134
+_______
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 158
+_______
+found anchor cluster
+correct: 8
+false_p: 0
+false_n: 132
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 301
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 4
+false_p: 0
+false_n: 140
+_______
+found anchor cluster
+correct: 7
+false_p: 0
+false_n: 246
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 6
+false_p: 0
+false_n: 380
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+correct: 5
+false_p: 0
+false_n: 285
+_______
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster
+found anchor cluster

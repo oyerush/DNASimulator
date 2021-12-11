@@ -1,0 +1,7 @@
+start evyat
+start
+r - refresh and print
+s <id1> <id2> - print similarity
+h <id1> <id2> - print homopolymer dist
+c <id1> <id2> - print char dist
+e - exit:
