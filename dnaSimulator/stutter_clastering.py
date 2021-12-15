@@ -2,7 +2,7 @@ import argparse
 import os
 import shutil
 import threading
-#from stutter_clustering.hash_base_functions import *
+# from stutter_clustering.hash_base_functions import *
 from skeleton_functions import *
 from simulator import *
 import time
@@ -11,7 +11,10 @@ from threading import Thread
 import time
 from matplotlib import pyplot as plt
 import random
-#from tqdm import tqdm
+import pickle
+from datetime import datetime
+from leven import levenshtein
+
 
 # check with original functions
 def compare_groups(original_cluster, output_cluster):
@@ -26,6 +29,7 @@ def compare_groups(original_cluster, output_cluster):
             false_p += 1
     false_n = len(original_cluster) - correct
     return {"correct": correct, "false_p": false_p, "false_n": false_n}
+
 
 class StutterCluster:
 
@@ -51,7 +55,8 @@ class StutterCluster:
         self.small_groups = []
         self.Cluster = {}
         self.union_count = 0
-        self.cluster_compare = ClusterComper(self.evyat_dict_strings.values())
+        self.cluster_compare = None
+        self.clean_ran = True
 
     def get_dict_form_shuffeld(self):
         with open(self.shuffled_file, 'r') as evyat_shuffled:
@@ -67,28 +72,28 @@ class StutterCluster:
             self.strands_by_skeleton[get_strand_skeleton(
                 strand)].append(strand)
 
-
-
-    def create_group(self, corrent_strands_by_skeleton, q):
+    def create_group(self, current_strands_by_skeleton, q):
         # get the rest of the skeletons (the one that wasn't clustered yet) and size of bin_sig
         # found a group that of all the close skeletons to the longest skeleton
-        anchor = get_longest_skeleton(list(corrent_strands_by_skeleton.keys()))
+        anchor = get_longest_skeleton(list(current_strands_by_skeleton.keys()))
         anchor_sig = bin_sig(anchor, q)
         self.skeleton_dist = {}
-        for skeleton in corrent_strands_by_skeleton.keys():
+        for skeleton in current_strands_by_skeleton.keys():
             self.skeleton_dist[skeleton] = ham_dis(
                 anchor_sig, bin_sig(skeleton, q))
         first_group = []
         group = []
         group_strands = []
+
         for skeleton, dis in self.skeleton_dist.items():
             if dis < self.bound:
                 first_group.append(skeleton)
-
+        # Alternative for rough clustering: rough cluster only a specific cluster
+        # all the strands from the specific skeleton are here, but also a few others
         for skeleton in first_group:
-            if edit_dis(skeleton[:20], anchor[:20]) < max(5, 10 - 0.125*self.skeleton_dist[skeleton]):
+            if levenshtein(skeleton[:20], anchor[:20]) < max(5, 10 - 0.125 * self.skeleton_dist[skeleton]):
                 group.append(skeleton)
-                group_strands += corrent_strands_by_skeleton[skeleton]
+                group_strands += current_strands_by_skeleton[skeleton]
 
         return ",".join([str(x) for x in create_cluster_sig(group_strands, 4)]), group
 
@@ -107,7 +112,7 @@ class StutterCluster:
         # get the sig of the new cluster and his len
         # return [], false if one of the elements aren't correct
         # return [], True if the size of the new group is smaller than 3 and max similarity is high but not enough
-        # return max similarity group if found one and the True of false refer to if the cluster should not be marge
+        # return max similarity group if found one and the True of false refer to if the cluster should not be merged
         max_similarity = 0
         new_cluster_sig_arr = [int(x) for x in new_cluster_sig.split(",")]
         max_similarity_group = ""
@@ -122,7 +127,7 @@ class StutterCluster:
                 max_similarity_group = cluster_sig
                 max_stands_len = len(strands)
         min_len = min(new_len, max_stands_len)
-        if max_similarity < min(0.003*min_len+0.902, 0.94):
+        if max_similarity < min(0.003 * min_len + 0.902, 0.94):
             if max_similarity > 0.887 and new_len <= 3:
                 return [], True
             return max_similarity_group, False
@@ -163,17 +168,20 @@ class StutterCluster:
         self.get_dict_form_shuffeld()
         self.get_strands_skeleton()
         self.create_evyat_dict()
+        self.cluster_compare = ClusterComper(self.evyat_dict_strings.values())
         self.cluster_compare.loading_bar(0)
         print("start")
-        Thread(target=self.cluster_compare.app, args=()).start()
+        if not self.clean_ran:
+            Thread(target=self.cluster_compare.app, args=()).start()
         last_present = 0
         f = open("temp.txt", "w")
-        corrent_strands_by_skeleton = self.strands_by_skeleton.copy()
-        while corrent_strands_by_skeleton:
+        current_strands_by_skeleton = self.strands_by_skeleton.copy()
+        while current_strands_by_skeleton:
             cluster_sig, group_of_skeleton = self.create_group(
-                corrent_strands_by_skeleton, 4)
-            group_to_add_to, is_part = self.get_closest_group_by_sig(cluster_sig, len(self.get_strands_in_group_of_skeleton(
-                group_of_skeleton)), 4)
+                current_strands_by_skeleton, 4)
+            group_to_add_to, is_part = self.get_closest_group_by_sig(cluster_sig,
+                                                                     len(self.get_strands_in_group_of_skeleton(
+                                                                         group_of_skeleton)), 4)
             # add the new group to the cluster
             if not is_part:  # len(group_of_skeleton) > 8:
                 self.Cluster[cluster_sig] = self.get_strands_in_group_of_skeleton(
@@ -187,14 +195,15 @@ class StutterCluster:
                 self.union_count += 1
             self.cluster_compare.update_state(self.Cluster.values())
             for skeleton in group_of_skeleton:
-                corrent_strands_by_skeleton.pop(skeleton)
-            
-            presents = 100 * (len(self.strands_by_skeleton) - len(corrent_strands_by_skeleton)) / len(
+                current_strands_by_skeleton.pop(skeleton)
+            presents = 100 * (len(self.strands_by_skeleton) - len(current_strands_by_skeleton)) / len(
                 self.strands_by_skeleton)
-            if presents - last_present >= 1:
+            if presents - int(last_present) >= 1:
                 last_present = presents
                 self.cluster_compare.loading_bar(presents)
-        print("total time:", time.time() - total_start, "union count:", self.union_count)
+        print("total time:", time.time() - total_start,
+              "union count:", self.union_count)
+        self.cluster_compare.update_state(self.Cluster.values())
         self.cluster_compare.final_check()
         return self.Cluster
 
@@ -203,16 +212,16 @@ class StutterCluster:
         self.get_strands_skeleton()
         self.create_evyat_dict()
         anchor = get_longest_skeleton(list(self.strands_by_skeleton.keys()))
-        #anchor = get_strand_skeleton(random.choice(list(self.strands.values())))
+        # anchor = get_strand_skeleton(random.choice(list(self.strands.values())))
         X = []
         Y = []
         cluster = []
-        C= []
-        D= []
+        C = []
+        D = []
         for strands in self.evyat_dict_strings.values():
             if self.strands_by_skeleton[anchor][0] in strands:
                 cluster = strands
-            #i += 1
+            # i += 1
         print(len(anchor))
         print(len(cluster))
         anchor_sig = bin_sig(anchor, 4)
@@ -225,7 +234,7 @@ class StutterCluster:
             if strands == cluster:
                 continue
 
-            #print(len(skeletons))
+            # print(len(skeletons))
             for skeleton in skeletons:
                 if i == k:
                     C.append(edit_dis(skeleton[:20], anchor[:20]))
@@ -236,10 +245,10 @@ class StutterCluster:
                 # for skeleton in corrent_strands_by_skeleton.keys():
                 Y[i].append(ham_dis(
                     anchor_sig, bin_sig(skeleton, 4)))
-                #Y[i].append(len(skeleton)*10)
-        #print(X)
+                # Y[i].append(len(skeleton)*10)
+        # print(X)
         colors = "bgrcmykw"
-        print("time:", time.time()-s)
+        print("time:", time.time() - s)
         i = 0
         for x, y in zip(X, Y):
             plt.scatter(x, y, c="b")
@@ -254,7 +263,20 @@ class StutterCluster:
         plt.scatter(A, B, c="r")
         plt.scatter(C, D, c="g")
         plt.show()
-# checks
+
+
+def write_clusters_to_file(Clusters, group_type="cluster"):
+    date = datetime.now()
+    with open(group_type + '_' + date.strftime('%d_%m-%H_%M') + '.out', 'wb') as f:
+        print(len(Clusters))
+        pickle.dump(Clusters, f)
+
+
+def get_clusters_from_file(filename):
+    with open(filename, 'r') as f:
+        return pickle.load(f)
+
+
 cluster = StutterCluster("miseq_twist")
-#cluster.plot()
-cluster.make_first_level_cluster()
+# cluster.plot()
+write_clusters_to_file(cluster.make_first_level_cluster())
