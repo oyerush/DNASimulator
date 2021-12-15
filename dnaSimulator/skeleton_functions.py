@@ -55,12 +55,12 @@ def get_avarage_skeleton(skeletons):
     return avarage_skeleton
 
 
-def create_cluster_sig(strands, q):
-    cluster_sig = np.array([0]*(4 ** q))
+def create_cluster_sig(strands, q, ind_dic):
+    cluster_sig = np.array([0]*len(ind_dic))
     for strand in strands:
         skeleton = get_strand_skeleton(strand)
         cluster_sig = np.add(cluster_sig, np.array(
-            [int(x) for x in bin_sig(skeleton, q)]))
+            [int(x) for x in bin_sig(skeleton, q, ind_dic)]))
     return cluster_sig.tolist()
 
 

@@ -51,15 +51,15 @@ def ind_st(st):
     return dec
 
 
-def bin_sig(x, q):
+def bin_sig(x, q, ind_dic):
     # x - st of DNA
     # q - size of DAN-chunk
     # return binary string
     #   i-th character is 1 if DNAbase(i) in x
-    bs = [0] * (4 ** q)
+    bs = [0] * len(ind_dic)
     for i in range(0, len(x) - q + 1):
         st = x[i:i + q]
-        bs[ind_st(st)] = 1
+        bs[ind_dic[st]] = 1
     bs_str = ''.join(str(e) for e in bs)
     return bs_str
 
