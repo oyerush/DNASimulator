@@ -1,3 +1,4 @@
+import math
 # form hash_base to get the binary signature
 DNA = {
     0: 'A',
@@ -51,16 +52,21 @@ def ind_st(st):
     return dec
 
 
-def bin_sig(x, q, ind_dic):
+def bin_sig(x, q, ind_dic, l):
     # x - st of DNA
     # q - size of DAN-chunk
     # return binary string
     #   i-th character is 1 if DNAbase(i) in x
-    bs = [0] * len(ind_dic)
+    slot_size = q * 25
+    num_of_slots = math.ceil(l/slot_size)
+    bs = [[0] * len(ind_dic) for _ in range(num_of_slots)]
     for i in range(0, len(x) - q + 1):
         st = x[i:i + q]
-        bs[ind_dic[st]] = 1
-    bs_str = ''.join(str(e) for e in bs)
+        bs[i//slot_size][ind_dic[st]] = 1
+    bs_str = ""
+    for sbs in bs:
+        for e in sbs:
+            bs_str += str(e)
     return bs_str
 
 def edit_dis(s1, s2):

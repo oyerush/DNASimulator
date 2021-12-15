@@ -56,6 +56,7 @@ class StutterCluster:
         self.evyat_dict_strings = {}
         self.small_groups = []
         self.Cluster = {}
+        self.l = 0
         self.union_count = 0
         self.cluster_compare = None
         self.clean_ran = True
@@ -77,8 +78,9 @@ class StutterCluster:
                 strand)].append(strand)
 
     def get_skeletons_sig(self, q):
+        self.l = len(get_longest_skeleton(self.strands_by_skeleton.keys()))
         for skeleton in self.strands_by_skeleton.keys():
-            self.skeletons_sig[skeleton] = bin_sig(skeleton, q, self.index_gen.get_ind_dic())
+            self.skeletons_sig[skeleton] = bin_sig(skeleton, q, self.index_gen.get_ind_dic(), self.l)
 
     def create_group(self, current_strands_by_skeleton, q, anchor=""):
         # get the rest of the skeletons (the one that wasn't clustered yet) and size of bin_sig
@@ -98,11 +100,11 @@ class StutterCluster:
         # all the strands from the specific skeleton are here, but also a few others
         anchor_sig = self.skeletons_sig[anchor]
         for skeleton, dist in first_group.items():
-            if ham_dis(anchor_sig, self.skeletons_sig[skeleton]) < max(17, -3.5*dist+83):
+            if ham_dis(anchor_sig, self.skeletons_sig[skeleton]) < max(60, -4*dist+140):#max(60, -3.5*dist+83):
                 group.append(skeleton)
                 group_strands += current_strands_by_skeleton[skeleton]
 
-        return ",".join([str(x) for x in create_cluster_sig(group_strands, 4, self.index_gen.get_ind_dic())]), group
+        return ",".join([str(x) for x in create_cluster_sig(group_strands, 4, self.index_gen.get_ind_dic(), self.l)]), group
 
     def get_closest_group(self, average_skeleton, q):
         min_dist = len(average_skeleton)
@@ -134,7 +136,11 @@ class StutterCluster:
                 max_similarity_group = cluster_sig
                 max_stands_len = len(strands)
         min_len = min(new_len, max_stands_len)
-        if max_similarity < min(0.003 * min_len + 0.902, 0.94):
+        #if new_len < 5:
+        #    print(" -", max_similarity)
+        #else:
+        #    print(max_similarity)
+        if max_similarity < 0.8:#min(0.003 * min_len + 0.902, 0.94):
             if max_similarity > 0.887 and new_len <= 3:
                 return [], True
             return max_similarity_group, False
@@ -191,17 +197,15 @@ class StutterCluster:
                                                                          group_of_skeleton)), 4)
             # add the new group to the cluster
             if not is_part:  # len(group_of_skeleton) > 8:
-                if group_to_add_to:
-                    self.Cluster[cluster_sig] = self.get_strands_in_group_of_skeleton(
-                        group_of_skeleton)
-                else:
-                    self.small_groups.append(group_of_skeleton)
+                self.Cluster[cluster_sig] = self.get_strands_in_group_of_skeleton(
+                    group_of_skeleton)
+
             elif group_to_add_to:
                 self.Cluster[group_to_add_to] += self.get_strands_in_group_of_skeleton(
                     group_of_skeleton)
                 tmp_cluster = self.Cluster.pop(group_to_add_to)
                 self.Cluster[",".join(
-                    [str(x) for x in create_cluster_sig(tmp_cluster, 4, self.index_gen.get_ind_dic())])] = tmp_cluster
+                    [str(x) for x in create_cluster_sig(tmp_cluster, 4, self.index_gen.get_ind_dic(), self.l)])] = tmp_cluster
                 self.union_count += 1
             self.cluster_compare.update_state(self.Cluster.values())
             for skeleton in group_of_skeleton:
@@ -213,7 +217,8 @@ class StutterCluster:
                 self.cluster_compare.loading_bar(presents)
         print("total time:", time.time() - total_start,
               "union count:", self.union_count)
-
+        self.cluster_compare.update_state(self.Cluster.values())
+        self.cluster_compare.final_check()
         return self.Cluster
 
     def make_second_level_clustering(self):
@@ -225,27 +230,26 @@ class StutterCluster:
             current_strands_by_skeleton = self.strands_by_skeleton
             if len(self.create_group(current_strands_by_skeleton, 4, group[0])) <= len(group):
                 self.Cluster[",".join(
-                    [str(x) for x in create_cluster_sig(group, 4, self.index_gen.get_ind_dic())])] = self.get_strands_in_group_of_skeleton(group)
+                    [str(x) for x in create_cluster_sig(group, 4, self.index_gen.get_ind_dic(), self.l)])] = self.get_strands_in_group_of_skeleton(group)
             counter += 1
             presents = 100*counter/len(self.small_groups)
             if presents - int(last_present) >= 1:
                 last_present = presents
                 self.cluster_compare.loading_bar(presents)
         print("total time:", time.time() - start_2)
-        self.cluster_compare.update_state(self.Cluster.values())
-        self.cluster_compare.final_check()
         return self.Cluster
 
     def plot(self, l):
         self.get_dict_form_shuffeld()
         self.get_strands_skeleton()
         self.create_evyat_dict()
-        anchor = get_longest_skeleton(list(self.strands_by_skeleton.keys()))
+        self.l = len(get_longest_skeleton(self.strands_by_skeleton.keys()))
         for strands in self.evyat_dict_strings.values():
             if len(strands) == 1:
                 anchor = get_strand_skeleton(strands[0])
-        anchor = get_strand_skeleton(self.evyat_dict_strings[0][0])
-        # anchor = get_strand_skeleton(random.choice(list(self.strands.values())))
+        #anchor = get_strand_skeleton(self.evyat_dict_strings[0][0])
+        #anchor = get_longest_skeleton(list(self.strands_by_skeleton.keys()))
+        anchor = get_strand_skeleton(random.choice(list(self.strands.values())))
         X = []
         Y = []
         cluster = []
@@ -257,7 +261,7 @@ class StutterCluster:
             # i += 1
         print(len(anchor))
         print(len(cluster))
-        anchor_sig = bin_sig(anchor, 4, self.index_gen.get_ind_dic())
+        anchor_sig = bin_sig(anchor, 4, self.index_gen.get_ind_dic(), self.l)
         k = random.choice(list(range(len(self.evyat_dict_strings.values()))))
         s = time.time()
         for i, strands in enumerate(self.evyat_dict_strings.values()):
@@ -275,11 +279,11 @@ class StutterCluster:
                     C.append(levenshtein(skeleton[:l], anchor[:l]))
                     # for skeleton in corrent_strands_by_skeleton.keys():
                     D.append(ham_dis(
-                        anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic())))
+                        anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic(), self.l)))
                 X[i].append(levenshtein(skeleton[:l], anchor[:l]))
                 # for skeleton in corrent_strands_by_skeleton.keys():
                 Y[i].append(ham_dis(
-                    anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic())))
+                    anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic(), self.l)))
                 # Y[i].append(len(skeleton)*10)
         # print(X)
         colors = "bgrcmykw"
@@ -294,7 +298,7 @@ class StutterCluster:
         for skeleton in skeletons:
             A.append(levenshtein(skeleton[:l], anchor[:l]))
             B.append(ham_dis(
-                anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic())))
+                anchor_sig, bin_sig(skeleton, 4, self.index_gen.get_ind_dic(), self.l)))
         plt.scatter(A, B, c="r")
         plt.scatter(C, D, c="g")
         plt.show()
@@ -313,6 +317,8 @@ def get_clusters_from_file(filename):
 
 
 cluster = StutterCluster("miseq_twist")
-# cluster.plot(100)
+# cluster.plot(50)
 write_clusters_to_file(cluster.make_first_level_cluster())
-write_clusters_to_file(cluster.make_second_level_clustering(), "final_cluster")
+#write_clusters_to_file(cluster.make_second_level_clustering(), "final_cluster")
+#cluster.cluster_compare.update_state(cluster.Cluster.values())
+#cluster.cluster_compare.final_check()

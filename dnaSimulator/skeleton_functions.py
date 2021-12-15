@@ -17,6 +17,7 @@ def get_strand_skeleton(strand):
 
 def get_longest_skeleton(skeletons):
     # find the longest skeleton in list of skeletons
+    skeletons = list(skeletons)
     longest = skeletons[0]
     for skeleton in skeletons:
         if len(longest) < len(skeleton):
@@ -55,12 +56,12 @@ def get_avarage_skeleton(skeletons):
     return avarage_skeleton
 
 
-def create_cluster_sig(strands, q, ind_dic):
-    cluster_sig = np.array([0]*len(ind_dic))
+def create_cluster_sig(strands, q, ind_dic, l):
+    cluster_sig = np.array([0]*(len(ind_dic)*math.ceil(l/(25*q))))
     for strand in strands:
         skeleton = get_strand_skeleton(strand)
         cluster_sig = np.add(cluster_sig, np.array(
-            [int(x) for x in bin_sig(skeleton, q, ind_dic)]))
+            [int(x) for x in bin_sig(skeleton, q, ind_dic, l)]))
     return cluster_sig.tolist()
 
 
